@@ -3,12 +3,12 @@
     "description": "Hub personnel de marque — Yesmine Gharbi",
     "type": "project",
     "require": {
-        "php": "^8.1",
-        "codeigniter4/framework": "^4.5"
+        "php": "^7.4|^8.0",
+        "codeigniter4/framework": "^4.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
-        "phpunit/phpunit": "^10.5"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {

@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Rewrite "www.example.com -> example.com"
+    # RewriteCond %{HTTPS} !=on
+    # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    # RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+
+    # Checks to see if the user is attempting to access a valid file,
+    # such as an image or css document, if this isn't the case, rewrite
+    # Otherwise, stop and allow the file through
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    # If we don't have mod_rewrite installed, all 404's
+    # can be sent to index.php, and everything works.
+    ErrorDocument 404 index.php
+</IfModule>
+
+# Disable server signature start
+ServerSignature Off
