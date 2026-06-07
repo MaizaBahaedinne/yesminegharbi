@@ -1347,3 +1347,8 @@ in SYSTEMPATH\Debug\Toolbar\Collectors\History.php on line 80.
  8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
 >>>>>>> f35a94d6bcbc672f39378f0906bd16ad4d7e8e1e
+INFO - 2026-06-07 22:41:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:41:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:41:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:41:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:48:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
