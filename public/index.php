@@ -1,13 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-/*
- *---------------------------------------------------------------
- * CHECK PHP VERSION
- *---------------------------------------------------------------
- */
-$minPhpVersion = '8.1';
+// Check PHP version.
+$minPhpVersion = '8.0';
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
     $message = sprintf(
         'Your PHP version must be %s or higher to run CodeIgniter. Current version: %s',
@@ -19,18 +13,29 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
     exit(1);
 }
 
-/*
- *---------------------------------------------------------------
- * SYSTEM DIRECTORY NAME
- *---------------------------------------------------------------
- */
+// Path to the front controller (this file)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 
-$pathsConfig = FCPATH . '../app/Config/Paths.php';
-require $pathsConfig;
+// Ensure the current directory is pointing to the front controller's directory
+if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
+    chdir(FCPATH);
+}
+
+// Load our paths config file
+require FCPATH . '../app/Config/Paths.php';
 $paths = new Config\Paths();
 
+// Location of the framework bootstrap file.
 require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
+
+// Load environment settings from .env files into $_SERVER and $_ENV
+require_once SYSTEMPATH . 'Config/DotEnv.php';
+(new CodeIgniter\Config\DotEnv(ROOTPATH))->load();
+
+// Define ENVIRONMENT
+if (! defined('ENVIRONMENT')) {
+    define('ENVIRONMENT', env('CI_ENVIRONMENT', 'production'));
+}
 
 $app = Config\Services::codeigniter();
 $app->initialize();

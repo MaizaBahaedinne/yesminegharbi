@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of CodeIgniter 4 framework.
  *
@@ -28,13 +26,6 @@ use Config\App;
 trait RequestTrait
 {
     /**
-     * Configuration settings.
-     *
-     * @var App
-     */
-    protected $config;
-
-    /**
      * IP address of the current user.
      *
      * @var string
@@ -47,8 +38,6 @@ trait RequestTrait
      * Stores values we've retrieved from PHP globals.
      *
      * @var array{get?: array, post?: array, request?: array, cookie?: array, server?: array}
-     *
-     * @deprecated 4.7.0 Use the Superglobals service instead
      */
     protected $globals = [];
 
@@ -61,7 +50,7 @@ trait RequestTrait
      */
     public function getIPAddress(): string
     {
-        if ($this->ipAddress !== '') {
+        if ($this->ipAddress) {
             return $this->ipAddress;
         }
 
@@ -70,11 +59,11 @@ trait RequestTrait
             'valid_ip',
         ];
 
-        $proxyIPs = $this->config->proxyIPs;
+        $proxyIPs = config(App::class)->proxyIPs;
 
         if (! empty($proxyIPs) && (! is_array($proxyIPs) || is_int(array_key_first($proxyIPs)))) {
             throw new ConfigException(
-                'You must set an array with Proxy IP address key and HTTP header name value in Config\App::$proxyIPs.',
+                'You must set an array with Proxy IP address key and HTTP header name value in Config\App::$proxyIPs.'
             );
         }
 
@@ -88,7 +77,7 @@ trait RequestTrait
         // @TODO Extract all this IP address logic to another class.
         foreach ($proxyIPs as $proxyIP => $header) {
             // Check if we have an IP address or a subnet
-            if (! str_contains($proxyIP, '/')) {
+            if (strpos($proxyIP, '/') === false) {
                 // An IP address (and not a subnet) is specified.
                 // We can compare right away.
                 if ($proxyIP === $this->ipAddress) {
@@ -109,7 +98,7 @@ trait RequestTrait
             }
 
             // If the proxy entry doesn't match the IP protocol - skip it
-            if (! str_contains($proxyIP, $separator)) {
+            if (strpos($proxyIP, $separator) === false) {
                 continue;
             }
 
@@ -226,18 +215,15 @@ trait RequestTrait
     /**
      * Allows manually setting the value of PHP global, like $_GET, $_POST, etc.
      *
-     * @param 'cookie'|'get'|'post'|'request'|'server' $name  Superglobal name (lowercase)
-     * @param mixed                                    $value
+     * @param         string                                   $name  Supergrlobal name (lowercase)
+     * @phpstan-param 'get'|'post'|'request'|'cookie'|'server' $name
+     * @param         mixed                                    $value
      *
      * @return $this
      */
     public function setGlobal(string $name, $value)
     {
-        // Keep BC with $globals array
         $this->globals[$name] = $value;
-
-        // Also update Superglobals via service
-        service('superglobals')->setGlobalArray($name, $value);
 
         return $this;
     }
@@ -252,10 +238,11 @@ trait RequestTrait
      *
      * http://php.net/manual/en/filter.filters.sanitize.php
      *
-     * @param 'cookie'|'get'|'post'|'request'|'server' $name   Superglobal name (lowercase)
-     * @param array|int|string|null                    $index
-     * @param int|null                                 $filter Filter constant
-     * @param array|int|null                           $flags  Options
+     * @param         string                                   $name   Supergrlobal name (lowercase)
+     * @phpstan-param 'get'|'post'|'request'|'cookie'|'server' $name
+     * @param         array|string|null                        $index
+     * @param         int|null                                 $filter Filter constant
+     * @param         array|int|null                           $flags  Options
      *
      * @return array|bool|float|int|object|string|null
      */
@@ -266,7 +253,7 @@ trait RequestTrait
         }
 
         // Null filters cause null values to return.
-        $filter ??= FILTER_UNSAFE_RAW;
+        $filter ??= FILTER_DEFAULT;
         $flags = is_array($flags) ? $flags : (is_numeric($flags) ? (int) $flags : 0);
 
         // Return all values when $index is null
@@ -294,7 +281,7 @@ trait RequestTrait
         }
 
         // Does the index contain array notation?
-        if (is_string($index) && ($count = preg_match_all('/(?:^[^\[]+)|\[[^]]*\]/', $index, $matches)) > 1) {
+        if (($count = preg_match_all('/(?:^[^\[]+)|\[[^]]*\]/', $index, $matches)) > 1) {
             $value = $this->globals[$name];
 
             for ($i = 0; $i < $count; $i++) {
@@ -318,7 +305,7 @@ trait RequestTrait
 
         if (is_array($value)
             && (
-                $filter !== FILTER_UNSAFE_RAW
+                $filter !== FILTER_DEFAULT
                 || (
                     (is_numeric($flags) && $flags !== 0)
                     || is_array($flags) && $flags !== []
@@ -326,7 +313,7 @@ trait RequestTrait
             )
         ) {
             // Iterate over array and append filter and flags
-            array_walk_recursive($value, static function (&$val) use ($filter, $flags): void {
+            array_walk_recursive($value, static function (&$val) use ($filter, $flags) {
                 $val = filter_var($val, $filter, $flags);
             });
 
@@ -345,11 +332,10 @@ trait RequestTrait
      * Saves a copy of the current state of one of several PHP globals,
      * so we can retrieve them later.
      *
-     * @param 'cookie'|'get'|'post'|'request'|'server' $name Superglobal name (lowercase)
+     * @param         string                                   $name Superglobal name (lowercase)
+     * @phpstan-param 'get'|'post'|'request'|'cookie'|'server' $name
      *
      * @return void
-     *
-     * @deprecated 4.7.0 No longer needs to be called explicitly. Used internally to maintain BC with $globals.
      */
     protected function populateGlobals(string $name)
     {
@@ -357,7 +343,28 @@ trait RequestTrait
             $this->globals[$name] = [];
         }
 
-        // Get data from Superglobals service instead of direct access
-        $this->globals[$name] = service('superglobals')->getGlobalArray($name);
+        // Don't populate ENV as it might contain
+        // sensitive data that we don't want to get logged.
+        switch ($name) {
+            case 'get':
+                $this->globals['get'] = $_GET;
+                break;
+
+            case 'post':
+                $this->globals['post'] = $_POST;
+                break;
+
+            case 'request':
+                $this->globals['request'] = $_REQUEST;
+                break;
+
+            case 'cookie':
+                $this->globals['cookie'] = $_COOKIE;
+                break;
+
+            case 'server':
+                $this->globals['server'] = $_SERVER;
+                break;
+        }
     }
 }

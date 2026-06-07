@@ -18,7 +18,7 @@ abstract class BaseController extends Controller
     protected $request;
 
     /** @var array<string, mixed> */
-    protected array $helpers = ['url', 'form', 'html', 'text'];
+    protected $helpers = ['url', 'form', 'html', 'text'];
 
     /** @var array<string, mixed> Data shared with every view */
     protected array $viewData = [];

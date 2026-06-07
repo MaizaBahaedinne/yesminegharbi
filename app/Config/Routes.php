@@ -46,3 +46,49 @@ $routes->post('/connexion',              'Auth::login');
 $routes->get('/deconnexion',             'Auth::logout',                    ['as' => 'logout']);
 $routes->get('/inscription',             'Auth::registerForm',              ['as' => 'register']);
 $routes->post('/inscription',            'Auth::register');
+
+//--------------------------------------------------------------------
+// ADMIN
+//--------------------------------------------------------------------
+$routes->get('/admin/login',             'Admin\Auth::loginForm',           ['as' => 'admin-login']);
+$routes->post('/admin/login',            'Admin\Auth::login');
+$routes->get('/admin/logout',            'Admin\Auth::logout',              ['as' => 'admin-logout']);
+
+$routes->group('admin', ['filter' => 'adminauth', 'namespace' => 'App\Controllers\Admin'], function($routes) {
+    $routes->get('/',                    'Dashboard::index',                ['as' => 'admin-dashboard']);
+
+    // Formations
+    $routes->get('formations',                        'Formations::index',              ['as' => 'admin-formations']);
+    $routes->get('formations/new',                    'Formations::create',             ['as' => 'admin-formation-new']);
+    $routes->post('formations/store',                 'Formations::store',              ['as' => 'admin-formation-store']);
+    $routes->get('formations/(:num)',                 'Formations::detail/$1',          ['as' => 'admin-formation-detail']);
+    $routes->get('formations/(:num)/edit',            'Formations::edit/$1',            ['as' => 'admin-formation-edit']);
+    $routes->post('formations/(:num)/update',         'Formations::update/$1',          ['as' => 'admin-formation-update']);
+    $routes->post('formations/(:num)/delete',         'Formations::delete/$1',          ['as' => 'admin-formation-delete']);
+    // Modules
+    $routes->post('formations/(:num)/modules/store',  'Formations::storeModule/$1',     ['as' => 'admin-module-store']);
+    $routes->post('modules/(:num)/update',            'Formations::updateModule/$1',    ['as' => 'admin-module-update']);
+    $routes->post('modules/(:num)/delete',            'Formations::deleteModule/$1',    ['as' => 'admin-module-delete']);
+    // Lecons
+    $routes->post('modules/(:num)/lecons/store',      'Formations::storeLecon/$1',      ['as' => 'admin-lecon-store']);
+    $routes->post('lecons/(:num)/update',             'Formations::updateLecon/$1',     ['as' => 'admin-lecon-update']);
+    $routes->post('lecons/(:num)/delete',             'Formations::deleteLecon/$1',     ['as' => 'admin-lecon-delete']);
+
+    // Ressources
+    $routes->get('ressources',           'Ressources::index',               ['as' => 'admin-ressources']);
+    $routes->get('ressources/new',       'Ressources::create',              ['as' => 'admin-ressource-new']);
+    $routes->post('ressources/store',    'Ressources::store',               ['as' => 'admin-ressource-store']);
+    $routes->get('ressources/(:num)/edit','Ressources::edit/$1',            ['as' => 'admin-ressource-edit']);
+    $routes->post('ressources/(:num)/update','Ressources::update/$1',       ['as' => 'admin-ressource-update']);
+    $routes->post('ressources/(:num)/delete','Ressources::delete/$1',       ['as' => 'admin-ressource-delete']);
+
+    // Newsletter & Messages
+    $routes->get('newsletter',           'Newsletter::index',               ['as' => 'admin-newsletter']);
+    $routes->post('newsletter/(:num)/delete','Newsletter::delete/$1',       ['as' => 'admin-newsletter-delete']);
+    $routes->get('messages',             'Messages::index',                 ['as' => 'admin-messages']);
+    $routes->post('messages/(:num)/delete','Messages::delete/$1',           ['as' => 'admin-message-delete']);
+
+    // Paramètres
+    $routes->get('parametres',           'Parametres::index',               ['as' => 'admin-parametres']);
+    $routes->post('parametres/update',   'Parametres::update',              ['as' => 'admin-parametres-update']);
+});

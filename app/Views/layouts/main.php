@@ -27,6 +27,7 @@
 
 <?= $this->include('partials/footer') ?>
 
+<script>const BASE_URL = '<?= site_url('/') ?>';</script>
 <script src="<?= base_url('assets/js/app.js') ?>" defer></script>
 </body>
 </html>

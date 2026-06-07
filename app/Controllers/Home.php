@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\FormationModel;
 use App\Models\RessourceModel;
+use App\Models\SettingsModel;
 
 class Home extends BaseController
 {
@@ -11,13 +12,15 @@ class Home extends BaseController
     {
         $formationModel = new FormationModel();
         $ressourceModel = new RessourceModel();
+        $settingsModel  = new SettingsModel();
 
         $data = [
-            'page_title'       => 'Yesmine Gharbi — Experte Recrutement & Personal Branding',
-            'page_description' => 'Formations, ressources et conseils recrutement par Yesmine Gharbi. Des conseils du terrain, pas des manuels.',
-            'formations'       => $formationModel->getAll(3),
-            'ressources_free'  => $ressourceModel->getFree(3),
+            'page_title'         => 'Yesmine Gharbi — Experte Recrutement & Personal Branding',
+            'page_description'   => 'Formations, ressources et conseils recrutement par Yesmine Gharbi. Des conseils du terrain, pas des manuels.',
+            'formations'         => $formationModel->getAll(3),
+            'ressources_free'    => $ressourceModel->getFree(3),
             'ressources_premium' => $ressourceModel->getPremium(4),
+            'settings'           => $settingsModel->getAll(),
         ];
 
         return $this->render('pages/home', $data);

@@ -2,22 +2,17 @@
 
 namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
-
-class Paths extends BaseConfig
+/**
+ * Paths
+ *
+ * NOTE: This class is loaded BEFORE the autoloader,
+ *       so it must NOT extend BaseConfig.
+ */
+class Paths
 {
-    /** @var string */
-    public string $systemDirectory = __DIR__ . '/../../vendor/codeigniter4/framework/system';
-
-    /** @var string */
-    public string $appDirectory = __DIR__ . '/..';
-
-    /** @var string */
+    public string $systemDirectory   = __DIR__ . '/../../vendor/codeigniter4/framework/system';
+    public string $appDirectory      = __DIR__ . '/..';
     public string $writableDirectory = __DIR__ . '/../../writable';
-
-    /** @var string */
-    public string $testsDirectory = __DIR__ . '/../../tests';
-
-    /** @var string */
-    public string $viewDirectory = __DIR__ . '/../Views';
+    public string $testsDirectory    = __DIR__ . '/../../tests';
+    public string $viewDirectory     = __DIR__ . '/../Views';
 }

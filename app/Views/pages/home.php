@@ -10,6 +10,18 @@ $iconesFormation = [
     'recrutement' => '💼',
     'branding'    => '🔗',
 ];
+$coverGradients = [
+    'cv'          => ['#EA2E00','#FF6B3D'],
+    'entretien'   => ['#1F1F1F','#4A4A4A'],
+    'recrutement' => ['#C49A3C','#E8C060'],
+    'branding'    => ['#9DBDB8','#4A8F89'],
+];
+$coverIcons = [
+    'cv'          => '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>',
+    'entretien'   => '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>',
+    'recrutement' => '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
+    'branding'    => '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>',
+];
 $badgeFormation = [
     'disponible' => '<span class="formation-badge badge-disponible">Disponible</span>',
     'bientot'    => '<span class="formation-badge badge-bientot">Bientôt</span>',
@@ -39,30 +51,11 @@ $iconeRessource = [
       <a href="<?= site_url('formations') ?>" class="btn-primary">Voir les formations →</a>
       <a href="<?= site_url('ressources-gratuites') ?>" class="btn-secondary">Ressources gratuites</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">+50K</span>
-        <span class="stat-label">Abonnés</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num"><?= count($formations) ?></span>
-        <span class="stat-label">Formations</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">+10</span>
-        <span class="stat-label">Ressources</span>
-      </div>
-    </div>
   </div>
 
   <div class="hero-visual">
     <div class="hero-photo-frame">
-      <div class="photo-placeholder">
-        <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="#b8a898" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
-        </svg>
-        Votre photo ici
-      </div>
+      <img src="<?= base_url('assets/img/yesmine.jpg') ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit">
       <div class="floating-card floating-card-1">
         <span class="fc-emoji">🎓</span>
         <span>Formation vendue !</span>
@@ -79,13 +72,24 @@ $iconeRessource = [
      TRUST BAND
      ============================================= -->
 <div class="trust-band">
-  <div class="trust-item"><strong>TikTok</strong> · Recrutement &amp; CV</div>
-  <div class="trust-sep">|</div>
-  <div class="trust-item"><strong>Instagram</strong> · Conseils pro</div>
-  <div class="trust-sep">|</div>
-  <div class="trust-item"><strong>LinkedIn</strong> · Personal branding</div>
-  <div class="trust-sep">|</div>
-  <div class="trust-item"><strong>Facebook</strong> · Communauté</div>
+  <?php
+  $nets = [
+      ['key'=>'tiktok',    'label'=>'TikTok',    'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>'],
+      ['key'=>'instagram', 'label'=>'Instagram', 'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>'],
+      ['key'=>'linkedin',  'label'=>'LinkedIn',  'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'],
+      ['key'=>'facebook',  'label'=>'Facebook',  'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>'],
+  ];
+  foreach ($nets as $i => $n):
+      $count = $settings[$n['key'].'_followers'] ?? '';
+      $url   = $settings[$n['key'].'_url'] ?? '#';
+      if (!$count) continue;
+  ?>
+  <?php if ($i > 0): ?><div class="trust-sep">|</div><?php endif; ?>
+  <a href="<?= esc($url) ?>" target="_blank" rel="noopener" class="trust-item" style="text-decoration:none">
+    <strong><?= esc($count) ?></strong>
+    <span><?= $n['svg'] ?> <?= $n['label'] ?></span>
+  </a>
+  <?php endforeach; ?>
 </div>
 
 <!-- =============================================
@@ -148,7 +152,21 @@ $iconeRessource = [
     <?php foreach ($formations as $f): ?>
     <div class="formation-card">
       <div class="formation-thumb">
-        <?= $iconesFormation[$f['theme']] ?? '📚' ?>
+        <?php
+          if (!empty($f['cover_image'])):
+        ?>
+          <img src="<?= base_url('assets/covers/' . esc($f['cover_image'])) ?>" alt="<?= esc($f['titre']) ?>" style="width:100%;height:100%;object-fit:cover;display:block">
+        <?php
+          else:
+            $g = $coverGradients[$f['theme']] ?? ['#EA2E00','#FF6B3D'];
+            $ico = $coverIcons[$f['theme']] ?? $coverIcons['cv'];
+            $shortTitle = mb_strlen($f['titre']) > 30 ? mb_substr($f['titre'],0,30).'…' : $f['titre'];
+        ?>
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,<?= $g[0] ?>,<?= $g[1] ?>);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px">
+            <?= $ico ?>
+            <span style="color:rgba(255,255,255,.95);font-family:'Playfair Display',serif;font-size:13px;font-weight:700;text-align:center;line-height:1.3"><?= esc($shortTitle) ?></span>
+          </div>
+        <?php endif; ?>
         <?= $badgeFormation[$f['statut']] ?? '' ?>
       </div>
       <div class="formation-body">
@@ -299,7 +317,9 @@ $iconeRessource = [
      ============================================= -->
 <section class="section-alt" id="apropos">
   <div class="apropos-mini">
-    <div class="apropos-photo">👩‍💼</div>
+    <div class="apropos-photo">
+      <img src="<?= base_url('assets/img/yesmine.jpg') ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover">
+    </div>
     <div class="apropos-content">
       <h2>Yesmine Gharbi</h2>
       <span class="apropos-title">Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
