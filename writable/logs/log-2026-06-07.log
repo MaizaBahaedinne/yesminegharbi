@@ -642,3 +642,679 @@ INFO - 2026-06-07 20:35:46 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2026-06-07 20:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2026-06-07 20:39:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2026-06-07 20:40:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 21:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 21:29:56 --> Error connecting to the database: mysqli_sql_exception: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-06-07 21:29:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Connection refused
+in SYSTEMPATH/Database/BaseConnection.php on line 428.
+ 1 SYSTEMPATH/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 21:30:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 21:30:07 --> Error connecting to the database: mysqli_sql_exception: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-06-07 21:30:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Connection refused
+in SYSTEMPATH/Database/BaseConnection.php on line 428.
+ 1 SYSTEMPATH/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 21:34:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 21:34:04 --> Error connecting to the database: mysqli_sql_exception: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-06-07 21:34:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Connection refused
+in SYSTEMPATH/Database/BaseConnection.php on line 428.
+ 1 SYSTEMPATH/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 21:36:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 21:36:41 --> Error connecting to the database: mysqli_sql_exception: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-06-07 21:36:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Connection refused
+in SYSTEMPATH/Database/BaseConnection.php on line 428.
+ 1 SYSTEMPATH/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 21:44:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 21:44:43 --> Error connecting to the database: mysqli_sql_exception: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-06-07 21:44:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Connection refused
+in SYSTEMPATH/Database/BaseConnection.php on line 428.
+ 1 SYSTEMPATH/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 21:52:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 21:52:45 --> Error connecting to the database: mysqli_sql_exception: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Connection refused in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-06-07 21:52:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Connection refused
+in SYSTEMPATH/Database/BaseConnection.php on line 428.
+ 1 SYSTEMPATH/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 22:16:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 22:16:26 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-06-07 22:16:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+in SYSTEMPATH/Database/BaseConnection.php on line 428.
+ 1 SYSTEMPATH/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-06-07 22:18:28 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(161): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Commands/Database/Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 /Applications/MAMP/htdocs/yesminegharbi/spark(60): CodeIgniter\CLI\Console->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(161): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Commands/Database/Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 /Applications/MAMP/htdocs/yesminegharbi/spark(60): CodeIgniter\CLI\Console->run()
+#10 {main}
+ERROR - 2026-06-07 22:18:37 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(161): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Commands/Database/Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 /Applications/MAMP/htdocs/yesminegharbi/spark(60): CodeIgniter\CLI\Console->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(161): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Commands/Database/Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 /Applications/MAMP/htdocs/yesminegharbi/spark(60): CodeIgniter\CLI\Console->run()
+#10 {main}
+INFO - 2026-06-07 22:19:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 22:19:12 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-06-07 22:19:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+in SYSTEMPATH/Database/BaseConnection.php on line 428.
+ 1 SYSTEMPATH/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 22:19:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 22:19:50 --> mysqli_sql_exception: Table 'ygbd.formations' doesn't exist in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-06-07 22:19:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'ygbd.formations' doesn't exist
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 2 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 4 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 5 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 6 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 7 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-07 22:19:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'ygbd.formations' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 311.
+ 1 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3')
+ 2 SYSTEMPATH/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 4 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 6 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 7 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 8 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 9 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-07 22:19:50 --> [Caused by] mysqli_sql_exception: Table 'ygbd.formations' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 306.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(306): mysqli->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3')
+ 3 SYSTEMPATH/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 5 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 7 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 8 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 9 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+10 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-06-07 22:20:25 --> mysqli_sql_exception: Table 'ygbd.formations' doesn't exist in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(306): mysqli->query('INSERT INTO `fo...', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1803): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', NULL, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(2192): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 /Applications/MAMP/htdocs/yesminegharbi/app/Database/Seeds/FormationSeeder.php(56): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/Seeder.php(145): App\Database\Seeds\FormationSeeder->run()
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Database/Seeds/DatabaseSeeder.php(11): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/Seeder.php(145): App\Database\Seeds\DatabaseSeeder->run()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Commands/Database/Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#11 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CLI/Console.php(46): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#12 /Applications/MAMP/htdocs/yesminegharbi/spark(60): CodeIgniter\CLI\Console->run()
+#13 {main}
+INFO - 2026-06-07 22:20:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 22:20:54 --> mysqli_sql_exception: Table 'ygbd.formations' doesn't exist in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-06-07 22:20:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'ygbd.formations' doesn't exist
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 2 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 4 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 5 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 6 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 7 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-07 22:20:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'ygbd.formations' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 311.
+ 1 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3')
+ 2 SYSTEMPATH/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 4 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 6 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 7 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 8 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 9 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-07 22:20:54 --> [Caused by] mysqli_sql_exception: Table 'ygbd.formations' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 306.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(306): mysqli->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3')
+ 3 SYSTEMPATH/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 5 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 7 APPPATH/Models/FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 8 APPPATH/Controllers/Home.php(20): App\Models\FormationModel->getAll(3)
+ 9 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+10 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 22:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-07 22:21:45 --> mysqli_sql_exception: Table 'ygbd.settings' doesn't exist in /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 /Applications/MAMP/htdocs/yesminegharbi/app/Models/SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 /Applications/MAMP/htdocs/yesminegharbi/app/Controllers/Home.php(23): App\Models\SettingsModel->getAll()
+#8 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(943): App\Controllers\Home->index()
+#9 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 /Applications/MAMP/htdocs/yesminegharbi/vendor/codeigniter4/framework/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /Applications/MAMP/htdocs/yesminegharbi/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-06-07 22:21:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'ygbd.settings' doesn't exist
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 2 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH/Models/SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH/Controllers/Home.php(23): App\Models\SettingsModel->getAll()
+ 6 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 7 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-07 22:21:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'ygbd.settings' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 311.
+ 1 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `settings`')
+ 2 SYSTEMPATH/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `settings`')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 4 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH/Models/SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH/Controllers/Home.php(23): App\Models\SettingsModel->getAll()
+ 8 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+ 9 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-07 22:21:45 --> [Caused by] mysqli_sql_exception: Table 'ygbd.settings' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 306.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(306): mysqli->query('SELECT *
+FROM `settings`', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `settings`')
+ 3 SYSTEMPATH/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `settings`')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 5 SYSTEMPATH/Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH/Models/SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH/Controllers/Home.php(23): App\Models\SettingsModel->getAll()
+ 9 SYSTEMPATH/CodeIgniter.php(943): App\Controllers\Home->index()
+10 SYSTEMPATH/CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH/index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-07 22:22:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:22:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:24:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:24:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:24:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:24:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:24:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-07 22:25:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
