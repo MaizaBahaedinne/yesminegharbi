@@ -1,0 +1,53 @@
+{
+    "name": "yesminegharbi/website",
+    "description": "Hub personnel de marque — Yesmine Gharbi",
+    "type": "project",
+    "require": {
+        "php": "^7.4|^8.0",
+        "codeigniter4/framework": "4.4.8",
+        "kint-php/kint": "5.1",
+        "laminas/laminas-escaper": "*"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Config\\": "app/Config/"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "CodeIgniter\\ComposerScripts::postUpdate"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        },
+        "audit": {
+            "block-insecure": false
+        }
+    },
+    "audit": {
+        "abandoned": "ignore",
+        "ignore": [
+            "PKSA-7ybs-j1bv-y5mc",
+            "PKSA-qbjf-dc24-wrff",
+            "PKSA-j54j-8c7k-rccq",
+            "PKSA-mscv-ktn8-2rsz",
+            "PKSA-3xnc-9vd8-pd26"
+        ],
+        "block-insecure": false
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
