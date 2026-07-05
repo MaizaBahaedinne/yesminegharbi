@@ -14,6 +14,7 @@ a{text-decoration:none;color:inherit}
 .sidebar-logo{padding:1.5rem 1.25rem;font-weight:700;font-size:1rem;border-bottom:1px solid rgba(255,255,255,.1)}
 .sidebar-logo span{color:#EA2E00}
 .sidebar-nav{padding:1rem 0;flex:1}
+.sidebar-section{padding:0.75rem 1.25rem;margin-top:1rem;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em}
 .sidebar-nav a{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.25rem;color:rgba(255,255,255,.7);font-size:.9rem;transition:all .15s}
 .sidebar-nav a:hover,.sidebar-nav a.active{background:rgba(255,255,255,.08);color:#fff}
 .sidebar-nav a.active{border-left:3px solid #EA2E00}
@@ -183,24 +184,38 @@ textarea{resize:vertical;min-height:100px}
 <aside class="sidebar">
     <div class="sidebar-logo">⚙️ Admin <span>·</span> YG</div>
     <nav class="sidebar-nav">
+        <div class="sidebar-section">Général</div>
         <a href="<?= base_url('admin') ?>" <?= current_url() === base_url('admin') ? 'class="active"' : '' ?>>
             <span class="nav-icon">📊</span> Tableau de bord
         </a>
+
+        <div class="sidebar-section">Contenu</div>
         <a href="<?= base_url('admin/formations') ?>" <?= str_contains(current_url(), 'admin/formations') ? 'class="active"' : '' ?>>
             <span class="nav-icon">🎓</span> Formations
         </a>
         <a href="<?= base_url('admin/ressources') ?>" <?= str_contains(current_url(), 'admin/ressources') ? 'class="active"' : '' ?>>
             <span class="nav-icon">📄</span> Ressources
         </a>
+        <a href="<?= base_url('admin/testimonials') ?>" <?= str_contains(current_url(), 'admin/testimonials') ? 'class="active"' : '' ?>>
+            <span class="nav-icon">💬</span> Témoignages
+        </a>
+
+        <div class="sidebar-section">Communication</div>
         <a href="<?= base_url('admin/newsletter') ?>" <?= str_contains(current_url(), 'admin/newsletter') ? 'class="active"' : '' ?>>
             <span class="nav-icon">📧</span> Newsletter
         </a>
         <a href="<?= base_url('admin/messages') ?>" <?= str_contains(current_url(), 'admin/messages') ? 'class="active"' : '' ?>>
             <span class="nav-icon">💬</span> Messages
         </a>
+
+        <div class="sidebar-section">Paramètres</div>
         <a href="<?= base_url('admin/parametres') ?>" <?= str_contains(current_url(), 'admin/parametres') ? 'class="active"' : '' ?>>
             <span class="nav-icon">⚙️</span> Paramètres
         </a>
+        <a href="<?= base_url('admin/socials') ?>" <?= str_contains(current_url(), 'admin/socials') ? 'class="active"' : '' ?>>
+            <span class="nav-icon">🔗</span> Connexions sociales
+        </a>
+
         <hr style="border:none;border-top:1px solid rgba(255,255,255,.1);margin:.75rem 1.25rem">
         <a href="<?= base_url('/') ?>" target="_blank">
             <span class="nav-icon">🌐</span> Voir le site

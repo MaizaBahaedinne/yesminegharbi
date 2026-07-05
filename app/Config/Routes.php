@@ -91,4 +91,16 @@ $routes->group('admin', ['filter' => 'adminauth', 'namespace' => 'App\Controller
     // Paramètres
     $routes->get('parametres',           'Parametres::index',               ['as' => 'admin-parametres']);
     $routes->post('parametres/update',   'Parametres::update',              ['as' => 'admin-parametres-update']);
+
+    // Connexions sociales
+    $routes->get('socials',              'Socials::index',                  ['as' => 'admin-socials']);
+    $routes->post('socials/update',      'Socials::update',                 ['as' => 'admin-socials-update']);
+
+    // Témoignages
+    $routes->get('testimonials',         'Testimonials::index',             ['as' => 'admin-testimonials']);
+    $routes->get('testimonials/new',     'Testimonials::create',            ['as' => 'admin-testimonial-new']);
+    $routes->post('testimonials/store',  'Testimonials::store',             ['as' => 'admin-testimonial-store']);
+    $routes->get('testimonials/(:num)/edit','Testimonials::edit/$1',          ['as' => 'admin-testimonial-edit']);
+    $routes->post('testimonials/(:num)/update','Testimonials::update/$1',      ['as' => 'admin-testimonial-update']);
+    $routes->post('testimonials/(:num)/delete','Testimonials::delete/$1',      ['as' => 'admin-testimonial-delete']);
 });

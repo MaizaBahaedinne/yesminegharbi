@@ -343,30 +343,22 @@ $iconeRessource = [
     <h2>Ce que disent nos apprenants</h2>
   </div>
   <div class="temoignages-grid">
-    <div class="temoignage">
-      <div class="stars">★★★★★</div>
-      <p>« Grâce à la formation entretien, j'ai décroché un CDI en moins de 3 semaines. Les conseils sont concrets et adaptés au marché tunisien. »</p>
-      <div class="temoignage-author">
-        <div class="author-avatar" style="background:var(--sauge)">SA</div>
-        <div class="author-info"><h4>Sana A.</h4><span>Chef de projet, Tunis</span></div>
-      </div>
-    </div>
-    <div class="temoignage">
-      <div class="stars">★★★★★</div>
-      <p>« Le kit recruteur m'a fait gagner un temps fou. Des outils vraiment professionnels, pensés par quelqu'un qui sait ce qu'est le terrain. »</p>
-      <div class="temoignage-author">
-        <div class="author-avatar" style="background:var(--rouge)">MB</div>
-        <div class="author-info"><h4>Mohamed B.</h4><span>Responsable RH, Sfax</span></div>
-      </div>
-    </div>
-    <div class="temoignage">
-      <div class="stars">★★★★★</div>
-      <p>« Yesmine a créé du contenu pour notre entreprise et le retour a été exceptionnel. Notre image employeur a vraiment évolué. »</p>
-      <div class="temoignage-author">
-        <div class="author-avatar" style="background:var(--or)">LC</div>
-        <div class="author-info"><h4>Leila C.</h4><span>DRH, Start-up Tunis</span></div>
-      </div>
-    </div>
+    <?php if (! empty($testimonials)): ?>
+        <?php foreach ($testimonials as $testimonial): ?>
+            <div class="temoignage">
+                <div class="stars"><?= str_repeat('★', max(1, min(5, (int) $testimonial['rating']))) ?></div>
+                <p><?= esc($testimonial['quote']) ?></p>
+                <div class="temoignage-author">
+                    <div class="author-avatar" style="background:<?= esc($testimonial['avatar_color'] ?: '#EA2E00') ?>"><?= esc($testimonial['avatar_initials'] ?: strtoupper(substr($testimonial['author_name'], 0, 2))) ?></div>
+                    <div class="author-info"><h4><?= esc($testimonial['author_name']) ?></h4><span><?= esc($testimonial['author_role']) ?></span></div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="temoignage" style="grid-column:1/-1;text-align:center;">
+            <p>Aucun témoignage disponible pour le moment.</p>
+        </div>
+    <?php endif; ?>
   </div>
 </section>
 
