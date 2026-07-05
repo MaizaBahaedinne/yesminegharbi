@@ -16,7 +16,7 @@ class TestimonialModel extends Model
         'avatar_initials',
         'avatar_color',
         'is_active',
-        'position',
+        'sort_order',
     ];
     protected $useTimestamps    = true;
     protected $createdField     = 'created_at';
@@ -25,7 +25,7 @@ class TestimonialModel extends Model
     public function getActive(): array
     {
         return $this->where('is_active', 1)
-                    ->orderBy('position', 'ASC')
+                    ->orderBy('sort_order', 'ASC')
                     ->findAll();
     }
 }

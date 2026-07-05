@@ -17,7 +17,7 @@ class Testimonials extends BaseAdminController
     {
         return $this->render('admin/testimonials/index', [
             'title'        => 'Témoignages',
-            'testimonials' => $this->model->orderBy('position', 'ASC')->findAll(),
+            'testimonials' => $this->model->orderBy('sort_order', 'ASC')->findAll(),
         ]);
     }
 
@@ -75,7 +75,7 @@ class Testimonials extends BaseAdminController
             'avatar_initials' => trim($this->request->getPost('avatar_initials') ?? ''),
             'avatar_color'    => trim($this->request->getPost('avatar_color') ?? ''),
             'is_active'       => $this->request->getPost('is_active') ? 1 : 0,
-            'position'        => (int) $this->request->getPost('position'),
+            'sort_order'      => (int) $this->request->getPost('sort_order'),
         ];
     }
 }

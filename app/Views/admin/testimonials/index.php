@@ -24,7 +24,7 @@
                     <th>Auteur</th>
                     <th>Texte</th>
                     <th>Actif</th>
-                    <th>Position</th>
+                    <th>Ordre</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -41,7 +41,7 @@
                             </td>
                             <td style="max-width:420px; white-space:pre-wrap; word-wrap:break-word"><?= esc($testimonial['quote']) ?></td>
                             <td><?= $testimonial['is_active'] ? 'Oui' : 'Non' ?></td>
-                            <td><?= esc($testimonial['position']) ?></td>
+                            <td><?= esc($testimonial['sort_order']) ?></td>
                             <td style="display:flex;gap:.5rem">
                                 <a href="<?= base_url('admin/testimonials/' . $testimonial['id'] . '/edit') ?>" class="btn btn-secondary btn-sm">Modifier</a>
                                 <form action="<?= base_url('admin/testimonials/' . $testimonial['id'] . '/delete') ?>" method="post" style="display:inline" onsubmit="return confirm('Supprimer ce témoignage ?');">

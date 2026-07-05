@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label>Ordre d'affichage</label>
-                    <input type="number" name="position" value="<?= esc($testimonial['position'] ?? 0) ?>" min="0">
+                    <input type="number" name="sort_order" value="<?= esc($testimonial['sort_order'] ?? 0) ?>" min="0">
                 </div>
                 <div class="form-group full" style="display:flex;align-items:center;gap:1rem;">
                     <label style="margin-right:1rem">Actif</label>
