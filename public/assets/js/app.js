@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.open-download').forEach(btn => {
     btn.addEventListener('click', () => {
       if (resourceIdIn) resourceIdIn.value = btn.dataset.id;
-      if (modalDesc)    modalDesc.textContent = 'Entrez votre email pour recevoir « ' + btn.dataset.titre + ' ».';
+      if (modalDesc)    modalDesc.textContent = 'Créez votre compte pour recevoir « ' + btn.dataset.titre + ' ». ';
       if (modal) {
         modal.classList.add('open');
         modal.setAttribute('aria-hidden', 'false');
@@ -78,8 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
           msgEl.className = 'alert alert-success';
           msgEl.textContent = json.message;
           downloadForm.reset();
-          // Auto-download if URL provided
-          if (json.downloadUrl) {
+          if (json.activationUrl) {
+            setTimeout(() => { window.location.href = json.activationUrl; }, 800);
+          } else if (json.downloadUrl) {
             setTimeout(() => { window.location.href = json.downloadUrl; }, 1000);
           }
         } else {

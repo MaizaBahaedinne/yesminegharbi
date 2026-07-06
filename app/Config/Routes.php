@@ -28,6 +28,7 @@ $routes->get('/a-propos',                'Pages::apropos',                  ['as
 $routes->get('/entreprises',             'Pages::entreprises',              ['as' => 'entreprises']);
 $routes->get('/contact',                 'Pages::contact',                  ['as' => 'contact']);
 $routes->get('/confirmation',            'Pages::confirmation',             ['as' => 'confirmation']);
+$routes->get('/activation/(:num)/(:segment)', 'Activation::activate/$1/$2', ['as' => 'activation']);
 
 //--------------------------------------------------------------------
 // API / FORMULAIRES (POST)
