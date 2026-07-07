@@ -3,7 +3,7 @@
 ?>
 <section class="section" style="background:#fff;min-height:60vh;display:flex;align-items:center">
     <div class="container" style="text-align:center;max-width:600px">
-        <div style="font-size:4rem;margin-bottom:1.5rem">✅</div>
+        <div style="font-size:4rem;margin-bottom:1.5rem"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></div>
         <h1 style="font-family:'Playfair Display',serif;margin-bottom:1rem">Message envoyé !</h1>
         <p style="color:var(--gris);font-size:1.1rem;line-height:1.7;margin-bottom:2rem">
             Merci pour votre message. Je vous répondrai dans les plus brefs délais, généralement sous 24-48 heures.

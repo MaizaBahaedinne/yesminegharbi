@@ -3,9 +3,9 @@
  * formation-detail.php — Style Udemy
  * Colonnes : $formation, $modules[]
  */
-$iconTheme  = ['cv'=>'📄','entretien'=>'🎤','recrutement'=>'💼','branding'=>'🔗'];
+$iconTheme  = ['cv'=>'<i class="fa-solid fa-file-lines" aria-hidden="true"></i>','entretien'=>'<i class="fa-solid fa-microphone" aria-hidden="true"></i>','recrutement'=>'<i class="fa-solid fa-briefcase" aria-hidden="true"></i>','branding'=>'<i class="fa-solid fa-link" aria-hidden="true"></i>'];
 $lblNiveau  = ['junior'=>'Junior','experimente'=>'Expérimenté','tous'=>'Tous niveaux'];
-$icoType    = ['video'=>'▶','quiz'=>'❓','document'=>'📄','texte'=>'📝'];
+$icoType    = ['video'=>'<i class="fa-solid fa-circle-play" aria-hidden="true"></i>','quiz'=>'<i class="fa-solid fa-circle-question" aria-hidden="true"></i>','document'=>'<i class="fa-solid fa-file-lines" aria-hidden="true"></i>','texte'=>'<i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>'];
 $lblType    = ['video'=>'Vidéo','quiz'=>'Quiz','document'=>'Document','texte'=>'Texte'];
 
 // Stats
@@ -267,40 +267,40 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
       <!-- Tags -->
       <div class="fhero-tags">
         <?php if (!empty($formation['is_populaire'])): ?>
-          <span class="ftag ftag-gold">⭐ Populaire</span>
+          <span class="ftag ftag-gold"><i class="fa-solid fa-star" aria-hidden="true"></i> Populaire</span>
         <?php endif; ?>
         <?php if (!empty($formation['niveau']) && $formation['niveau'] !== 'tous'): ?>
           <span class="ftag ftag-outline"><?= esc($lblNiveau[$formation['niveau']] ?? '') ?></span>
         <?php endif; ?>
         <?php if (!empty($formation['theme'])): ?>
-          <span class="ftag ftag-outline"><?= ($iconTheme[$formation['theme']] ?? '📚') ?> <?= esc(ucfirst($formation['theme'])) ?></span>
+          <span class="ftag ftag-outline"><?= ($iconTheme[$formation['theme']] ?? '<i class="fa-solid fa-book-open" aria-hidden="true"></i>') ?> <?= esc(ucfirst($formation['theme'])) ?></span>
         <?php endif; ?>
         <?php if ($hasQuiz): ?>
-          <span class="ftag ftag-outline">❓ Quiz</span>
+          <span class="ftag ftag-outline"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> Quiz</span>
         <?php endif; ?>
         <?php if ($hasCert): ?>
-          <span class="ftag ftag-gold">🏆 Certificat</span>
+          <span class="ftag ftag-gold"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Certificat</span>
         <?php endif; ?>
         <?php if ($dispo): ?>
-          <span class="ftag ftag-green">✅ Disponible</span>
+          <span class="ftag ftag-green"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Disponible</span>
         <?php else: ?>
-          <span class="ftag ftag-orange">🔜 Bientôt</span>
+          <span class="ftag ftag-orange"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Bientôt</span>
         <?php endif; ?>
       </div>
 
       <!-- Stats -->
       <div class="fhero-stats">
         <?php if ($nbLecons > 0): ?>
-          <span>🎬 <strong><?= $nbLecons ?></strong> leçons</span>
+          <span><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> <strong><?= $nbLecons ?></strong> leçons</span>
         <?php elseif (!empty($formation['modules_count'])): ?>
-          <span>🎬 <strong><?= (int)$formation['modules_count'] ?></strong> modules</span>
+          <span><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> <strong><?= (int)$formation['modules_count'] ?></strong> modules</span>
         <?php endif; ?>
         <?php if (!empty($duree)): ?>
-          <span>⏱ <strong><?= esc($duree) ?></strong></span>
+          <span><i class="fa-solid fa-stopwatch" aria-hidden="true"></i> <strong><?= esc($duree) ?></strong></span>
         <?php endif; ?>
-        <span>📱 Accès à vie</span>
+        <span><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Accès à vie</span>
         <?php if (!$isFree): ?>
-          <span>💳 <strong><?= number_format((float)$formation['prix'],0,',',' ') ?> TND</strong></span>
+          <span><i class="fa-solid fa-credit-card" aria-hidden="true"></i> <strong><?= number_format((float)$formation['prix'],0,',',' ') ?> TND</strong></span>
         <?php endif; ?>
       </div>
 
@@ -318,11 +318,11 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
     <!-- ── Objectifs ── -->
     <?php if (!empty($objectifs)): ?>
     <div class="fblock">
-      <div class="fblock-head">🎯 Ce que vous apprendrez</div>
+      <div class="fblock-head"><i class="fa-solid fa-bullseye" aria-hidden="true"></i> Ce que vous apprendrez</div>
       <div class="fblock-body">
         <div class="fobj-grid">
           <?php foreach ($objectifs as $o): ?>
-            <div class="fobj-item"><span class="fobj-check">✓</span><?= esc($o) ?></div>
+            <div class="fobj-item"><span class="fobj-check"><i class="fa-solid fa-check" aria-hidden="true"></i></span><?= esc($o) ?></div>
           <?php endforeach; ?>
         </div>
       </div>
@@ -332,7 +332,7 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
     <!-- ── Description ── -->
     <?php if (!empty($formation['description_longue']) || !empty($formation['description_courte'])): ?>
     <div class="fblock">
-      <div class="fblock-head">📖 Description</div>
+      <div class="fblock-head"><i class="fa-solid fa-book" aria-hidden="true"></i> Description</div>
       <div class="fblock-body">
         <div class="fprose">
           <?php if (!empty($formation['description_longue'])): ?>
@@ -348,7 +348,7 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
     <!-- ── Prérequis ── -->
     <?php if (!empty($prerequis)): ?>
     <div class="fblock">
-      <div class="fblock-head">📋 Prérequis</div>
+      <div class="fblock-head"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Prérequis</div>
       <div class="fblock-body">
         <ul class="fpre-list">
           <?php foreach ($prerequis as $p): ?>
@@ -362,7 +362,7 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
     <!-- ── Programme ── -->
     <?php if (!empty($modules)): ?>
     <div class="fblock">
-      <div class="fblock-head">📚 Programme de la formation</div>
+      <div class="fblock-head"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Programme de la formation</div>
       <div class="fblock-body" style="padding:0">
         <?php if ($nbLecons > 0): ?>
           <p class="fsyllabus-meta" style="padding:14px 20px 0"><?= count($modules) ?> chapitres · <?= $nbLecons ?> leçons · <?= esc($duree) ?></p>
@@ -373,14 +373,14 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
         ?>
         <details class="fchapter" <?= $mi === 0 ? 'open' : '' ?>>
           <summary class="fchapter-sum">
-            <span class="fchap-arrow">▶</span>
+            <span class="fchap-arrow"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></span>
             <span class="fchap-title"><?= esc($module['titre']) ?></span>
             <span class="fchap-meta"><?= count($module['lecons']) ?> leçon<?= count($module['lecons'])>1?'s':'' ?><?= $mDur ? ' · '.$mDur : '' ?></span>
           </summary>
           <ul class="flecons">
             <?php foreach ($module['lecons'] as $li => $lecon): ?>
             <li class="flecon">
-              <div class="flecon-icon"><?= $icoType[$lecon['type']] ?? '▶' ?></div>
+              <div class="flecon-icon"><?= $icoType[$lecon['type']] ?? '<i class="fa-solid fa-circle-play" aria-hidden="true"></i>' ?></div>
               <span class="flecon-title">
                 <?= esc($lecon['titre']) ?>
                 <?php if ($lecon['is_free'] && !empty($lecon['video_url'])): ?>
@@ -403,13 +403,13 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
     <?php elseif (empty($objectifs)): ?>
     <!-- Pas de modules ni d'objectifs : affichage générique -->
     <div class="fblock">
-      <div class="fblock-head">📚 Ce que vous apprendrez</div>
+      <div class="fblock-head"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Ce que vous apprendrez</div>
       <div class="fblock-body">
         <div class="fobj-grid">
-          <div class="fobj-item"><span class="fobj-check">✓</span>Techniques pratiques issues du terrain</div>
-          <div class="fobj-item"><span class="fobj-check">✓</span>Méthodes adaptées au marché tunisien &amp; francophone</div>
-          <div class="fobj-item"><span class="fobj-check">✓</span>Exercices et exemples concrets</div>
-          <div class="fobj-item"><span class="fobj-check">✓</span>Accès à vie au contenu</div>
+          <div class="fobj-item"><span class="fobj-check"><i class="fa-solid fa-check" aria-hidden="true"></i></span>Techniques pratiques issues du terrain</div>
+          <div class="fobj-item"><span class="fobj-check"><i class="fa-solid fa-check" aria-hidden="true"></i></span>Méthodes adaptées au marché tunisien &amp; francophone</div>
+          <div class="fobj-item"><span class="fobj-check"><i class="fa-solid fa-check" aria-hidden="true"></i></span>Exercices et exemples concrets</div>
+          <div class="fobj-item"><span class="fobj-check"><i class="fa-solid fa-check" aria-hidden="true"></i></span>Accès à vie au contenu</div>
         </div>
       </div>
     </div>
@@ -420,7 +420,7 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
     <div class="fblock">
       <div class="fblock-body">
         <div class="fbadge-card fbadge-quiz">
-          <div class="fbadge-ico">❓</div>
+          <div class="fbadge-ico"><i class="fa-solid fa-circle-question" aria-hidden="true"></i></div>
           <div>
             <h3>Quiz d'évaluation inclus</h3>
             <p>Testez vos connaissances à chaque étape et mesurez votre progression tout au long de la formation.</p>
@@ -435,7 +435,7 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
     <div class="fblock">
       <div class="fblock-body">
         <div class="fbadge-card fbadge-cert">
-          <div class="fbadge-ico">🏆</div>
+          <div class="fbadge-ico"><i class="fa-solid fa-trophy" aria-hidden="true"></i></div>
           <div>
             <h3>Certificat de réussite</h3>
             <p>Obtenez un certificat officiel Yesmine Gharbi à la fin de cette formation — valorisable sur LinkedIn et auprès de vos employeurs.</p>
@@ -454,7 +454,7 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
         <?php if (!empty($formation['cover_image'])): ?>
           <img src="<?= base_url('assets/covers/' . esc($formation['cover_image'])) ?>" alt="<?= esc($formation['titre']) ?>">
         <?php else: ?>
-          <?= $iconTheme[$formation['theme']] ?? '🎓' ?>
+          <?= $iconTheme[$formation['theme']] ?? '<i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>' ?>
         <?php endif; ?>
       </div>
       <div class="fcta-inner">
@@ -477,20 +477,20 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
         <div class="fcta-includes">
           <h4>Cette formation inclut :</h4>
           <?php if (!empty($duree)): ?>
-            <div class="fcta-row"><span class="fcta-row-icon">⏱</span><?= esc($duree) ?> de contenu vidéo</div>
+            <div class="fcta-row"><span class="fcta-row-icon"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i></span><?= esc($duree) ?> de contenu vidéo</div>
           <?php endif; ?>
           <?php if ($nbLecons > 0): ?>
-            <div class="fcta-row"><span class="fcta-row-icon">🎬</span><?= $nbLecons ?> leçons</div>
+            <div class="fcta-row"><span class="fcta-row-icon"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i></span><?= $nbLecons ?> leçons</div>
           <?php elseif (!empty($formation['modules_count'])): ?>
-            <div class="fcta-row"><span class="fcta-row-icon">📚</span><?= (int)$formation['modules_count'] ?> chapitres</div>
+            <div class="fcta-row"><span class="fcta-row-icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span><?= (int)$formation['modules_count'] ?> chapitres</div>
           <?php endif; ?>
-          <div class="fcta-row"><span class="fcta-row-icon">📱</span>Accès sur tous les appareils</div>
-          <div class="fcta-row"><span class="fcta-row-icon">♾️</span>Accès à vie</div>
+          <div class="fcta-row"><span class="fcta-row-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>Accès sur tous les appareils</div>
+          <div class="fcta-row"><span class="fcta-row-icon"><i class="fa-solid fa-infinity" aria-hidden="true"></i></span>Accès à vie</div>
           <?php if ($hasCert): ?>
-            <div class="fcta-row"><span class="fcta-row-icon">🏆</span>Certificat de réussite</div>
+            <div class="fcta-row"><span class="fcta-row-icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></span>Certificat de réussite</div>
           <?php endif; ?>
           <?php if ($hasQuiz): ?>
-            <div class="fcta-row"><span class="fcta-row-icon">❓</span>Quiz d'évaluation</div>
+            <div class="fcta-row"><span class="fcta-row-icon"><i class="fa-solid fa-circle-question" aria-hidden="true"></i></span>Quiz d'évaluation</div>
           <?php endif; ?>
         </div>
       </div>

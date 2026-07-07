@@ -15,28 +15,28 @@
       <p>Que vous souhaitiez renforcer votre image employeur, former vos équipes RH ou promouvoir votre entreprise — je vous accompagne avec une approche terrain et une audience qualifiée.</p>
       <div class="b2b-services">
         <div class="b2b-service">
-          <div class="b2b-service-icon rouge">🎬</div>
+          <div class="b2b-service-icon rouge"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i></div>
           <div>
             <h4>Création de contenu RH</h4>
             <p>Vidéos, posts LinkedIn, carousels — du contenu qui parle vraiment à vos candidats cibles.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon sauge">🎓</div>
+          <div class="b2b-service-icon sauge"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
           <div>
             <h4>Formations équipes RH sur-mesure</h4>
             <p>Sessions de formation adaptées : sourcing, entretiens structurés, marque employeur.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon or">🤝</div>
+          <div class="b2b-service-icon or"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
           <div>
             <h4>Promotion de votre marque</h4>
             <p>Présentez votre entreprise à une audience de +50K professionnels actifs.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon rouge">📊</div>
+          <div class="b2b-service-icon rouge"><i class="fa-solid fa-chart-column" aria-hidden="true"></i></div>
           <div>
             <h4>Conseil stratégie RH</h4>
             <p>Audit de vos pratiques de recrutement et recommandations personnalisées.</p>

@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             'password_hash' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'activation_token' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'is_active' => ['type' => 'TINYINT', 'constraint' => 1, 'default' => 0],
+            'role' => ['type' => 'VARCHAR', 'constraint' => 20, 'default' => 'user'],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);

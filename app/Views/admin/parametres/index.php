@@ -2,7 +2,7 @@
 
 <?php if (session()->getFlashdata('success')): ?>
 <div style="background:#e6f4ea;border:1px solid #a8d5b0;color:#1a7a34;padding:12px 18px;border-radius:8px;margin-bottom:20px;font-size:14px">
-    ✅ <?= esc(session()->getFlashdata('success')) ?>
+    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> <?= esc(session()->getFlashdata('success')) ?>
 </div>
 <?php endif; ?>
 
@@ -11,7 +11,7 @@
 
     <!-- Réseaux sociaux -->
     <div class="card" style="margin-bottom:24px">
-        <div class="card-header">📱 Réseaux sociaux</div>
+        <div class="card-header"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Réseaux sociaux</div>
         <div style="padding:24px;display:flex;flex-direction:column;gap:20px">
             <div style="font-size:14px;color:#374151;line-height:1.6;padding:0 0 8px;border-bottom:1px solid #e5e7eb">
                 Les nombres d'abonnés sont saisis manuellement dans ces champs. Il n'y a pas de récupération automatique des statistiques.
@@ -19,10 +19,10 @@
 
             <?php
             $networks = [
-                'tiktok'    => ['label' => 'TikTok',    'icon' => '📱', 'placeholder' => 'https://tiktok.com/@...'],
-                'instagram' => ['label' => 'Instagram',  'icon' => '📸', 'placeholder' => 'https://instagram.com/...'],
-                'linkedin'  => ['label' => 'LinkedIn',   'icon' => '💼', 'placeholder' => 'https://linkedin.com/in/...'],
-                'facebook'  => ['label' => 'Facebook',   'icon' => '👥', 'placeholder' => 'https://facebook.com/...'],
+                'tiktok'    => ['label' => 'TikTok',    'icon' => '<i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>', 'placeholder' => 'https://tiktok.com/@...'],
+                'instagram' => ['label' => 'Instagram',  'icon' => '<i class="fa-solid fa-camera" aria-hidden="true"></i>', 'placeholder' => 'https://instagram.com/...'],
+                'linkedin'  => ['label' => 'LinkedIn',   'icon' => '<i class="fa-solid fa-briefcase" aria-hidden="true"></i>', 'placeholder' => 'https://linkedin.com/in/...'],
+                'facebook'  => ['label' => 'Facebook',   'icon' => '<i class="fa-solid fa-users" aria-hidden="true"></i>', 'placeholder' => 'https://facebook.com/...'],
             ];
             foreach ($networks as $key => $net):
             ?>
@@ -54,7 +54,7 @@
 
     <!-- Contact -->
     <div class="card" style="margin-bottom:24px">
-        <div class="card-header">✉️ Contact</div>
+        <div class="card-header"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i> Contact</div>
         <div style="padding:24px">
             <label style="font-size:12px;color:#6b7280;display:block;margin-bottom:4px">Adresse e-mail de contact</label>
             <input type="email" name="email"
@@ -65,6 +65,6 @@
     </div>
 
     <button type="submit" class="btn btn-primary" style="background:#EA2E00;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer">
-        💾 Enregistrer les paramètres
+        <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Enregistrer les paramètres
     </button>
 </form>

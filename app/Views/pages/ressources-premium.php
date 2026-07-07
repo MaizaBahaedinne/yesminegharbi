@@ -1,10 +1,10 @@
 <?php
 $iconeRessource = [
-    'checklist' => '📋',
-    'template'  => '📝',
-    'ebook'     => '💡',
-    'guide'     => '📊',
-    'kit'       => '🎯',
+    'checklist' => '<i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>',
+    'template'  => '<i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>',
+    'ebook'     => '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i>',
+    'guide'     => '<i class="fa-solid fa-chart-column" aria-hidden="true"></i>',
+    'kit'       => '<i class="fa-solid fa-bullseye" aria-hidden="true"></i>',
 ];
 $badgeCss = [
     'populaire' => 'background:var(--or);color:white',
@@ -50,7 +50,7 @@ $badgeCss = [
     <div class="ressource-card-full">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
         <div class="ri-icon" style="width:52px;height:52px;font-size:24px;border-radius:12px;background:var(--rouge-light);display:flex;align-items:center;justify-content:center">
-          <?= $iconeRessource[$r['type']] ?? '📄' ?>
+          <?= $iconeRessource[$r['type']] ?? '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>' ?>
         </div>
         <span class="ri-badge" style="<?= $badgeCss[$r['tag_badge']] ?? '' ?>;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px">
           <?= ucfirst(esc($r['tag_badge'])) ?>

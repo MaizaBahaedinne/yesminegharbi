@@ -16,10 +16,16 @@ class UserModel extends Model
         'prenom',
         'nom',
         'date_naissance',
+        'situation_actuelle',
         'email',
         'password_hash',
         'activation_token',
+        'activation_code',
+        'activation_code_expires_at',
+        'reset_token_hash',
+        'reset_token_expires_at',
         'is_active',
+        'role',
     ];
 
     public function findByEmail(string $email): ?array

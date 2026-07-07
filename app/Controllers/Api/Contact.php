@@ -9,12 +9,28 @@ class Contact extends BaseController
 {
     public function send(): ResponseInterface
     {
+        $sessionUser = session()->get('user') ?? [];
+        $isLoggedIn = session()->has('user_id') && is_array($sessionUser) && ! empty($sessionUser['email']);
+
+        $nomFromSession = trim((string) (($sessionUser['prenom'] ?? '') . ' ' . ($sessionUser['nom'] ?? '')));
+        $emailFromSession = strtolower(trim((string) ($sessionUser['email'] ?? '')));
+
+        $nom = $isLoggedIn
+            ? ($nomFromSession !== '' ? $nomFromSession : $emailFromSession)
+            : trim((string) $this->request->getPost('nom'));
+        $emailAddress = $isLoggedIn
+            ? $emailFromSession
+            : strtolower(trim((string) $this->request->getPost('email')));
+
         $rules = [
-            'nom'     => 'required|max_length[100]',
-            'email'   => 'required|valid_email|max_length[255]',
             'sujet'   => 'required|max_length[200]',
             'message' => 'required|min_length[20]|max_length[2000]',
         ];
+
+        if (! $isLoggedIn) {
+            $rules['nom'] = 'required|max_length[100]';
+            $rules['email'] = 'required|valid_email|max_length[255]';
+        }
 
         if (! $this->validate($rules)) {
             return $this->response->setJSON([
@@ -23,9 +39,18 @@ class Contact extends BaseController
             ]);
         }
 
+        if ($nom === '' || ! filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) {
+            return $this->response->setJSON([
+                'success' => false,
+                'errors'  => [
+                    'nom' => 'Informations utilisateur invalides. Veuillez vous reconnecter.',
+                ],
+            ]);
+        }
+
         $data = [
-            'nom'     => $this->request->getPost('nom'),
-            'email'   => $this->request->getPost('email'),
+            'nom'     => $nom,
+            'email'   => $emailAddress,
             'sujet'   => $this->request->getPost('sujet'),
             'message' => $this->request->getPost('message'),
         ];

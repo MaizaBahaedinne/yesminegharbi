@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= esc($title ?? 'Admin') ?> — Yesmine Gharbi</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8w4LLynf1W4n+6o0w5f5hXg5xR9E0Ng==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',system-ui,sans-serif;background:#f5f5f5;color:#1F1F1F;display:flex;min-height:100vh}
@@ -182,43 +183,46 @@ textarea{resize:vertical;min-height:100px}
 <body>
 
 <aside class="sidebar">
-    <div class="sidebar-logo">⚙️ Admin <span>·</span> YG</div>
+    <div class="sidebar-logo"><i class="fa-solid fa-gear" aria-hidden="true"></i> Admin <span>·</span> YG</div>
     <nav class="sidebar-nav">
         <div class="sidebar-section">Général</div>
         <a href="<?= base_url('admin') ?>" <?= current_url() === base_url('admin') ? 'class="active"' : '' ?>>
-            <span class="nav-icon">📊</span> Tableau de bord
+            <span class="nav-icon"><i class="fa-solid fa-chart-column" aria-hidden="true"></i></span> Tableau de bord
         </a>
 
         <div class="sidebar-section">Contenu</div>
         <a href="<?= base_url('admin/formations') ?>" <?= str_contains(current_url(), 'admin/formations') ? 'class="active"' : '' ?>>
-            <span class="nav-icon">🎓</span> Formations
+            <span class="nav-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span> Formations
         </a>
         <a href="<?= base_url('admin/ressources') ?>" <?= str_contains(current_url(), 'admin/ressources') ? 'class="active"' : '' ?>>
-            <span class="nav-icon">📄</span> Ressources
+            <span class="nav-icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></span> Ressources
         </a>
         <a href="<?= base_url('admin/testimonials') ?>" <?= str_contains(current_url(), 'admin/testimonials') ? 'class="active"' : '' ?>>
-            <span class="nav-icon">💬</span> Témoignages
+            <span class="nav-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span> Témoignages
         </a>
 
         <div class="sidebar-section">Communication</div>
         <a href="<?= base_url('admin/newsletter') ?>" <?= str_contains(current_url(), 'admin/newsletter') ? 'class="active"' : '' ?>>
-            <span class="nav-icon">📧</span> Newsletter
+            <span class="nav-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span> Newsletter
         </a>
         <a href="<?= base_url('admin/messages') ?>" <?= str_contains(current_url(), 'admin/messages') ? 'class="active"' : '' ?>>
-            <span class="nav-icon">💬</span> Messages
+            <span class="nav-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span> Messages
         </a>
 
         <div class="sidebar-section">Paramètres</div>
+        <a href="<?= base_url('admin/users') ?>" <?= str_contains(current_url(), 'admin/users') ? 'class="active"' : '' ?>>
+            <span class="nav-icon"><i class="fa-solid fa-user" aria-hidden="true"></i></span> Utilisateurs
+        </a>
         <a href="<?= base_url('admin/parametres') ?>" <?= str_contains(current_url(), 'admin/parametres') ? 'class="active"' : '' ?>>
-            <span class="nav-icon">⚙️</span> Paramètres
+            <span class="nav-icon"><i class="fa-solid fa-gear" aria-hidden="true"></i></span> Paramètres
         </a>
         <a href="<?= base_url('admin/socials') ?>" <?= str_contains(current_url(), 'admin/socials') ? 'class="active"' : '' ?>>
-            <span class="nav-icon">🔗</span> Connexions sociales
+            <span class="nav-icon"><i class="fa-solid fa-link" aria-hidden="true"></i></span> Connexions sociales
         </a>
 
         <hr style="border:none;border-top:1px solid rgba(255,255,255,.1);margin:.75rem 1.25rem">
         <a href="<?= base_url('/') ?>" target="_blank">
-            <span class="nav-icon">🌐</span> Voir le site
+            <span class="nav-icon"><i class="fa-solid fa-globe" aria-hidden="true"></i></span> Voir le site
         </a>
     </nav>
     <div class="sidebar-footer"><?= esc(session()->get('admin_email') ?? '') ?></div>

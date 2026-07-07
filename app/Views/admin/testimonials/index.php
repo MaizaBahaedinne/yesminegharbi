@@ -2,12 +2,12 @@
 
 <?php if (session()->getFlashdata('success')): ?>
 <div style="background:#e6f4ea;border:1px solid #a8d5b0;color:#1a7a34;padding:12px 18px;border-radius:8px;margin-bottom:20px;font-size:14px">
-    ✅ <?= esc(session()->getFlashdata('success')) ?>
+    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> <?= esc(session()->getFlashdata('success')) ?>
 </div>
 <?php endif; ?>
 <?php if (session()->getFlashdata('error')): ?>
 <div style="background:#fff1ec;border:1px solid #f8c3b5;color:#bf2c00;padding:12px 18px;border-radius:8px;margin-bottom:20px;font-size:14px">
-    ⚠️ <?= esc(session()->getFlashdata('error')) ?>
+    <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> <?= esc(session()->getFlashdata('error')) ?>
 </div>
 <?php endif; ?>
 

@@ -5,10 +5,10 @@
  */
 
 $iconesFormation = [
-    'cv'          => '📄',
-    'entretien'   => '🎤',
-    'recrutement' => '💼',
-    'branding'    => '🔗',
+    'cv'          => '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>',
+    'entretien'   => '<i class="fa-solid fa-microphone" aria-hidden="true"></i>',
+    'recrutement' => '<i class="fa-solid fa-briefcase" aria-hidden="true"></i>',
+    'branding'    => '<i class="fa-solid fa-link" aria-hidden="true"></i>',
 ];
 $coverGradients = [
     'cv'          => ['#EA2E00','#FF6B3D'],
@@ -28,11 +28,11 @@ $badgeFormation = [
     'archive'    => '',
 ];
 $iconeRessource = [
-    'checklist' => '📋',
-    'template'  => '📝',
-    'ebook'     => '💡',
-    'guide'     => '📊',
-    'kit'       => '🎯',
+    'checklist' => '<i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>',
+    'template'  => '<i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>',
+    'ebook'     => '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i>',
+    'guide'     => '<i class="fa-solid fa-chart-column" aria-hidden="true"></i>',
+    'kit'       => '<i class="fa-solid fa-bullseye" aria-hidden="true"></i>',
 ];
 ?>
 
@@ -57,11 +57,11 @@ $iconeRessource = [
     <div class="hero-photo-frame">
       <img src="<?= base_url('assets/img/yesmine.jpg') ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit">
       <div class="floating-card floating-card-1">
-        <span class="fc-emoji">🎓</span>
+        <span class="fc-emoji"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
         <span>Formation vendue !</span>
       </div>
       <div class="floating-card floating-card-2">
-        <span class="fc-emoji">⭐</span>
+        <span class="fc-emoji"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
         <span>+200 avis 5 étoiles</span>
       </div>
     </div>
@@ -103,7 +103,7 @@ $iconeRessource = [
   </div>
   <div class="audience-grid">
     <div class="audience-card candidat">
-      <span class="audience-icon">🎯</span>
+      <span class="audience-icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></span>
       <h3>Candidats</h3>
       <p>Juniors, expérimentés ou en reconversion — améliorez votre CV, LinkedIn et préparez vos entretiens avec des conseils terrain.</p>
       <ul class="audience-list">
@@ -114,7 +114,7 @@ $iconeRessource = [
       </ul>
     </div>
     <div class="audience-card rh">
-      <span class="audience-icon">📋</span>
+      <span class="audience-icon"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i></span>
       <h3>Recruteurs &amp; RH</h3>
       <p>Optimisez vos processus, formez vos équipes et accédez à des outils conçus pour les professionnels du recrutement.</p>
       <ul class="audience-list">
@@ -125,7 +125,7 @@ $iconeRessource = [
       </ul>
     </div>
     <div class="audience-card entreprise">
-      <span class="audience-icon">🏢</span>
+      <span class="audience-icon"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
       <h3>Entreprises</h3>
       <p>Boostez votre marque employeur, formez vos équipes RH et collaborez avec une experte pour attirer les meilleurs talents.</p>
       <ul class="audience-list">
@@ -218,7 +218,7 @@ $iconeRessource = [
         <button class="ressource-item open-download"
                 data-id="<?= (int)$r['id'] ?>"
                 data-titre="<?= esc($r['titre']) ?>">
-          <div class="ri-icon"><?= $iconeRessource[$r['type']] ?? '📄' ?></div>
+          <div class="ri-icon"><?= $iconeRessource[$r['type']] ?? '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>' ?></div>
           <div class="ri-info">
             <h4><?= esc($r['titre']) ?></h4>
             <span><?= esc(strtoupper($r['type'])) ?></span>
@@ -242,7 +242,7 @@ $iconeRessource = [
       <div class="ressource-items">
         <?php foreach ($ressources_premium as $r): ?>
         <a href="<?= site_url('ressources/' . $r['slug']) ?>" class="ressource-item">
-          <div class="ri-icon"><?= $iconeRessource[$r['type']] ?? '📄' ?></div>
+          <div class="ri-icon"><?= $iconeRessource[$r['type']] ?? '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>' ?></div>
           <div class="ri-info">
             <h4><?= esc($r['titre']) ?></h4>
             <span><?= esc(strtoupper($r['type'])) ?></span>
@@ -271,21 +271,21 @@ $iconeRessource = [
 
       <div class="b2b-services">
         <div class="b2b-service">
-          <div class="b2b-service-icon rouge">🎬</div>
+          <div class="b2b-service-icon rouge"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i></div>
           <div>
             <h4>Création de contenu RH</h4>
             <p>Vidéos, posts LinkedIn, carousels — du contenu qui parle vraiment à vos candidats.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon sauge">🎓</div>
+          <div class="b2b-service-icon sauge"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
           <div>
             <h4>Formations équipes RH</h4>
             <p>Sessions de formation sur-mesure : sourcing, entretiens, marque employeur.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon or">🤝</div>
+          <div class="b2b-service-icon or"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
           <div>
             <h4>Promotion de votre marque</h4>
             <p>Présentez votre entreprise à une audience qualifiée de +50 000 professionnels.</p>
@@ -325,10 +325,10 @@ $iconeRessource = [
       <span class="apropos-title">Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
       <p>Après plusieurs années en cabinet et en entreprise, j'ai décidé de partager ce que j'ai appris sur le terrain — pas dans les manuels. Mon objectif : rendre les ressources RH accessibles, pratiques et vraiment utiles, que vous soyez candidat, recruteur ou entreprise.</p>
       <div class="social-links">
-        <a href="https://tiktok.com/@yesminegharbi" class="social-link" target="_blank" rel="noopener">📱 TikTok</a>
-        <a href="https://instagram.com/yesminegharbi" class="social-link" target="_blank" rel="noopener">📸 Instagram</a>
-        <a href="https://linkedin.com/in/yesminegharbi" class="social-link" target="_blank" rel="noopener">💼 LinkedIn</a>
-        <a href="https://facebook.com/yesminegharbi" class="social-link" target="_blank" rel="noopener">👥 Facebook</a>
+        <a href="https://tiktok.com/@yesminegharbi" class="social-link" target="_blank" rel="noopener"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> TikTok</a>
+        <a href="https://instagram.com/yesminegharbi" class="social-link" target="_blank" rel="noopener"><i class="fa-solid fa-camera" aria-hidden="true"></i> Instagram</a>
+        <a href="https://linkedin.com/in/yesminegharbi" class="social-link" target="_blank" rel="noopener"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> LinkedIn</a>
+        <a href="https://facebook.com/yesminegharbi" class="social-link" target="_blank" rel="noopener"><i class="fa-solid fa-users" aria-hidden="true"></i> Facebook</a>
       </div>
     </div>
   </div>
@@ -346,7 +346,7 @@ $iconeRessource = [
     <?php if (! empty($testimonials)): ?>
         <?php foreach ($testimonials as $testimonial): ?>
             <div class="temoignage">
-                <div class="stars"><?= str_repeat('★', max(1, min(5, (int) $testimonial['rating']))) ?></div>
+          <div class="stars\"><?= str_repeat('<i class="fa-solid fa-star" aria-hidden="true"></i>', max(1, min(5, (int) $testimonial['rating']))) ?></div>
                 <p><?= esc($testimonial['quote']) ?></p>
                 <div class="temoignage-author">
                     <div class="author-avatar" style="background:<?= esc($testimonial['avatar_color'] ?: '#EA2E00') ?>"><?= esc($testimonial['avatar_initials'] ?: strtoupper(substr($testimonial['author_name'], 0, 2))) ?></div>

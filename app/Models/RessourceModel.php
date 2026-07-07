@@ -13,6 +13,7 @@ class RessourceModel extends Model
         'slug', 'titre', 'description_courte', 'description_longue',
         'type', 'profil', 'prix', 'fichier_path', 'cover_image',
         'is_premium', 'tag_badge', 'sort_order',
+        'view_count', 'download_count',
     ];
     protected $useTimestamps = true;
 
@@ -39,5 +40,31 @@ class RessourceModel extends Model
     public function getBySlug(string $slug): ?array
     {
         return $this->where('slug', $slug)->first();
+    }
+
+    public function incrementViewCount(int $id): void
+    {
+        $db = $this->db;
+        if (! $db->fieldExists('view_count', $this->table)) {
+            return;
+        }
+
+        $db->table($this->table)
+            ->set('view_count', 'COALESCE(view_count, 0) + 1', false)
+            ->where('id', $id)
+            ->update();
+    }
+
+    public function incrementDownloadCount(int $id): void
+    {
+        $db = $this->db;
+        if (! $db->fieldExists('download_count', $this->table)) {
+            return;
+        }
+
+        $db->table($this->table)
+            ->set('download_count', 'COALESCE(download_count, 0) + 1', false)
+            ->where('id', $id)
+            ->update();
     }
 }

@@ -2,7 +2,12 @@
 <div class="card admin-form-page">
     <div class="card-header">
         <span><?= $isEdit ? 'Modifier' : 'Nouvelle' ?> formation</span>
-        <a href="<?= base_url('admin/formations') ?>" class="btn btn-secondary btn-sm">← Retour</a>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+            <?php if ($isEdit): ?>
+                <a href="<?= base_url('admin/formations/' . $f['id']) ?>#modules" class="btn btn-secondary btn-sm"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Editer le programme de la formation</a>
+            <?php endif; ?>
+            <a href="<?= base_url('admin/formations') ?>" class="btn btn-secondary btn-sm">← Retour</a>
+        </div>
     </div>
     <div class="admin-form-content">
         <div class="form-preview-grid">
@@ -64,13 +69,22 @@
                             <label>Description courte</label>
                             <textarea name="description_courte" id="descriptionCourteInput"><?= esc($f['description_courte'] ?? '') ?></textarea>
                         </div>
-                        <div class="form-group full">
+                        <div class="form-group full" id="contentEditorSection">
                             <label>Description longue</label>
                             <textarea name="description_longue" id="descriptionLongueInput" rows="6"><?= esc($f['description_longue'] ?? '') ?></textarea>
+                            <small style="display:block;color:#9ca3af;margin-top:6px">Contenu detaille de la formation (programme, benefices, contexte, etc.).</small>
+                        </div>
+                        <div class="form-group full">
+                            <label>Objectifs (une ligne par objectif)</label>
+                            <textarea name="objectifs" id="objectifsInput" rows="4" placeholder="Ex: Structurer un CV ATS\nPreparer un entretien RH\nOptimiser le profil LinkedIn"><?= esc($f['objectifs'] ?? '') ?></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label>Prerequis (une ligne par prerequis)</label>
+                            <textarea name="prerequis" id="prerequisInput" rows="4" placeholder="Ex: Avoir un CV de base\nDisposer d'un compte LinkedIn"><?= esc($f['prerequis'] ?? '') ?></textarea>
                         </div>
                     </div>
                     <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
-                        <button type="submit" class="btn btn-primary">💾 Enregistrer</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Enregistrer</button>
                         <a href="<?= base_url('admin/formations') ?>" class="btn btn-secondary">Annuler</a>
                     </div>
                 </form>

@@ -15,9 +15,36 @@ class Ressources extends BaseAdminController
 
     public function index()
     {
+        $ressources = $this->model->orderBy('created_at', 'DESC')->findAll();
+
+        $db = \Config\Database::connect();
+        $commandesRows = $db->table('user_resources')
+            ->select('resource_id, COUNT(*) AS commandes_count')
+            ->groupBy('resource_id')
+            ->get()
+            ->getResultArray();
+
+        $commandesByResource = [];
+        $totalCommandes = 0;
+        foreach ($commandesRows as $row) {
+            $resourceId = (int) ($row['resource_id'] ?? 0);
+            $count = (int) ($row['commandes_count'] ?? 0);
+            if ($resourceId > 0) {
+                $commandesByResource[$resourceId] = $count;
+                $totalCommandes += $count;
+            }
+        }
+
+        foreach ($ressources as &$ressource) {
+            $id = (int) ($ressource['id'] ?? 0);
+            $ressource['commandes_count'] = $commandesByResource[$id] ?? 0;
+        }
+        unset($ressource);
+
         return $this->render('admin/ressources/index', [
             'title'      => 'Ressources',
-            'ressources' => $this->model->orderBy('created_at', 'DESC')->findAll(),
+            'ressources' => $ressources,
+            'totalCommandes' => $totalCommandes,
         ]);
     }
 

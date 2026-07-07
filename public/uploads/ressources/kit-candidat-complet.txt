@@ -1,0 +1,10 @@
+﻿Kit Candidat Complet
+====================
+
+Ce fichier est un package de demonstration pour le telechargement premium.
+Contenu attendu:
+- Template CV ATS
+- Template lettre de motivation
+- Checklist entretien
+
+Remplacez ce fichier par votre fichier final (PDF/ZIP) dans public/uploads/ressources.

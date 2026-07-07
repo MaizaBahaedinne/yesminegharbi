@@ -1,21 +1,21 @@
 <div class="stat-grid">
     <div class="stat-card">
-        <div class="icon">🎓</div>
+        <div class="icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
         <div class="num"><?= $nb_formations ?></div>
         <div class="label">Formations</div>
     </div>
     <div class="stat-card">
-        <div class="icon">📄</div>
+        <div class="icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></div>
         <div class="num"><?= $nb_ressources ?></div>
         <div class="label">Ressources</div>
     </div>
     <div class="stat-card">
-        <div class="icon">📧</div>
+        <div class="icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
         <div class="num"><?= $nb_abonnes ?></div>
         <div class="label">Abonnés newsletter</div>
     </div>
     <div class="stat-card">
-        <div class="icon">💬</div>
+        <div class="icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
         <div class="num"><?= $nb_messages ?></div>
         <div class="label">Messages reçus</div>
     </div>

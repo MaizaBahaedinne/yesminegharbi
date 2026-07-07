@@ -18,6 +18,14 @@ class Activation extends BaseController
                 'activation_token' => null,
             ]);
 
+            $pendingResourceId = (int) session()->get('pending_resource_id');
+            if ($pendingResourceId > 0) {
+                $userResourceModel = new \App\Models\UserResourceModel();
+                $userResourceModel->grantAccess($userId, $pendingResourceId);
+                session()->remove('pending_resource_id');
+                session()->remove('pending_resource_slug');
+            }
+
             session()->set('user_id', $userId);
             session()->set('user', [
                 'id' => $userId,

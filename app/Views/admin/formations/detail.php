@@ -3,7 +3,7 @@
  * admin/formations/detail.php
  * Gestion des chapitres et leçons d'une formation
  */
-$typeIcons = ['video' => '▶️', 'quiz' => '❓', 'document' => '📄', 'texte' => '📝'];
+$typeIcons = ['video' => '<i class="fa-solid fa-circle-play" aria-hidden="true"></i>', 'quiz' => '<i class="fa-solid fa-circle-question" aria-hidden="true"></i>', 'document' => '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>', 'texte' => '<i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>'];
 $typeLabels = ['video' => 'Vidéo', 'quiz' => 'Quiz', 'document' => 'Document', 'texte' => 'Texte'];
 
 // Calcul stats
@@ -29,10 +29,10 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
     </nav>
     <div style="display:flex;gap:8px">
         <a href="<?= base_url('admin/formations/' . $formation['id'] . '/edit') ?>" class="admin-btn admin-btn-outline">
-            ✏️ Modifier la formation
+            <i class="fa-solid fa-pen" aria-hidden="true"></i> Modifier la formation
         </a>
         <a href="<?= site_url('formations/' . $formation['slug']) ?>" target="_blank" class="admin-btn admin-btn-outline">
-            👁 Voir sur le site
+            <i class="fa-solid fa-eye" aria-hidden="true"></i> Voir sur le site
         </a>
     </div>
 </div>
@@ -52,11 +52,11 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
         <span class="ds-label">Durée totale</span>
     </div>
     <div class="detail-stat">
-        <span class="ds-value"><?= $formation['has_quiz'] ? '✅' : '—' ?></span>
+        <span class="ds-value"><?= $formation['has_quiz'] ? '<i class="fa-solid fa-circle-check" aria-hidden="true"></i>' : '—' ?></span>
         <span class="ds-label">Quiz</span>
     </div>
     <div class="detail-stat">
-        <span class="ds-value"><?= $formation['has_certificate'] ? '✅' : '—' ?></span>
+        <span class="ds-value"><?= $formation['has_certificate'] ? '<i class="fa-solid fa-circle-check" aria-hidden="true"></i>' : '—' ?></span>
         <span class="ds-label">Certificat</span>
     </div>
     <div class="detail-stat">
@@ -70,7 +70,7 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
 <!-- ─── CHAPITRES ──────────────────────────────────────────── -->
 <div class="admin-card" id="modules">
     <div class="admin-card-header" style="display:flex;align-items:center;justify-content:space-between">
-        <h2 class="admin-card-title">📚 Programme de la formation</h2>
+        <h2 class="admin-card-title"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Programme de la formation</h2>
         <button class="admin-btn admin-btn-primary" onclick="toggleForm('addModuleForm')">
             + Ajouter un chapitre
         </button>
@@ -108,11 +108,11 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
                         </div>
                     </div>
                     <div class="module-block-actions">
-                        <button class="admin-btn admin-btn-xs" onclick="toggleForm('editModule<?= $module['id'] ?>')">✏️</button>
+                        <button class="admin-btn admin-btn-xs" onclick="toggleForm('editModule<?= $module['id'] ?>')"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
                         <button class="admin-btn admin-btn-xs admin-btn-primary" onclick="toggleForm('addLecon<?= $module['id'] ?>')">+ Leçon</button>
                         <form method="POST" action="<?= base_url('admin/modules/' . $module['id'] . '/delete') ?>" style="display:inline" onsubmit="return confirm('Supprimer ce chapitre et ses leçons ?')">
                             <?= csrf_field() ?>
-                            <button type="submit" class="admin-btn admin-btn-xs admin-btn-danger">🗑</button>
+                            <button type="submit" class="admin-btn admin-btn-xs admin-btn-danger"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
                         </form>
                     </div>
                 </div>
@@ -143,10 +143,10 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
                             <div>
                                 <label class="admin-label">Type</label>
                                 <select name="type" class="admin-input">
-                                    <option value="video">▶️ Vidéo</option>
-                                    <option value="quiz">❓ Quiz</option>
-                                    <option value="document">📄 Document</option>
-                                    <option value="texte">📝 Texte</option>
+                                    <option value="video"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Vidéo</option>
+                                    <option value="quiz"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> Quiz</option>
+                                    <option value="document"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Document</option>
+                                    <option value="texte"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Texte</option>
                                 </select>
                             </div>
                             <div>
@@ -173,7 +173,7 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
                     <?php foreach ($module['lecons'] as $li => $lecon): ?>
                     <div class="lecon-row" id="lecon-<?= $lecon['id'] ?>">
                         <div class="lecon-row-main">
-                            <span class="lecon-type-icon" title="<?= $typeLabels[$lecon['type']] ?? '' ?>"><?= $typeIcons[$lecon['type']] ?? '▶️' ?></span>
+                            <span class="lecon-type-icon" title="<?= $typeLabels[$lecon['type']] ?? '' ?>"><?= $typeIcons[$lecon['type']] ?? '<i class="fa-solid fa-circle-play" aria-hidden="true"></i>' ?></span>
                             <span class="lecon-num"><?= $mi + 1 ?>.<?= $li + 1 ?></span>
                             <span class="lecon-titre"><?= esc($lecon['titre']) ?></span>
                             <?php if ($lecon['is_free']): ?>
@@ -182,10 +182,10 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
                             <span class="lecon-duree-badge"><?= $lecon['duree'] > 0 ? $lecon['duree'] . ' min' : '—' ?></span>
                         </div>
                         <div class="lecon-row-actions">
-                            <button class="admin-btn admin-btn-xs" onclick="toggleForm('editLecon<?= $lecon['id'] ?>')">✏️</button>
+                            <button class="admin-btn admin-btn-xs" onclick="toggleForm('editLecon<?= $lecon['id'] ?>')"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
                             <form method="POST" action="<?= base_url('admin/lecons/' . $lecon['id'] . '/delete') ?>" style="display:inline" onsubmit="return confirm('Supprimer cette leçon ?')">
                                 <?= csrf_field() ?>
-                                <button type="submit" class="admin-btn admin-btn-xs admin-btn-danger">🗑</button>
+                                <button type="submit" class="admin-btn admin-btn-xs admin-btn-danger"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </div>
                     </div>
@@ -241,7 +241,7 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
 <!-- ─── OPTIONS QUIZ & CERTIFICAT ──────────────────────────── -->
 <div class="admin-card" style="margin-top:20px">
     <div class="admin-card-header">
-        <h2 class="admin-card-title">⚙️ Options de la formation</h2>
+        <h2 class="admin-card-title"><i class="fa-solid fa-gear" aria-hidden="true"></i> Options de la formation</h2>
     </div>
     <form method="POST" action="<?= base_url('admin/formations/' . $formation['id'] . '/update') ?>">
         <?= csrf_field() ?>
@@ -261,7 +261,7 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
             <label class="option-toggle">
                 <input type="checkbox" name="has_quiz" value="1" <?= $formation['has_quiz'] ? 'checked' : '' ?>>
                 <div class="option-toggle-card">
-                    <span class="option-icon">❓</span>
+                    <span class="option-icon"><i class="fa-solid fa-circle-question" aria-hidden="true"></i></span>
                     <div>
                         <strong>Quiz inclus</strong>
                         <p>La formation inclut des évaluations de connaissances</p>
@@ -271,7 +271,7 @@ $totalHeures = $totalMinutes > 0 ? floor($totalMinutes / 60) . 'h' . str_pad($to
             <label class="option-toggle">
                 <input type="checkbox" name="has_certificate" value="1" <?= $formation['has_certificate'] ? 'checked' : '' ?>>
                 <div class="option-toggle-card">
-                    <span class="option-icon">🏆</span>
+                    <span class="option-icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></span>
                     <div>
                         <strong>Certificat de réussite</strong>
                         <p>Un certificat est délivré à la fin de la formation</p>

@@ -2,7 +2,7 @@
     <div class="card-header">
         <span><?= count($abonnes) ?> abonné(s)</span>
         <?php if (!empty($abonnes)): ?>
-            <a href="data:text/csv;charset=utf-8,Prénom,Email,Tag,Date<?php foreach ($abonnes as $a): echo urlencode("\n" . $a['prenom'] . ',' . $a['email'] . ',' . ($a['tag'] ?? '') . ',' . $a['created_at']); endforeach; ?>" download="newsletter.csv" class="btn btn-secondary btn-sm">⬇ Exporter CSV</a>
+            <a href="data:text/csv;charset=utf-8,Prénom,Email,Tag,Date<?php foreach ($abonnes as $a): echo urlencode("\n" . $a['prenom'] . ',' . $a['email'] . ',' . ($a['tag'] ?? '') . ',' . $a['created_at']); endforeach; ?>" download="newsletter.csv" class="btn btn-secondary btn-sm"><i class="fa-solid fa-download" aria-hidden="true"></i> Exporter CSV</a>
         <?php endif; ?>
     </div>
     <table>

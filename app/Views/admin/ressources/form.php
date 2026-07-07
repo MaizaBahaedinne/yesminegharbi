@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div style="margin-top:1.5rem;display:flex;gap:1rem">
-                <button type="submit" class="btn btn-primary">💾 Enregistrer</button>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Enregistrer</button>
                 <a href="<?= base_url('admin/ressources') ?>" class="btn btn-secondary">Annuler</a>
             </div>
         </form>

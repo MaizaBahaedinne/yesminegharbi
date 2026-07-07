@@ -2,7 +2,7 @@
 
 <?php if (session()->getFlashdata('success')): ?>
 <div style="background:#e6f4ea;border:1px solid #a8d5b0;color:#1a7a34;padding:12px 18px;border-radius:8px;margin-bottom:20px;font-size:14px">
-    ✅ <?= esc(session()->getFlashdata('success')) ?>
+    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> <?= esc(session()->getFlashdata('success')) ?>
 </div>
 <?php endif; ?>
 
@@ -10,7 +10,7 @@
     <?= csrf_field() ?>
 
     <div class="card" style="margin-bottom:24px">
-        <div class="card-header">🤝 Connexions réseaux sociaux</div>
+        <div class="card-header"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Connexions réseaux sociaux</div>
         <div style="padding:24px;display:flex;flex-direction:column;gap:20px">
 
             <div style="color:#374151;font-size:14px;line-height:1.6;padding-bottom:8px;border-bottom:1px solid #e5e7eb">
@@ -61,6 +61,6 @@
     </div>
 
     <button type="submit" class="btn btn-primary" style="background:#EA2E00;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer">
-        💾 Enregistrer les connexions
+        <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Enregistrer les connexions
     </button>
 </form>

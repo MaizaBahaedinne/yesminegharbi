@@ -1,10 +1,10 @@
 <?php
 $iconeRessource = [
-    'checklist' => '📋',
-    'template'  => '📝',
-    'ebook'     => '💡',
-    'guide'     => '📊',
-    'kit'       => '🎯',
+    'checklist' => '<i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>',
+    'template'  => '<i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>',
+    'ebook'     => '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i>',
+    'guide'     => '<i class="fa-solid fa-chart-column" aria-hidden="true"></i>',
+    'kit'       => '<i class="fa-solid fa-bullseye" aria-hidden="true"></i>',
 ];
 ?>
 
@@ -24,18 +24,28 @@ $iconeRessource = [
     <?php foreach ($ressources as $r): ?>
     <div class="ressource-card-full">
       <div class="ri-icon" style="width:52px;height:52px;font-size:24px;border-radius:12px;background:var(--sauge-light);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
-        <?= $iconeRessource[$r['type']] ?? '📄' ?>
+        <?= $iconeRessource[$r['type']] ?? '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>' ?>
       </div>
       <span class="ri-badge badge-free" style="margin-bottom:10px;display:inline-block">Gratuit</span>
       <h3 style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:8px"><?= esc($r['titre']) ?></h3>
       <p style="font-size:14px;color:var(--gris);line-height:1.6;margin-bottom:16px;flex:1"><?= esc($r['description_courte']) ?></p>
       <div style="display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--beige-dark)">
         <span style="font-size:12px;color:var(--gris)"><?= strtoupper(esc($r['type'])) ?></span>
-        <button class="btn-primary open-download"
-                data-id="<?= (int)$r['id'] ?>"
-                data-titre="<?= esc($r['titre']) ?>">
-          Télécharger →
-        </button>
+        <?php if (!empty($isLoggedIn) && in_array((int)$r['id'], $ownedResourceIds ?? [], true)): ?>
+          <a href="<?= site_url('ressources/download/' . ($r['slug'] ?? '')) ?>" class="btn-primary" style="display:inline-flex">
+            Télécharger →
+          </a>
+        <?php elseif (!empty($isLoggedIn)): ?>
+          <a href="<?= site_url('ressources/' . $r['slug']) ?>" class="btn-primary" style="display:inline-flex">
+            Consulter →
+          </a>
+        <?php else: ?>
+          <button class="btn-primary open-download"
+                  data-id="<?= (int)$r['id'] ?>"
+                  data-titre="<?= esc($r['titre']) ?>">
+            Télécharger →
+          </button>
+        <?php endif; ?>
       </div>
     </div>
     <?php endforeach; ?>

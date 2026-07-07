@@ -1,9 +1,9 @@
 <?php
 $iconesFormation = [
-    'cv'          => '📄',
-    'entretien'   => '🎤',
-    'recrutement' => '💼',
-    'branding'    => '🔗',
+    'cv'          => '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>',
+    'entretien'   => '<i class="fa-solid fa-microphone" aria-hidden="true"></i>',
+    'recrutement' => '<i class="fa-solid fa-briefcase" aria-hidden="true"></i>',
+    'branding'    => '<i class="fa-solid fa-link" aria-hidden="true"></i>',
 ];
 
 // Dégradés par thème
@@ -79,7 +79,7 @@ $coverIcons = [
           <span class="formation-badge badge-bientot">Bientôt</span>
         <?php endif; ?>
         <?php if ($f['is_populaire']): ?>
-          <span class="formation-badge" style="left:auto;right:12px;background:var(--or);color:white">⭐ Populaire</span>
+          <span class="formation-badge" style="left:auto;right:12px;background:var(--or);color:white"><i class="fa-solid fa-star" aria-hidden="true"></i> Populaire</span>
         <?php endif; ?>
       </div>
       <div class="formation-body">
@@ -90,8 +90,8 @@ $coverIcons = [
         <h3><?= esc($f['titre']) ?></h3>
         <p><?= esc($f['description_courte']) ?></p>
         <div style="display:flex;gap:12px;margin-bottom:16px;font-size:13px;color:var(--gris)">
-          <span>🎬 <?= (int)$f['modules_count'] ?> modules</span>
-          <span>⏱ <?= esc($f['heures']) ?></span>
+          <span><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> <?= (int)$f['modules_count'] ?> modules</span>
+          <span><i class="fa-solid fa-stopwatch" aria-hidden="true"></i> <?= esc($f['heures']) ?></span>
         </div>
         <div class="formation-footer">
           <?php if ($f['statut'] === 'bientot'): ?>

@@ -15,14 +15,14 @@
 
       <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:40px">
         <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="width:44px;height:44px;background:var(--rouge-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📧</div>
+          <div style="width:44px;height:44px;background:var(--rouge-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
           <div>
             <div style="font-weight:600;margin-bottom:2px">Email</div>
             <a href="mailto:hello@yesminegharbi.com" style="color:var(--gris);font-size:14px">hello@yesminegharbi.com</a>
           </div>
         </div>
         <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="width:44px;height:44px;background:var(--rouge-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">⏱</div>
+          <div style="width:44px;height:44px;background:var(--rouge-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i></div>
           <div>
             <div style="font-weight:600;margin-bottom:2px">Délai de réponse</div>
             <span style="color:var(--gris);font-size:14px">Sous 48h ouvrées</span>
@@ -58,19 +58,33 @@
 
     <!-- Formulaire -->
     <div>
+      <?php
+      $loggedUser = $user ?? [];
+      $isConnected = !empty($isLoggedIn);
+      $autoNom = trim((string) (($loggedUser['prenom'] ?? '') . ' ' . ($loggedUser['nom'] ?? '')));
+      $autoEmail = (string) ($loggedUser['email'] ?? '');
+      ?>
       <form id="contactForm" novalidate>
         <?= csrf_field() ?>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
-          <div class="form-group">
-            <label for="c_nom">Nom complet *</label>
-            <input type="text" id="c_nom" name="nom" class="form-input" placeholder="Votre nom" required>
+        <?php if ($isConnected && $autoEmail !== ''): ?>
+          <div style="margin-bottom:20px;padding:12px 14px;border-radius:12px;background:var(--beige);color:var(--gris);font-size:14px">
+            Connecté en tant que <strong style="color:var(--noir)"><?= esc($autoNom !== '' ? $autoNom : $autoEmail) ?></strong> (<?= esc($autoEmail) ?>)
           </div>
-          <div class="form-group">
-            <label for="c_email">Email *</label>
-            <input type="email" id="c_email" name="email" class="form-input" placeholder="votre@email.com" required>
+          <input type="hidden" name="nom" value="<?= esc($autoNom !== '' ? $autoNom : $autoEmail) ?>">
+          <input type="hidden" name="email" value="<?= esc($autoEmail) ?>">
+        <?php else: ?>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+            <div class="form-group">
+              <label for="c_nom">Nom complet *</label>
+              <input type="text" id="c_nom" name="nom" class="form-input" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+              <label for="c_email">Email *</label>
+              <input type="email" id="c_email" name="email" class="form-input" placeholder="votre@email.com" required>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
 
         <div class="form-group" style="margin-bottom:20px">
           <label for="c_sujet">Sujet *</label>
