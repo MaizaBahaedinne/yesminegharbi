@@ -1,0 +1,440 @@
+INFO - 2026-07-07 10:29:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-07 10:29:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-07 11:12:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-07 11:12:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-07 11:12:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-07 11:12:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-07 11:14:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-07 11:26:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 11:26:38 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#8 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#11 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-07-07 11:26:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+ 7 APPPATH\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+ 8 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Pages->contact()
+ 9 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:24:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 14:24:30 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#8 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#11 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-07-07 14:24:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+ 7 APPPATH\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+ 8 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Pages->contact()
+ 9 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:26:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 14:26:06 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#8 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#11 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-07-07 14:26:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+ 7 APPPATH\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+ 8 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Pages->contact()
+ 9 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 14:26:08 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'YGBD', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#8 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#11 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-07-07 14:26:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+ 7 APPPATH\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+ 8 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Pages->contact()
+ 9 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:26:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 14:26:22 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'ygbd', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#8 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#11 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-07-07 14:26:22 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+ 7 APPPATH\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+ 8 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Pages->contact()
+ 9 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:26:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 14:26:23 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'ygbd', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#8 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#11 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-07-07 14:26:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+ 7 APPPATH\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+ 8 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Pages->contact()
+ 9 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 14:26:24 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'ygbd', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#8 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#11 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-07-07 14:26:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+ 7 APPPATH\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+ 8 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Pages->contact()
+ 9 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 14:26:24 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'ygbd', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#8 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#11 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Pages->contact()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-07-07 14:26:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `settings`', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\SettingsModel.php(20): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Pages.php(11): App\Models\SettingsModel->getAll()
+ 7 APPPATH\Controllers\Pages.php(37): App\Controllers\Pages->settings()
+ 8 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Pages->contact()
+ 9 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:26:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 14:26:27 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'ygbd', 3307, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Home.php(22): App\Models\FormationModel->getAll(3)
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Home->index()
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Home.php(22): App\Models\FormationModel->getAll(3)
+#7 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Home->index()
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-07-07 14:26:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+ORDER BY `sort_order` ASC, `created_at` DESC
+ LIMIT 3', [], false)
+ 3 SYSTEMPATH\Model.php(243): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindAll(3, 0)
+ 5 APPPATH\Models\FormationModel.php(23): CodeIgniter\BaseModel->findAll(3)
+ 6 APPPATH\Controllers\Home.php(22): App\Models\FormationModel->getAll(3)
+ 7 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
+INFO - 2026-07-07 14:26:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-07 14:35:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
