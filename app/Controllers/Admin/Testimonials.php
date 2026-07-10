@@ -29,7 +29,7 @@ class Testimonials extends BaseAdminController
         ]);
     }
 
-    public function edit(int $id): string
+    public function edit(int $id)
     {
         $testimonial = $this->model->find($id);
         if (! $testimonial) {

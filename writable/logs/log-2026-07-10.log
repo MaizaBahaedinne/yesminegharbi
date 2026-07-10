@@ -2,3 +2,49 @@ INFO - 2026-07-10 14:01:24 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2026-07-10 14:01:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2026-07-10 14:03:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2026-07-10 14:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-10 14:22:14 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'ygbd', 3306, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(271): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFirst()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Models\FormationModel.php(42): CodeIgniter\BaseModel->first()
+#7 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Formations.php(34): App\Models\FormationModel->getBySlug('cv-parfait-decr...')
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Formations->detail('cv-parfait-decr...')
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Formations))
+#10 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Model.php(271): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\BaseModel.php(679): CodeIgniter\Model->doFirst()
+#5 C:\xampp1\htdocs\yesminegharbi\app\Models\FormationModel.php(42): CodeIgniter\BaseModel->first()
+#6 C:\xampp1\htdocs\yesminegharbi\app\Controllers\Formations.php(34): App\Models\FormationModel->getBySlug('cv-parfait-decr...')
+#7 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(943): App\Controllers\Formations->detail('cv-parfait-decr...')
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Formations))
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\yesminegharbi\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-07-10 14:22:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `formations`
+WHERE `slug` = :slug:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(271): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Models\FormationModel.php(42): CodeIgniter\BaseModel->first()
+ 6 APPPATH\Controllers\Formations.php(34): App\Models\FormationModel->getBySlug('cv-parfait-decrocher-entretien')
+ 7 SYSTEMPATH\CodeIgniter.php(943): App\Controllers\Formations->detail('cv-parfait-decrocher-entretien')
+ 8 SYSTEMPATH\CodeIgniter.php(503): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Formations))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(44): CodeIgniter\CodeIgniter->run()
