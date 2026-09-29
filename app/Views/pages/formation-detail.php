@@ -465,7 +465,7 @@ details[open] .fchap-arrow { transform: rotate(90deg); }
         <?php endif; ?>
 
         <?php if ($dispo): ?>
-          <a class="fcta-btn" href="mailto:hello@yesminegharbi.com?subject=Inscription : <?= urlencode($formation['titre']) ?>">
+          <a class="fcta-btn" href="mailto:<?= esc(($settings['email'] ?? '') ?: 'yesminegharbipro@gmail.com') ?>?subject=Inscription : <?= urlencode($formation['titre']) ?>">
             S'inscrire maintenant
           </a>
         <?php else: ?>

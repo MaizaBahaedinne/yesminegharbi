@@ -59,7 +59,7 @@
             <label style="font-size:12px;color:#6b7280;display:block;margin-bottom:4px">Adresse e-mail de contact</label>
             <input type="email" name="email"
                    value="<?= esc($s['email'] ?? '') ?>"
-                   placeholder="hello@yesminegharbi.com"
+                   placeholder="yesminegharbipro@gmail.com"
                    style="width:100%;padding:8px 12px;border:1px solid #d1d5db;border-radius:6px;font-size:14px">
         </div>
     </div>

@@ -1,0 +1,40 @@
+ERROR - 2026-09-29 11:07:41 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'ygbd', 3306, '', 0)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(637): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Commands\Database\MigrateStatus.php(114): CodeIgniter\Database\MigrationRunner->getHistory('')
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\MigrateStatus->run(Array)
+#9 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate:status', Array)
+#10 C:\xampp1\htdocs\yesminegharbi\spark(60): CodeIgniter\CLI\Console->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(637): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\Commands\Database\MigrateStatus.php(114): CodeIgniter\Database\MigrationRunner->getHistory('')
+#7 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\MigrateStatus->run(Array)
+#8 C:\xampp1\htdocs\yesminegharbi\vendor\codeigniter4\framework\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate:status', Array)
+#9 C:\xampp1\htdocs\yesminegharbi\spark(60): CodeIgniter\CLI\Console->run()
+#10 {main}
+CRITICAL - 2026-09-29 11:07:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FROM `ygbd`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+ 4 SYSTEMPATH\Database\MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+ 5 SYSTEMPATH\Database\MigrationRunner.php(637): CodeIgniter\Database\MigrationRunner->ensureTable()
+ 6 SYSTEMPATH\Commands\Database\MigrateStatus.php(114): CodeIgniter\Database\MigrationRunner->getHistory('')
+ 7 SYSTEMPATH\CLI\Commands.php(65): CodeIgniter\Commands\Database\MigrateStatus->run([])
+ 8 SYSTEMPATH\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate:status', [])
+ 9 ROOTPATH\spark(60): CodeIgniter\CLI\Console->run()

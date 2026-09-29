@@ -10,36 +10,41 @@
 <section class="b2b-section" style="padding:80px 8%">
   <div class="b2b-inner">
     <div class="b2b-left">
-      <span class="section-tag" style="color:var(--sauge)">Nos services</span>
-      <h2>Collaborons pour attirer<br>les meilleurs talents</h2>
-      <p>Que vous souhaitiez renforcer votre image employeur, former vos équipes RH ou promouvoir votre entreprise — je vous accompagne avec une approche terrain et une audience qualifiée.</p>
+      <span class="section-tag" style="color:var(--sauge)">Pour les entreprises</span>
+      <h2>Développez votre<br>marque employeur</h2>
+
       <div class="b2b-services">
         <div class="b2b-service">
-          <div class="b2b-service-icon rouge"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i></div>
+          <div class="b2b-service-icon rouge"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
           <div>
-            <h4>Création de contenu RH</h4>
-            <p>Vidéos, posts LinkedIn, carousels — du contenu qui parle vraiment à vos candidats cibles.</p>
+            <h4>Promotion de votre entreprise</h4>
+            <p>Mettez en avant votre activité, vos métiers, votre culture et votre environnement de travail à travers du contenu pensé pour valoriser votre entreprise auprès des talents.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon sauge"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+          <div class="b2b-service-icon sauge"><i class="fa-solid fa-chess-knight" aria-hidden="true"></i></div>
           <div>
-            <h4>Formations équipes RH sur-mesure</h4>
-            <p>Sessions de formation adaptées : sourcing, entretiens structurés, marque employeur.</p>
+            <h4>Stratégies sur mesure</h4>
+            <p>Bénéficiez de recommandations et de stratégies adaptées à vos objectifs de marque employeur, de communication et d’attractivité, à mettre ensuite en œuvre par vos équipes.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="color:white;font-family:'Playfair Display',serif;font-size:26px;margin:40px 0 20px">Recrutez mieux &amp; optimisez vos pratiques</h3>
+
+      <div class="b2b-services">
+        <div class="b2b-service">
+          <div class="b2b-service-icon or"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+          <div>
+            <h4>Développez les compétences de vos équipes</h4>
+            <p>Accédez à mes formations et ressources premium pour aider vos équipes RH et recrutement à renforcer leurs pratiques, développer leurs compétences et recruter plus efficacement.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon or"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
+          <div class="b2b-service-icon rouge"><i class="fa-solid fa-user-check" aria-hidden="true"></i></div>
           <div>
-            <h4>Promotion de votre marque</h4>
-            <p>Présentez votre entreprise à une audience de +50K professionnels actifs.</p>
-          </div>
-        </div>
-        <div class="b2b-service">
-          <div class="b2b-service-icon rouge"><i class="fa-solid fa-chart-column" aria-hidden="true"></i></div>
-          <div>
-            <h4>Conseil stratégie RH</h4>
-            <p>Audit de vos pratiques de recrutement et recommandations personnalisées.</p>
+            <h4>Confiez-moi vos recrutements</h4>
+            <p>Je peux intervenir directement dans votre recherche de talents : identification des profils, sourcing, présélection et accompagnement du processus de recrutement selon vos besoins.</p>
           </div>
         </div>
       </div>
@@ -47,15 +52,15 @@
 
     <div class="b2b-right">
       <div class="b2b-stat-card">
-        <span class="big-num">+50K</span>
-        <span>abonnés actifs sur les réseaux</span>
+        <span class="big-num">+187K</span>
+        <span>abonnés sur les réseaux</span>
       </div>
       <div class="b2b-stat-card">
         <span class="big-num">85%</span>
         <span>d'audience dans le domaine professionnel</span>
       </div>
       <div class="b2b-stat-card">
-        <span class="big-num">3 ans</span>
+        <span class="big-num">+4 ans</span>
         <span>d'expérience terrain en recrutement</span>
       </div>
       <a href="<?= site_url('contact') ?>?sujet=collaboration-entreprise" class="b2b-cta">Discutons de votre projet →</a>
@@ -91,6 +96,6 @@
 <div class="cta-final">
   <span class="section-tag">Passons à l'action</span>
   <h2>Prêt·e à collaborer ?</h2>
-  <p>Contactez-moi et je vous réponds sous 48h pour discuter de votre projet.</p>
+  <p>Une idée, une question ou une collaboration ? Parlons-en.</p>
   <a href="<?= site_url('contact') ?>?sujet=collaboration-entreprise" class="btn-primary" style="display:inline-flex">Me contacter →</a>
 </div>
