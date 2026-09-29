@@ -53,6 +53,19 @@ $routes->get('/mon-compte',              'Client\Dashboard::index',         ['as
 $routes->get('/mon-compte/commandes',    'Client\Dashboard::commandes',     ['as' => 'commandes']);
 $routes->post('/mon-compte/profil',      'Client\Dashboard::updateProfile', ['as' => 'dashboard-profile-update']);
 $routes->post('/mon-compte/mot-de-passe','Client\Dashboard::updatePassword',['as' => 'dashboard-password-update']);
+
+// CV builder + test ATS
+$routes->get('/cv-ats',                          'Client\Cv::landing',       ['as' => 'cv-ats']);
+$routes->get('/mon-compte/cv',                   'Client\Cv::index',         ['as' => 'cv-index']);
+$routes->post('/mon-compte/cv',                  'Client\Cv::create',        ['as' => 'cv-create']);
+$routes->get('/mon-compte/cv/test/(:num)',       'Client\Cv::atsResult/$1',  ['as' => 'cv-ats-result']);
+$routes->get('/mon-compte/cv/(:num)',            'Client\Cv::edit/$1',       ['as' => 'cv-edit']);
+$routes->post('/mon-compte/cv/(:num)',           'Client\Cv::save/$1',       ['as' => 'cv-save']);
+$routes->post('/mon-compte/cv/(:num)/supprimer', 'Client\Cv::delete/$1',     ['as' => 'cv-delete']);
+$routes->get('/mon-compte/cv/(:num)/apercu',     'Client\Cv::preview/$1',    ['as' => 'cv-preview']);
+$routes->get('/mon-compte/cv/(:num)/word',       'Client\Cv::docx/$1',       ['as' => 'cv-docx']);
+$routes->get('/mon-compte/cv/(:num)/test-ats',   'Client\Cv::atsForm/$1',    ['as' => 'cv-ats-form']);
+$routes->post('/mon-compte/cv/(:num)/test-ats',  'Client\Cv::atsRun/$1',     ['as' => 'cv-ats-run']);
 $routes->get('/connexion',               'Auth::loginForm',                 ['as' => 'login']);
 $routes->post('/connexion',              'Auth::login');
 $routes->get('/auth/google',             'Auth::googleRedirect',            ['as' => 'google-login']);

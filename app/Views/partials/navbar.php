@@ -16,6 +16,7 @@ $initials = $initials ?: 'U';
   <ul class="nav-links">
     <li><a href="<?= site_url('formations') ?>"           class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations</a></li>
     <li><a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources</a></li>
+    <li><a href="<?= site_url('cv-ats') ?>"               class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS</a></li>
     <li><a href="<?= site_url('entreprises') ?>"          class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises</a></li>
     <li><a href="<?= site_url('a-propos') ?>"             class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos</a></li>
     <li><a href="<?= site_url('contact') ?>" class="nav-cta">Me contacter</a></li>
@@ -29,6 +30,7 @@ $initials = $initials ?: 'U';
         <div id="userMenuPanel" style="position:absolute;top:calc(100% + 10px);right:0;min-width:220px;background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12);padding:.45rem;display:none;z-index:1200">
           <a href="<?= site_url('mon-compte') ?>" style="display:block;padding:.7rem .8rem;border-radius:8px;color:var(--noir);text-decoration:none">Gestion de mon profil</a>
           <a href="<?= site_url('mon-compte/commandes') ?>" style="display:block;padding:.7rem .8rem;border-radius:8px;color:var(--noir);text-decoration:none">Mes commandes</a>
+          <a href="<?= site_url('mon-compte/cv') ?>" style="display:block;padding:.7rem .8rem;border-radius:8px;color:var(--noir);text-decoration:none">Mes CV</a>
           <a href="<?= site_url('deconnexion') ?>" style="display:block;padding:.7rem .8rem;border-radius:8px;color:var(--rouge);text-decoration:none">Se déconnecter</a>
         </div>
       </li>
@@ -47,6 +49,7 @@ $initials = $initials ?: 'U';
   <a href="<?= site_url('/') ?>">Accueil</a>
   <a href="<?= site_url('formations') ?>">Formations</a>
   <a href="<?= site_url('ressources') ?>">Ressources</a>
+  <a href="<?= site_url('cv-ats') ?>">CV ATS</a>
   <a href="<?= site_url('entreprises') ?>">Entreprises</a>
   <a href="<?= site_url('a-propos') ?>">À propos</a>
   <?php if (!empty($isLoggedIn)): ?>
