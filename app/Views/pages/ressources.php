@@ -74,7 +74,7 @@ $badgeCss = [
             <?php else: ?>
               <span style="font-size:12px;color:var(--gris)"><?= esc(\App\Models\RessourceModel::TYPES[$r['type']] ?? ucfirst($r['type'])) ?></span>
               <?php if (!empty($isLoggedIn) && in_array((int) $r['id'], $ownedResourceIds ?? [], true)): ?>
-                <a href="<?= site_url('ressources/download/request-code/' . ($r['slug'] ?? '')) ?>" class="btn-primary" style="display:inline-flex">Vérifier et télécharger →</a>
+                <a href="<?= site_url('ressources/download/' . ($r['slug'] ?? '')) ?>" class="btn-primary" style="display:inline-flex">Télécharger →</a>
               <?php elseif (!empty($isLoggedIn)): ?>
                 <a href="<?= site_url('ressources/' . ($r['slug'] ?? '')) ?>" class="btn-primary" style="display:inline-flex">Consulter →</a>
               <?php else: ?>

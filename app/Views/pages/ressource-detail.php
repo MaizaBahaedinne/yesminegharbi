@@ -135,8 +135,8 @@ $canAccess = !empty($isLoggedIn) && !empty($hasAccess);
               </a>
             <?php endif; ?>
             <?php if (!empty($ressource['fichier_path'])): ?>
-            <a href="<?= site_url('ressources/download/request-code/' . ($ressource['slug'] ?? '')) ?>" class="btn-primary" style="display:block;width:100%;text-align:center;padding:1rem 1.5rem;font-size:1rem">
-              Vérifier et télécharger
+            <a href="<?= site_url('ressources/download/' . ($ressource['slug'] ?? '')) ?>" class="btn-primary" style="display:block;width:100%;text-align:center;padding:1rem 1.5rem;font-size:1rem">
+              Télécharger
             </a>
             <?php endif; ?>
           <?php elseif (!empty($isLoggedIn)): ?>
@@ -183,9 +183,9 @@ $canAccess = !empty($isLoggedIn) && !empty($hasAccess);
               </a>
             <?php endif; ?>
             <?php if (!empty($ressource['fichier_path'])): ?>
-              <a href="<?= site_url('ressources/download/request-code/' . ($ressource['slug'] ?? '')) ?>"
+              <a href="<?= site_url('ressources/download/' . ($ressource['slug'] ?? '')) ?>"
                  class="btn-primary" style="display:block;text-align:center;margin-top:1.5rem;padding:1rem 1.5rem;font-size:1rem">
-                Vérifier et télécharger
+                Télécharger
               </a>
             <?php elseif ($videoId === null): ?>
               <a href="<?= site_url('mon-compte/commandes') ?>"

@@ -89,11 +89,6 @@ class Ressources extends BaseController
             return redirect()->to(base_url('mon-compte/commandes'))->with('error', 'Fichier introuvable.');
         }
 
-        if (! $this->isDownloadVerified((int) ($ressource['id'] ?? 0))) {
-            return redirect()->to(base_url('ressources/download/request-code/' . $slug))
-                ->with('error', 'Veuillez valider votre code de sécurité avant le téléchargement.');
-        }
-
         $this->model->incrementDownloadCount((int) ($ressource['id'] ?? 0));
 
         return $this->response->download($absolutePath, null);
@@ -101,27 +96,8 @@ class Ressources extends BaseController
 
     public function requestDownloadCode(string $slug)
     {
-        if (! session()->has('user_id')) {
-            return redirect()->to(base_url('connexion'))->with('error', 'Connexion requise.');
-        }
-
-        $ressource = $this->model->getBySlug($slug);
-        if (! $ressource || empty($ressource['fichier_path'])) {
-            throw PageNotFoundException::forPageNotFound();
-        }
-
-        $userId = (int) session()->get('user_id');
-        $userResourceModel = new UserResourceModel();
-        if (! $userResourceModel->hasAccess($userId, (int) ($ressource['id'] ?? 0))) {
-            return redirect()->to(base_url('mon-compte/commandes'))->with('error', 'Cette ressource n\'est pas disponible pour votre compte.');
-        }
-
-        if (! $this->sendPremiumDownloadCode((int) ($ressource['id'] ?? 0), $slug)) {
-            return redirect()->to(base_url('ressources/' . $slug))->with('error', 'Impossible d\'envoyer le code de vérification par e-mail pour le moment. Réessayez plus tard ou contactez-moi.');
-        }
-
-        return redirect()->to(base_url('ressources/download/verification/' . $slug))
-            ->with('success', 'Un code de vérification à 6 chiffres vient d\'être envoyé à votre email.');
+        // Email verification was removed; keep old links working.
+        return redirect()->to(base_url('ressources/download/' . $slug));
     }
 
     public function downloadVerificationForm(string $slug)
