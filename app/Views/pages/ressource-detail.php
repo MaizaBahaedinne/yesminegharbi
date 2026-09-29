@@ -116,6 +116,12 @@ $canAccess = !empty($isLoggedIn) && !empty($hasAccess);
     <!-- Colonne droite : CTA -->
     <aside class="formation-detail-aside">
       <div class="formation-cta-card">
+        <?php if (session()->getFlashdata('success')): ?>
+          <div class="alert alert-success" style="margin-bottom:1rem"><?= esc(session()->getFlashdata('success')) ?></div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')): ?>
+          <div class="alert alert-error" style="margin-bottom:1rem"><?= esc(session()->getFlashdata('error')) ?></div>
+        <?php endif; ?>
 
         <?php if ($isFree): ?>
           <div style="text-align:center;margin-bottom:1.25rem">

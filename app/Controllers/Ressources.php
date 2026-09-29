@@ -117,7 +117,7 @@ class Ressources extends BaseController
         }
 
         if (! $this->sendPremiumDownloadCode((int) ($ressource['id'] ?? 0), $slug)) {
-            return redirect()->back()->with('error', 'Impossible d\'envoyer le code de vérification pour le moment.');
+            return redirect()->to(base_url('ressources/' . $slug))->with('error', 'Impossible d\'envoyer le code de vérification par e-mail pour le moment. Réessayez plus tard ou contactez-moi.');
         }
 
         return redirect()->to(base_url('ressources/download/verification/' . $slug))
@@ -444,7 +444,11 @@ class Ressources extends BaseController
     {
         $user = session()->get('user') ?? [];
         $email = strtolower(trim((string) ($user['email'] ?? '')));
+        if ($email === '' && session()->has('user_id')) {
+            $email = strtolower(trim((string) ((new UserModel())->find((int) session()->get('user_id'))['email'] ?? '')));
+        }
         if ($email === '' || ! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            log_message('error', 'Download code: no valid email for user ' . (int) session()->get('user_id'));
             return false;
         }
 
@@ -472,7 +476,8 @@ class Ressources extends BaseController
             "Si vous n'êtes pas à l'origine de cette demande, ignorez cet email."
         );
 
-        if (! $emailService->send()) {
+        if (! $emailService->send(false)) {
+            log_message('error', 'Download code email failed: ' . $emailService->printDebugger(['headers']));
             if (ENVIRONMENT === 'development') {
                 session()->setFlashdata('success', 'Mode dev: code de téléchargement = ' . $code);
                 return true;
