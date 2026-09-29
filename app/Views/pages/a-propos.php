@@ -14,8 +14,10 @@
     <div class="apropos-content">
       <h2>Bonjour, je suis Yesmine</h2>
       <span class="apropos-title">Spécialiste Recrutement &amp; Personal Branding</span>
-      <p>Après plusieurs années en cabinet de recrutement et en entreprise, j'ai décidé de partager ce que j'ai appris sur le terrain — pas dans les manuels.</p>
-      <p>Mon objectif : rendre les ressources RH accessibles, pratiques et vraiment utiles, que vous soyez candidat, recruteur ou entreprise.</p>
+      <p>Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.</p>
+      <p>Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.</p>
+      <?php $contactEmail = ($settings['email'] ?? '') ?: 'yesminegharbipro@gmail.com'; ?>
+      <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:<?= esc($contactEmail) ?>" style="color:var(--rouge);font-weight:600"><?= esc($contactEmail) ?></a></p>
       <div class="social-links">
         <?php
         $socialSvg = [
@@ -52,9 +54,9 @@
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:900px;margin:0 auto">
     <?php
     $stats = [
-        ['num' => '+50K',  'label' => 'Abonnés réseaux'],
+        ['num' => '+187K', 'label' => 'Abonnés réseaux'],
         ['num' => '+200',  'label' => 'Contenus publiés'],
-        ['num' => '3 ans', 'label' => "d'expérience terrain"],
+        ['num' => '4 ans', 'label' => "d'expérience terrain"],
         ['num' => '+10',   'label' => 'Ressources créées'],
     ];
     foreach ($stats as $s): ?>
@@ -72,7 +74,7 @@
     <span class="section-tag">Ma philosophie</span>
     <h2>Pourquoi « Du terrain, pas des manuels » ?</h2>
     <p style="font-size:17px;color:var(--gris);line-height:1.8;margin-bottom:32px">
-      Parce que la réalité du marché de l'emploi n'est pas dans les livres. Elle est dans les centaines d'entretiens que j'ai conduits, les CV que j'ai triés, les candidats que j'ai accompagnés. C'est cette expérience que je partage — concrète, actuelle, adaptée au marché tunisien.
+      Des années dans le recrutement et la création de contenu m’ont permis de comprendre les réalités du monde professionnel, au-delà de la théorie. Je transforme cette expérience en <strong>ressources concrètes et accessibles</strong> pour aider les professionnels à avancer et les entreprises à mieux recruter.
     </p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
       <a href="<?= site_url('formations') ?>" class="btn-primary">Voir les formations →</a>

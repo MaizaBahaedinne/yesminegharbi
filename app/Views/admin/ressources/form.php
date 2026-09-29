@@ -15,10 +15,36 @@
                 <div class="form-group">
                     <label>Type</label>
                     <select name="type">
-                        <?php foreach (['guide','template','checklist','ebook','kit'] as $t): ?>
-                            <option value="<?= $t ?>" <?= ($r['type'] ?? '') === $t ? 'selected' : '' ?>><?= ucfirst($t) ?></option>
+                        <?php
+                        $types = \App\Models\RessourceModel::TYPES;
+                        if (!empty($r['type']) && !isset($types[$r['type']])) {
+                            $types[$r['type']] = ucfirst($r['type']);
+                        }
+                        foreach ($types as $t => $label): ?>
+                            <option value="<?= esc($t) ?>" <?= ($r['type'] ?? '') === $t ? 'selected' : '' ?>><?= esc($label) ?></option>
                         <?php endforeach; ?>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label>Thématique principale</label>
+                    <select name="thematique">
+                        <option value="">— Aucune —</option>
+                        <?php foreach (\App\Models\RessourceModel::THEMATIQUES as $k => $label): ?>
+                            <option value="<?= esc($k) ?>" <?= ($r['thematique'] ?? '') === $k ? 'selected' : '' ?>><?= esc($label) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group full">
+                    <label>Thématiques secondaires</label>
+                    <?php $secondaires = array_filter(explode(',', (string) ($r['thematiques_secondaires'] ?? ''))); ?>
+                    <div style="display:flex;flex-wrap:wrap;gap:.5rem 1.25rem">
+                        <?php foreach (\App\Models\RessourceModel::THEMATIQUES as $k => $label): ?>
+                            <label style="display:flex;align-items:center;gap:.4rem;font-weight:400;cursor:pointer">
+                                <input type="checkbox" name="thematiques_secondaires[]" value="<?= esc($k) ?>" <?= in_array($k, $secondaires, true) ? 'checked' : '' ?> style="width:auto">
+                                <?= esc($label) ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Profil cible</label>

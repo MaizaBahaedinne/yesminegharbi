@@ -31,8 +31,8 @@ class Ressources extends BaseController
     public function premium()
     {
         $type = (string) ($this->request->getGet('type') ?? 'tous');
-        $profil = (string) ($this->request->getGet('profil') ?? 'tous');
-        return redirect()->to(base_url('ressources?access=premium&type=' . rawurlencode($type) . '&profil=' . rawurlencode($profil)));
+        $thematique = (string) ($this->request->getGet('thematique') ?? 'tous');
+        return redirect()->to(base_url('ressources?access=premium&type=' . rawurlencode($type) . '&thematique=' . rawurlencode($thematique)));
     }
 
     public function detail(string $slug): string
@@ -356,7 +356,13 @@ class Ressources extends BaseController
     {
         $access = (string) ($this->request->getGet('access') ?? 'tous');
         $type = (string) ($this->request->getGet('type') ?? 'tous');
-        $profil = (string) ($this->request->getGet('profil') ?? 'tous');
+        $thematique = (string) ($this->request->getGet('thematique') ?? 'tous');
+        if (! array_key_exists($type, RessourceModel::TYPES)) {
+            $type = 'tous';
+        }
+        if (! array_key_exists($thematique, RessourceModel::THEMATIQUES)) {
+            $thematique = 'tous';
+        }
 
         $userResourceModel = new UserResourceModel();
         $userId = (int) (session()->get('user_id') ?? 0);
@@ -376,8 +382,12 @@ class Ressources extends BaseController
             $builder->where('type', $type);
         }
 
-        if ($profil !== 'tous') {
-            $builder->where('profil', $profil);
+        if ($thematique !== 'tous') {
+            // $thematique is whitelisted above, safe to inline.
+            $builder->groupStart()
+                ->where('thematique', $thematique)
+                ->orWhere("FIND_IN_SET('{$thematique}', thematiques_secondaires) >", 0, false)
+                ->groupEnd();
         }
 
         $resources = $builder->findAll();
@@ -389,7 +399,7 @@ class Ressources extends BaseController
             'ownedResourceIds' => $ownedResourceIds,
             'active_access'    => in_array($access, ['tous', 'gratuit', 'premium'], true) ? $access : 'tous',
             'active_type'      => $type,
-            'active_profil'    => $profil,
+            'active_thematique' => $thematique,
         ]);
     }
 

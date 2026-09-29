@@ -91,12 +91,20 @@ class Ressources extends BaseAdminController
 
     private function _formData(): array
     {
+        $thematique = (string) $this->request->getPost('thematique');
+        $secondaires = array_intersect(
+            (array) ($this->request->getPost('thematiques_secondaires') ?? []),
+            array_keys(RessourceModel::THEMATIQUES)
+        );
+
         return [
             'titre'              => $this->request->getPost('titre'),
             'description_courte' => $this->request->getPost('description_courte'),
             'description_longue' => $this->request->getPost('description_longue'),
             'type'               => $this->request->getPost('type'),
             'profil'             => $this->request->getPost('profil'),
+            'thematique'         => isset(RessourceModel::THEMATIQUES[$thematique]) ? $thematique : null,
+            'thematiques_secondaires' => $secondaires !== [] ? implode(',', $secondaires) : null,
             'is_premium'         => (int) (bool) $this->request->getPost('is_premium'),
             'prix'               => (float) $this->request->getPost('prix'),
             'fichier_path'       => $this->request->getPost('fichier_path'),

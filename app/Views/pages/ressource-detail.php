@@ -8,6 +8,8 @@ $iconesType = [
     'ebook'     => '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i>',
     'guide'     => '<i class="fa-solid fa-chart-column" aria-hidden="true"></i>',
     'kit'       => '<i class="fa-solid fa-bullseye" aria-hidden="true"></i>',
+    'atelier'   => '<i class="fa-solid fa-video" aria-hidden="true"></i>',
+    'methode'   => '<i class="fa-solid fa-diagram-project" aria-hidden="true"></i>',
 ];
 $labelProfil = [
     'junior'       => 'Junior',
@@ -31,9 +33,11 @@ $isFree = !(bool)($ressource['is_premium'] ?? false);
 
       <div class="formation-badges" style="margin:16px 0 20px">
         <?php if (!empty($ressource['type'])): ?>
-          <span class="badge-theme"><?= $iconesType[$ressource['type']] ?? '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>' ?> <?= esc(ucfirst($ressource['type'])) ?></span>
+          <span class="badge-theme"><?= $iconesType[$ressource['type']] ?? '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>' ?> <?= esc(\App\Models\RessourceModel::TYPES[$ressource['type']] ?? ucfirst($ressource['type'])) ?></span>
         <?php endif; ?>
-        <?php if (!empty($ressource['profil'])): ?>
+        <?php if (!empty($ressource['thematique'])): ?>
+          <span class="badge-niveau"><?= esc(\App\Models\RessourceModel::THEMATIQUES[$ressource['thematique']] ?? $ressource['thematique']) ?></span>
+        <?php elseif (!empty($ressource['profil'])): ?>
           <span class="badge-niveau"><?= esc($labelProfil[$ressource['profil']] ?? ucfirst($ressource['profil'])) ?></span>
         <?php endif; ?>
         <?php if ($isFree): ?>

@@ -5,6 +5,8 @@ $iconeRessource = [
     'ebook'     => '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i>',
     'guide'     => '<i class="fa-solid fa-chart-column" aria-hidden="true"></i>',
     'kit'       => '<i class="fa-solid fa-bullseye" aria-hidden="true"></i>',
+    'atelier'   => '<i class="fa-solid fa-video" aria-hidden="true"></i>',
+    'methode'   => '<i class="fa-solid fa-diagram-project" aria-hidden="true"></i>',
 ];
 
 $badgeCss = [
@@ -24,28 +26,29 @@ $badgeCss = [
 </div>
 
 <section>
+  <?php
+  $filters = [
+      'access'     => $active_access ?? 'tous',
+      'type'       => $active_type ?? 'tous',
+      'thematique' => $active_thematique ?? 'tous',
+  ];
+  $filterUrl = static fn (string $key, string $value): string => '?' . http_build_query(array_merge($filters, [$key => $value]));
+  $filterGroups = [
+      'access'     => ['label' => 'Accès',      'options' => ['gratuit' => 'Gratuit', 'premium' => 'Premium']],
+      'type'       => ['label' => 'Type',       'options' => \App\Models\RessourceModel::TYPES],
+      'thematique' => ['label' => 'Thématique', 'options' => \App\Models\RessourceModel::THEMATIQUES],
+  ];
+  ?>
   <div class="filter-area">
-    <div class="filter-row">
-      <span class="filter-label">Accès :</span>
-      <a href="?access=tous&type=<?= esc($active_type ?? 'tous') ?>&profil=<?= esc($active_profil ?? 'tous') ?>" class="filter-btn <?= ($active_access ?? 'tous') === 'tous' ? 'active' : '' ?>">Tous</a>
-      <a href="?access=gratuit&type=<?= esc($active_type ?? 'tous') ?>&profil=<?= esc($active_profil ?? 'tous') ?>" class="filter-btn <?= ($active_access ?? 'tous') === 'gratuit' ? 'active' : '' ?>">Gratuit</a>
-      <a href="?access=premium&type=<?= esc($active_type ?? 'tous') ?>&profil=<?= esc($active_profil ?? 'tous') ?>" class="filter-btn <?= ($active_access ?? 'tous') === 'premium' ? 'active' : '' ?>">Premium</a>
+    <?php $first = true; foreach ($filterGroups as $key => $group): ?>
+    <div class="filter-row"<?= $first ? '' : ' style="margin-top:10px"' ?>>
+      <span class="filter-label"><?= esc($group['label']) ?> :</span>
+      <a href="<?= esc($filterUrl($key, 'tous')) ?>" class="filter-btn <?= $filters[$key] === 'tous' ? 'active' : '' ?>">Tous</a>
+      <?php foreach ($group['options'] as $value => $label): ?>
+      <a href="<?= esc($filterUrl($key, $value)) ?>" class="filter-btn <?= $filters[$key] === $value ? 'active' : '' ?>"><?= esc($label) ?></a>
+      <?php endforeach; ?>
     </div>
-    <div class="filter-row" style="margin-top:10px">
-      <span class="filter-label">Type :</span>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=tous&profil=<?= esc($active_profil ?? 'tous') ?>" class="filter-btn <?= ($active_type ?? 'tous') === 'tous' ? 'active' : '' ?>">Tous</a>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=guide&profil=<?= esc($active_profil ?? 'tous') ?>" class="filter-btn <?= ($active_type ?? 'tous') === 'guide' ? 'active' : '' ?>">Guide PDF</a>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=template&profil=<?= esc($active_profil ?? 'tous') ?>" class="filter-btn <?= ($active_type ?? 'tous') === 'template' ? 'active' : '' ?>">Template</a>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=checklist&profil=<?= esc($active_profil ?? 'tous') ?>" class="filter-btn <?= ($active_type ?? 'tous') === 'checklist' ? 'active' : '' ?>">Checklist</a>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=kit&profil=<?= esc($active_profil ?? 'tous') ?>" class="filter-btn <?= ($active_type ?? 'tous') === 'kit' ? 'active' : '' ?>">Kit complet</a>
-    </div>
-    <div class="filter-row" style="margin-top:10px">
-      <span class="filter-label">Profil :</span>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=<?= esc($active_type ?? 'tous') ?>&profil=tous" class="filter-btn <?= ($active_profil ?? 'tous') === 'tous' ? 'active' : '' ?>">Tous</a>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=<?= esc($active_type ?? 'tous') ?>&profil=junior" class="filter-btn <?= ($active_profil ?? 'tous') === 'junior' ? 'active' : '' ?>">Junior</a>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=<?= esc($active_type ?? 'tous') ?>&profil=experimente" class="filter-btn <?= ($active_profil ?? 'tous') === 'experimente' ? 'active' : '' ?>">Expérimenté</a>
-      <a href="?access=<?= esc($active_access ?? 'tous') ?>&type=<?= esc($active_type ?? 'tous') ?>&profil=recruteur" class="filter-btn <?= ($active_profil ?? 'tous') === 'recruteur' ? 'active' : '' ?>">Recruteur</a>
-    </div>
+    <?php $first = false; endforeach; ?>
   </div>
 
   <?php if (empty($resources)): ?>
@@ -69,7 +72,7 @@ $badgeCss = [
               <span class="prix"><?= number_format((float) $r['prix'], 0) ?> TND</span>
               <a href="<?= site_url('ressources/' . ($r['slug'] ?? '')) ?>" class="btn-primary" style="padding:8px 18px;font-size:13px">Acheter →</a>
             <?php else: ?>
-              <span style="font-size:12px;color:var(--gris)"><?= strtoupper(esc($r['type'])) ?></span>
+              <span style="font-size:12px;color:var(--gris)"><?= esc(\App\Models\RessourceModel::TYPES[$r['type']] ?? ucfirst($r['type'])) ?></span>
               <?php if (!empty($isLoggedIn) && in_array((int) $r['id'], $ownedResourceIds ?? [], true)): ?>
                 <a href="<?= site_url('ressources/download/request-code/' . ($r['slug'] ?? '')) ?>" class="btn-primary" style="display:inline-flex">Vérifier et télécharger →</a>
               <?php elseif (!empty($isLoggedIn)): ?>

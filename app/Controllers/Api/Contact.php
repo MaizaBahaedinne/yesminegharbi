@@ -58,7 +58,8 @@ class Contact extends BaseController
         // Send email notification to admin
         try {
             $email = \Config\Services::email();
-            $email->setTo('hello@yesminegharbi.com');
+            $settings = (new \App\Models\SettingsModel())->getAll();
+            $email->setTo(($settings['email'] ?? '') ?: 'yesminegharbipro@gmail.com');
             $email->setFrom($data['email'], $data['nom']);
             $email->setSubject('[Contact] ' . $data['sujet']);
             $email->setMessage(
@@ -71,7 +72,7 @@ class Contact extends BaseController
 
         return $this->response->setJSON([
             'success' => true,
-            'message' => 'Message envoyé ! Je vous réponds sous 48h.',
+            'message' => 'Message envoyé ! Merci pour votre message.',
         ]);
     }
 }

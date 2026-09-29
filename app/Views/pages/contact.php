@@ -2,7 +2,7 @@
   <div class="page-header-inner">
     <span class="section-tag">Contact</span>
     <h1>Prenons contact</h1>
-    <p>Une question, une collaboration ou un projet ? Écrivez-moi, je réponds sous 48h.</p>
+    <p>Une question, une collaboration ou un projet ? Écrivez-moi.</p>
   </div>
 </div>
 
@@ -18,14 +18,8 @@
           <div style="width:44px;height:44px;background:var(--rouge-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
           <div>
             <div style="font-weight:600;margin-bottom:2px">Email</div>
-            <a href="mailto:hello@yesminegharbi.com" style="color:var(--gris);font-size:14px">hello@yesminegharbi.com</a>
-          </div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="width:44px;height:44px;background:var(--rouge-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i></div>
-          <div>
-            <div style="font-weight:600;margin-bottom:2px">Délai de réponse</div>
-            <span style="color:var(--gris);font-size:14px">Sous 48h ouvrées</span>
+            <?php $contactEmail = ($settings['email'] ?? '') ?: 'yesminegharbipro@gmail.com'; ?>
+            <a href="mailto:<?= esc($contactEmail) ?>" style="color:var(--gris);font-size:14px"><?= esc($contactEmail) ?></a>
           </div>
         </div>
       </div>
@@ -112,7 +106,7 @@
 
         <div id="contactMsg" style="margin-bottom:14px;font-size:14px;font-weight:600"></div>
         <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Envoyer le message →</button>
-        <p style="font-size:12px;color:var(--gris);margin-top:10px;text-align:center">Je réponds personnellement à chaque message sous 48h.</p>
+        <p style="font-size:12px;color:var(--gris);margin-top:10px;text-align:center">Une idée, une question ou une collaboration ? Parlons-en.</p>
       </form>
     </div>
 

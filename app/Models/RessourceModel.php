@@ -6,12 +6,33 @@ use CodeIgniter\Model;
 
 class RessourceModel extends Model
 {
+    public const TYPES = [
+        'atelier'   => 'Atelier',
+        'methode'   => 'Méthode',
+        'guide'     => 'Guide',
+        'template'  => 'Template',
+        'checklist' => 'Checklist',
+        'kit'       => 'Kit',
+    ];
+
+    public const THEMATIQUES = [
+        'carriere'                => 'Carrière',
+        'recherche-emploi'        => 'Recherche d’emploi',
+        'cv-candidature'          => 'CV & Candidature',
+        'linkedin-branding'       => 'LinkedIn & Personal Branding',
+        'recrutement-rh'          => 'Recrutement & RH',
+        'marque-employeur'        => 'Marque employeur',
+        'apprentissage-formation' => 'Apprentissage & Formation',
+        'ia-carriere'             => 'IA & Carrière',
+    ];
+
     protected $table      = 'ressources';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
     protected $allowedFields = [
         'slug', 'titre', 'description_courte', 'description_longue',
-        'type', 'profil', 'prix', 'fichier_path', 'cover_image',
+        'type', 'profil', 'thematique', 'thematiques_secondaires',
+        'prix', 'fichier_path', 'cover_image',
         'is_premium', 'tag_badge', 'sort_order',
         'view_count', 'download_count',
     ];

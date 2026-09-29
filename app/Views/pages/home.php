@@ -33,6 +33,8 @@ $iconeRessource = [
     'ebook'     => '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i>',
     'guide'     => '<i class="fa-solid fa-chart-column" aria-hidden="true"></i>',
     'kit'       => '<i class="fa-solid fa-bullseye" aria-hidden="true"></i>',
+    'atelier'   => '<i class="fa-solid fa-video" aria-hidden="true"></i>',
+    'methode'   => '<i class="fa-solid fa-diagram-project" aria-hidden="true"></i>',
 ];
 ?>
 
@@ -44,8 +46,8 @@ $iconeRessource = [
     <div class="hero-eyebrow">Spécialiste Recrutement &amp; Personal Branding</div>
     <h1>Des conseils terrain,<br>pas des <em>manuels.</em></h1>
     <p class="hero-sub">
-      Formations, ressources et accompagnement pour candidats, recruteurs et entreprises.
-      Tout ce dont vous avez besoin — en un seul endroit.
+      Des ressources, des méthodes et des opportunités pour faire évoluer votre carrière et mieux recruter.
+      Tout au même endroit.
     </p>
     <div class="hero-btns">
       <a href="<?= site_url('formations') ?>" class="btn-primary">Voir les formations →</a>
@@ -55,7 +57,17 @@ $iconeRessource = [
 
   <div class="hero-visual">
     <div class="hero-photo-frame">
-      <img src="<?= base_url('assets/img/yesmine.jpg') ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit">
+      <?php
+      // Background-free portrait; falls back to the original photo until it is uploaded.
+      $heroPhoto = 'assets/img/yesmine.jpg';
+      foreach (['png', 'webp', 'jpg'] as $ext) {
+          if (is_file(FCPATH . 'assets/img/yesmine-hero.' . $ext)) {
+              $heroPhoto = 'assets/img/yesmine-hero.' . $ext;
+              break;
+          }
+      }
+      ?>
+      <img src="<?= base_url($heroPhoto) ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit">
       <div class="floating-card floating-card-1">
         <span class="fc-emoji"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
         <span>Formation vendue !</span>
@@ -104,34 +116,34 @@ $iconeRessource = [
   <div class="audience-grid">
     <div class="audience-card candidat">
       <span class="audience-icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></span>
-      <h3>Candidats</h3>
-      <p>Juniors, expérimentés ou en reconversion — améliorez votre CV, LinkedIn et préparez vos entretiens avec des conseils terrain.</p>
+      <h3>Candidats &amp; futurs professionnels</h3>
+      <p>Étudiants, jeunes diplômés, professionnels ou personnes en reconversion : développez votre profil, préparez votre avenir professionnel et saisissez les bonnes opportunités.</p>
       <ul class="audience-list">
-        <li>Templates CV ATS-friendly</li>
-        <li>Guide entretien complet</li>
-        <li>Optimisation profil LinkedIn</li>
-        <li>Personal branding digital</li>
+        <li>Orientation &amp; évolution de carrière</li>
+        <li>Recherche d’emploi &amp; candidature</li>
+        <li>LinkedIn &amp; personal branding</li>
+        <li>Méthodes &amp; ressources pratiques</li>
       </ul>
     </div>
     <div class="audience-card rh">
       <span class="audience-icon"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i></span>
       <h3>Recruteurs &amp; RH</h3>
-      <p>Optimisez vos processus, formez vos équipes et accédez à des outils conçus pour les professionnels du recrutement.</p>
+      <p>Des conseils, méthodes et ressources issus du terrain pour mieux recruter et développer vos pratiques RH.</p>
       <ul class="audience-list">
-        <li>Formations process recrutement</li>
-        <li>Kits évaluation candidats</li>
-        <li>Checklists onboarding</li>
-        <li>Ressources sourcing</li>
+        <li>Sourcing &amp; recherche de candidats</li>
+        <li>Évaluation candidats</li>
+        <li>Processus de recrutement</li>
+        <li>Ressources RH</li>
       </ul>
     </div>
     <div class="audience-card entreprise">
       <span class="audience-icon"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
       <h3>Entreprises</h3>
-      <p>Boostez votre marque employeur, formez vos équipes RH et collaborez avec une experte pour attirer les meilleurs talents.</p>
+      <p>Développez votre marque employeur grâce à la visibilité, au contenu et à une stratégie de communication adaptée à vos objectifs.</p>
       <ul class="audience-list">
-        <li>Stratégie marque employeur</li>
-        <li>Formations RH sur-mesure</li>
-        <li>Création de contenu RH</li>
+        <li>Visibilité &amp; présence employeur</li>
+        <li>Mise en avant sur mes réseaux</li>
+        <li>Stratégie de communication marque employeur</li>
         <li>Accompagnement &amp; conseil</li>
       </ul>
     </div>
@@ -266,29 +278,40 @@ $iconeRessource = [
   <div class="b2b-inner">
     <div class="b2b-left">
       <span class="section-tag" style="color:var(--sauge)">Pour les entreprises</span>
-      <h2>Rayonnez sur votre<br>marque employeur</h2>
-      <p>Vous travaillez dans les RH ou vous souhaitez attirer les meilleurs talents ? Collaborons pour créer du contenu, former vos équipes et renforcer votre image employeur.</p>
+      <h2>Développez votre<br>marque employeur</h2>
 
       <div class="b2b-services">
         <div class="b2b-service">
-          <div class="b2b-service-icon rouge"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i></div>
+          <div class="b2b-service-icon rouge"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
           <div>
-            <h4>Création de contenu RH</h4>
-            <p>Vidéos, posts LinkedIn, carousels — du contenu qui parle vraiment à vos candidats.</p>
+            <h4>Promotion de votre entreprise</h4>
+            <p>Mettez en avant votre activité, vos métiers, votre culture et votre environnement de travail à travers du contenu pensé pour valoriser votre entreprise auprès des talents.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon sauge"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+          <div class="b2b-service-icon sauge"><i class="fa-solid fa-chess-knight" aria-hidden="true"></i></div>
           <div>
-            <h4>Formations équipes RH</h4>
-            <p>Sessions de formation sur-mesure : sourcing, entretiens, marque employeur.</p>
+            <h4>Stratégies sur mesure</h4>
+            <p>Bénéficiez de recommandations et de stratégies adaptées à vos objectifs de marque employeur, de communication et d’attractivité, à mettre ensuite en œuvre par vos équipes.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="color:white;font-family:'Playfair Display',serif;font-size:26px;margin:40px 0 20px">Recrutez mieux &amp; optimisez vos pratiques</h3>
+
+      <div class="b2b-services">
+        <div class="b2b-service">
+          <div class="b2b-service-icon or"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+          <div>
+            <h4>Développez les compétences de vos équipes</h4>
+            <p>Accédez à mes formations et ressources premium pour aider vos équipes RH et recrutement à renforcer leurs pratiques, développer leurs compétences et recruter plus efficacement.</p>
           </div>
         </div>
         <div class="b2b-service">
-          <div class="b2b-service-icon or"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
+          <div class="b2b-service-icon rouge"><i class="fa-solid fa-user-check" aria-hidden="true"></i></div>
           <div>
-            <h4>Promotion de votre marque</h4>
-            <p>Présentez votre entreprise à une audience qualifiée de +50 000 professionnels.</p>
+            <h4>Confiez-moi vos recrutements</h4>
+            <p>Je peux intervenir directement dans votre recherche de talents : identification des profils, sourcing, présélection et accompagnement du processus de recrutement selon vos besoins.</p>
           </div>
         </div>
       </div>
@@ -296,15 +319,15 @@ $iconeRessource = [
 
     <div class="b2b-right">
       <div class="b2b-stat-card">
-        <span class="big-num">+50K</span>
-        <span>abonnés actifs sur les réseaux</span>
+        <span class="big-num">+187K</span>
+        <span>abonnés sur les réseaux</span>
       </div>
       <div class="b2b-stat-card">
         <span class="big-num">85%</span>
         <span>d'audience dans le domaine professionnel</span>
       </div>
       <div class="b2b-stat-card">
-        <span class="big-num">3 ans</span>
+        <span class="big-num">+4 ans</span>
         <span>d'expérience terrain en recrutement</span>
       </div>
       <a href="<?= site_url('contact') ?>?sujet=entreprise" class="b2b-cta">Discutons de votre projet →</a>
@@ -323,12 +346,13 @@ $iconeRessource = [
     <div class="apropos-content">
       <h2>Yesmine Gharbi</h2>
       <span class="apropos-title">Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
-      <p>Après plusieurs années en cabinet et en entreprise, j'ai décidé de partager ce que j'ai appris sur le terrain — pas dans les manuels. Mon objectif : rendre les ressources RH accessibles, pratiques et vraiment utiles, que vous soyez candidat, recruteur ou entreprise.</p>
+      <p>Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.</p>
+      <p>Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.</p>
       <div class="social-links">
-        <a href="https://tiktok.com/@yesminegharbi" class="social-link" target="_blank" rel="noopener"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> TikTok</a>
-        <a href="https://instagram.com/yesminegharbi" class="social-link" target="_blank" rel="noopener"><i class="fa-solid fa-camera" aria-hidden="true"></i> Instagram</a>
-        <a href="https://linkedin.com/in/yesminegharbi" class="social-link" target="_blank" rel="noopener"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> LinkedIn</a>
-        <a href="https://facebook.com/yesminegharbi" class="social-link" target="_blank" rel="noopener"><i class="fa-solid fa-users" aria-hidden="true"></i> Facebook</a>
+        <a href="<?= esc(($settings['tiktok_url'] ?? '') ?: 'https://www.tiktok.com/@yesmine_gharbi') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok" aria-hidden="true"></i> TikTok</a>
+        <a href="<?= esc(($settings['instagram_url'] ?? '') ?: 'https://www.instagram.com/yesmine_gharbi/?hl=fr') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</a>
+        <a href="<?= esc(($settings['linkedin_url'] ?? '') ?: 'https://www.linkedin.com/in/yesmine-gharbi/') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        <a href="<?= esc(($settings['facebook_url'] ?? '') ?: 'https://www.facebook.com/yesmineegharbi/') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook</a>
       </div>
     </div>
   </div>
