@@ -83,10 +83,9 @@ class Ressources extends BaseController
             return redirect()->to(base_url('mon-compte/commandes'))->with('error', 'Cette ressource n\'est pas disponible pour votre compte.');
         }
 
-        $relativePath = ltrim((string) $ressource['fichier_path'], '/\\');
-        $absolutePath = FCPATH . $relativePath;
+        $absolutePath = RessourceModel::resolveFilePath($ressource['fichier_path']);
 
-        if (! is_file($absolutePath)) {
+        if ($absolutePath === null) {
             return redirect()->to(base_url('mon-compte/commandes'))->with('error', 'Fichier introuvable.');
         }
 

@@ -18,6 +18,8 @@ $labelProfil = [
     'tous'         => 'Tous profils',
 ];
 $isFree = !(bool)($ressource['is_premium'] ?? false);
+$videoId = \App\Models\RessourceModel::youtubeId($ressource['video_url'] ?? null);
+$canAccess = !empty($isLoggedIn) && !empty($hasAccess);
 ?>
 
 <!-- ENTETE RESSOURCE -->
@@ -73,6 +75,25 @@ $isFree = !(bool)($ressource['is_premium'] ?? false);
     <!-- Colonne gauche -->
     <div class="formation-detail-content">
 
+      <?php if ($videoId !== null): ?>
+        <div id="video" style="margin-bottom:2rem">
+          <?php if ($canAccess): ?>
+            <div style="position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000">
+              <iframe src="https://www.youtube-nocookie.com/embed/<?= esc($videoId) ?>?rel=0&modestbranding=1"
+                      title="<?= esc($ressource['titre']) ?>"
+                      style="position:absolute;inset:0;width:100%;height:100%;border:0"
+                      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+          <?php else: ?>
+            <div style="padding:2.5rem 1.5rem;border-radius:16px;background:var(--noir);color:#fff;text-align:center">
+              <i class="fa-solid fa-lock" aria-hidden="true" style="font-size:28px;margin-bottom:.75rem"></i>
+              <p style="margin:0;font-weight:600">Vidéo disponible après <?= $isFree ? 'commande' : 'achat' ?> de la ressource</p>
+            </div>
+          <?php endif; ?>
+        </div>
+      <?php endif; ?>
+
       <?php if (!empty($ressource['description_longue'])): ?>
         <div class="prose" style="line-height:1.85;color:var(--gris);margin-bottom:2rem">
           <?= $ressource['description_longue'] ?>
@@ -102,9 +123,16 @@ $isFree = !(bool)($ressource['is_premium'] ?? false);
           </div>
           <?php if (!empty($isLoggedIn) && !empty($hasAccess)): ?>
             <span style="display:block;text-align:center;font-weight:700;color:var(--sauge);margin-bottom:.75rem"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Déjà commandé</span>
+            <?php if ($videoId !== null): ?>
+              <a href="#video" class="btn-primary" style="display:block;width:100%;text-align:center;padding:1rem 1.5rem;font-size:1rem;margin-bottom:.75rem">
+                Regarder la vidéo
+              </a>
+            <?php endif; ?>
+            <?php if (!empty($ressource['fichier_path'])): ?>
             <a href="<?= site_url('ressources/download/request-code/' . ($ressource['slug'] ?? '')) ?>" class="btn-primary" style="display:block;width:100%;text-align:center;padding:1rem 1.5rem;font-size:1rem">
               Vérifier et télécharger
             </a>
+            <?php endif; ?>
           <?php elseif (!empty($isLoggedIn)): ?>
             <button type="button" class="btn-primary resource-claim-btn"
                     data-id="<?= (int)$ressource['id'] ?>"
@@ -133,17 +161,27 @@ $isFree = !(bool)($ressource['is_premium'] ?? false);
           <?php endif; ?>
           <div class="cta-meta-row"><span><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span> Compte connecté et vérifié requis</div>
           <div class="cta-meta-row"><span><i class="fa-solid fa-tags" aria-hidden="true"></i></span> Code promo pris en charge</div>
+          <?php if ($videoId !== null): ?>
+          <div class="cta-meta-row"><span><i class="fa-solid fa-circle-play" aria-hidden="true"></i></span> Vidéo accessible en ligne</div>
+          <?php endif; ?>
+          <?php if (!empty($ressource['fichier_path'])): ?>
           <div class="cta-meta-row"><span><i class="fa-solid fa-download" aria-hidden="true"></i></span> Téléchargement immédiat</div>
+          <?php endif; ?>
           <div class="cta-meta-row"><span><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span> Accès sur tous les appareils</div>
           <div class="cta-meta-row"><span><i class="fa-solid fa-infinity" aria-hidden="true"></i></span> Accès à vie</div>
           <?php if (!empty($isLoggedIn) && !empty($hasAccess)): ?>
             <span style="display:block;text-align:center;font-weight:700;color:var(--sauge);margin:.9rem 0 .75rem"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Déjà acheté</span>
+            <?php if ($videoId !== null): ?>
+              <a href="#video" class="btn-primary" style="display:block;text-align:center;margin-top:1.5rem;padding:1rem 1.5rem;font-size:1rem">
+                Regarder la vidéo
+              </a>
+            <?php endif; ?>
             <?php if (!empty($ressource['fichier_path'])): ?>
               <a href="<?= site_url('ressources/download/request-code/' . ($ressource['slug'] ?? '')) ?>"
                  class="btn-primary" style="display:block;text-align:center;margin-top:1.5rem;padding:1rem 1.5rem;font-size:1rem">
                 Vérifier et télécharger
               </a>
-            <?php else: ?>
+            <?php elseif ($videoId === null): ?>
               <a href="<?= site_url('mon-compte/commandes') ?>"
                  class="btn-primary" style="display:block;text-align:center;margin-top:1.5rem;padding:1rem 1.5rem;font-size:1rem">
                 Voir mes commandes

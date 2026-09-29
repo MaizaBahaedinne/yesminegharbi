@@ -32,7 +32,7 @@ class RessourceModel extends Model
     protected $allowedFields = [
         'slug', 'titre', 'description_courte', 'description_longue',
         'type', 'profil', 'thematique', 'thematiques_secondaires',
-        'prix', 'fichier_path', 'cover_image',
+        'prix', 'fichier_path', 'video_url', 'cover_image',
         'is_premium', 'tag_badge', 'sort_order',
         'view_count', 'download_count',
     ];
@@ -61,6 +61,36 @@ class RessourceModel extends Model
     public function getBySlug(string $slug): ?array
     {
         return $this->where('slug', $slug)->first();
+    }
+
+    public static function youtubeId(?string $url): ?string
+    {
+        $url = trim((string) $url);
+        if ($url === '') {
+            return null;
+        }
+        if (preg_match('~^[A-Za-z0-9_-]{11}$~', $url)) {
+            return $url;
+        }
+        $pattern = '~^(?:https?://)?(?:www\.|m\.)?(?:youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/)|youtu\.be/)([A-Za-z0-9_-]{11})~i';
+
+        return preg_match($pattern, $url, $m) ? $m[1] : null;
+    }
+
+    /** Absolute path of a resource file: private uploads (writable/) first, then legacy public files. */
+    public static function resolveFilePath(?string $relative): ?string
+    {
+        $relative = ltrim(str_replace('\\', '/', (string) $relative), '/');
+        if ($relative === '' || str_contains($relative, '..')) {
+            return null;
+        }
+        foreach ([WRITEPATH, FCPATH] as $base) {
+            if (is_file($base . $relative)) {
+                return $base . $relative;
+            }
+        }
+
+        return null;
     }
 
     public function incrementViewCount(int $id): void
