@@ -26,3 +26,8 @@
 
 # Disable server signature start
 ServerSignature Off
+
+# Ask browsers to fetch any leftover http:// URLs over https (HTTPS requests only, so local dev is unaffected)
+<IfModule mod_headers.c>
+    Header always set Content-Security-Policy "upgrade-insecure-requests" "expr=%{HTTPS} == 'on' || %{HTTP:X-Forwarded-Proto} == 'https'"
+</IfModule>
