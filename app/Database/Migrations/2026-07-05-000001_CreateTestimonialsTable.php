@@ -22,7 +22,7 @@ class CreateTestimonialsTable extends Migration
             'updated_at'     => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('testimonials');
+        $this->forge->createTable('testimonials', true);
     }
 
     public function down(): void

@@ -18,7 +18,7 @@ class CreateNewsletterAndContactTables extends Migration
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('newsletter_subscribers');
+        $this->forge->createTable('newsletter_subscribers', true);
 
         // Contact messages
         $this->forge->addField([
@@ -32,7 +32,7 @@ class CreateNewsletterAndContactTables extends Migration
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('contact_messages');
+        $this->forge->createTable('contact_messages', true);
     }
 
     public function down(): void

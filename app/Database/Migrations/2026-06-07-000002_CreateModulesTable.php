@@ -19,7 +19,7 @@ class CreateModulesTable extends Migration
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('formation_id', 'formations', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('modules');
+        $this->forge->createTable('modules', true);
 
         // Leçons
         $this->forge->addField([
@@ -34,7 +34,7 @@ class CreateModulesTable extends Migration
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('module_id', 'modules', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('lecons');
+        $this->forge->createTable('lecons', true);
     }
 
     public function down(): void

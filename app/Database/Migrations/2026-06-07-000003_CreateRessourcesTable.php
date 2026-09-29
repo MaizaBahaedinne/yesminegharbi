@@ -26,7 +26,7 @@ class CreateRessourcesTable extends Migration
             'updated_at'         => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('ressources');
+        $this->forge->createTable('ressources', true);
     }
 
     public function down(): void

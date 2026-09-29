@@ -8,6 +8,10 @@ class CreateSettingsTable extends Migration
 {
     public function up(): void
     {
+        if ($this->db->tableExists('settings')) {
+            return;
+        }
+
         $this->forge->addField([
             'key'        => ['type' => 'VARCHAR', 'constraint' => 100],
             'value'      => ['type' => 'TEXT', 'null' => true],

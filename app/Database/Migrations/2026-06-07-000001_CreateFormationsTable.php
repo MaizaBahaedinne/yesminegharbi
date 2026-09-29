@@ -27,7 +27,7 @@ class CreateFormationsTable extends Migration
             'updated_at'          => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('formations');
+        $this->forge->createTable('formations', true);
     }
 
     public function down(): void
