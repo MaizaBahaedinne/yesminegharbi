@@ -1,0 +1,17 @@
+# Secrets / environment-specific config
+.env
+app/Config/Database.php
+
+# Runtime data
+writable/cache/*
+writable/logs/*
+writable/session/*
+writable/debugbar/*
+!writable/**/index.html
+!writable/**/.htaccess
+session/
+debugbar/
+logs/
+
+# Local debug scripts
+tmp_*.php
