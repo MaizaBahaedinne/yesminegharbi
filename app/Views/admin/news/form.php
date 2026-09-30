@@ -104,11 +104,7 @@
                     [{ indent: '-1' }, { indent: '+1' }],
                     ['blockquote', 'link'],
                     ['clean']
-                ],
-                handlers: {
-                    undo: function () { this.quill.history.undo(); },
-                    redo: function () { this.quill.history.redo(); }
-                }
+                ]
             },
             history: { delay: 800, maxStack: 100, userOnly: true }
         }

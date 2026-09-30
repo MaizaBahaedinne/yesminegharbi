@@ -14,8 +14,8 @@ if (($article['slug'] ?? '') === 'checklist-diagnostic-linkedin') {
     $content
   );
   $content = preg_replace_callback(
-    '~(Problème majeur si score\s*&lt;\s*\d+\s*:?)\s*(.*?)(?=<h2>|$)~isu',
-    static fn (array $match): string => '<blockquote><strong>' . $match[1] . '</strong> ' . trim($match[2]) . '</blockquote>',
+    '~(Problème majeur si score\s*(?:&lt;|<)\s*\d+\s*:?)\s*(.*?)(?=<h2>|$)~isu',
+    static fn (array $match): string => '<blockquote><strong>' . htmlspecialchars($match[1], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</strong> ' . trim($match[2]) . '</blockquote>',
     $content
   );
 } else {
