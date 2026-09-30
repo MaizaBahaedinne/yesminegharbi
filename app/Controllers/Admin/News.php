@@ -80,7 +80,7 @@ class News extends BaseAdminController
     private function formData(): array|string
     {
         $titre = trim(strip_tags((string) $this->request->getPost('titre')));
-        $contenu = trim(strip_tags((string) $this->request->getPost('contenu')));
+        $contenu = NewsArticleModel::sanitizeContent((string) $this->request->getPost('contenu'));
         $videoInput = trim((string) $this->request->getPost('video_urls'));
         $videoUrls = NewsArticleModel::facebookVideoUrls($videoInput);
 

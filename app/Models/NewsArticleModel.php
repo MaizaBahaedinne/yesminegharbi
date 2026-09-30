@@ -59,4 +59,63 @@ class NewsArticleModel extends Model
         $decoded = json_decode((string) $raw, true);
         return is_array($decoded) ? self::facebookVideoUrls(implode("\n", $decoded)) : self::facebookVideoUrls($raw);
     }
+
+    public static function sanitizeContent(string $html): string
+    {
+        $allowed = ['p', 'br', 'h2', 'h3', 'strong', 'b', 'em', 'i', 'u', 'ul', 'ol', 'li', 'blockquote', 'a'];
+        $document = new \DOMDocument('1.0', 'UTF-8');
+        $previous = libxml_use_internal_errors(true);
+        $document->loadHTML('<?xml encoding="utf-8" ?><div>' . $html . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        $root = $document->getElementsByTagName('div')->item(0);
+        if (! $root) {
+            return '';
+        }
+
+        $clean = static function (\DOMNode $parent) use (&$clean, $allowed): void {
+            for ($node = $parent->firstChild; $node !== null;) {
+                $next = $node->nextSibling;
+                if ($node instanceof \DOMElement) {
+                    $tag = strtolower($node->tagName);
+                    if (! in_array($tag, $allowed, true)) {
+                        if (in_array($tag, ['script', 'style', 'iframe', 'object', 'embed', 'svg', 'math'], true)) {
+                            $parent->removeChild($node);
+                        } else {
+                            while ($node->firstChild) {
+                                $parent->insertBefore($node->firstChild, $node);
+                            }
+                            $parent->removeChild($node);
+                        }
+                    } else {
+                        $href = $tag === 'a' ? trim((string) $node->getAttribute('href')) : '';
+                        foreach (iterator_to_array($node->attributes) as $attribute) {
+                            $node->removeAttributeNode($attribute);
+                        }
+                        if ($tag === 'a') {
+                            if (filter_var($href, FILTER_VALIDATE_URL) && in_array(strtolower((string) parse_url($href, PHP_URL_SCHEME)), ['http', 'https'], true)) {
+                                $node->setAttribute('href', $href);
+                            } else {
+                                $node->removeAttribute('href');
+                            }
+                            $node->setAttribute('rel', 'noopener noreferrer');
+                        }
+                        $clean($node);
+                    }
+                } elseif ($node->nodeType !== XML_TEXT_NODE) {
+                    $parent->removeChild($node);
+                }
+                $node = $next;
+            }
+        };
+
+        $clean($root);
+        $result = '';
+        foreach ($root->childNodes as $child) {
+            $result .= $document->saveHTML($child);
+        }
+
+        return trim($result);
+    }
 }
