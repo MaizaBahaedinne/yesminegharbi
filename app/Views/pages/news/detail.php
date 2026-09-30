@@ -1,5 +1,17 @@
 <?php
-$paragraphs = preg_split('/\R{2,}/u', trim((string) $article['contenu'])) ?: [];
+$content = html_entity_decode((string) $article['contenu'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+$content = preg_replace_callback(
+  '~(?<![\p{L}\d>])([4-6]\.\s*[^<\r\n]{5,120}?\(/\d+\))~u',
+  static fn (array $match): string => '<h2>' . htmlspecialchars($match[1], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</h2>',
+  $content
+);
+$content = preg_replace('/\s*•\s*/u', '<br>• ', $content);
+$content = \App\Models\NewsArticleModel::sanitizeContent($content);
+$content = preg_replace_callback(
+  '~(Problème majeur si score\s*&lt;\s*\d+\s*:?)~iu',
+  static fn (array $match): string => '<br><strong>' . $match[1] . '</strong>',
+  $content
+);
 ?>
 <article>
   <header class="page-header" style="background:var(--noir);color:#fff">
@@ -16,11 +28,7 @@ $paragraphs = preg_split('/\R{2,}/u', trim((string) $article['contenu'])) ?: [];
 
   <section>
     <div style="max-width:800px;margin:0 auto">
-      <div style="font-size:17px;line-height:1.9;color:#343434">
-        <?php foreach ($paragraphs as $paragraph): ?>
-          <?php if (trim($paragraph) !== ''): ?><p style="margin:0 0 1.25rem"><?= nl2br(esc(trim($paragraph))) ?></p><?php endif; ?>
-        <?php endforeach; ?>
-      </div>
+      <div class="news-article-content" style="font-size:17px;line-height:1.9;color:#343434"><?= $content ?></div>
 
       <?php foreach ($videoUrls as $index => $videoUrl): ?>
         <?php $embedUrl = 'https://www.facebook.com/plugins/video.php?href=' . rawurlencode($videoUrl) . '&show_text=false&width=640'; ?>
@@ -38,3 +46,10 @@ $paragraphs = preg_split('/\R{2,}/u', trim((string) $article['contenu'])) ?: [];
     </div>
   </section>
 </article>
+
+<style>
+  .news-article-content h2{font-family:'Playfair Display',serif;font-size:23px;line-height:1.35;color:var(--noir);margin:2.25rem 0 .75rem;padding-bottom:.45rem;border-bottom:1px solid var(--beige-dark)}
+  .news-article-content p{margin:0 0 1.25rem}
+  .news-article-content blockquote{margin:1rem 0;padding:.75rem 1rem;border-left:3px solid var(--rouge);background:var(--beige);color:var(--gris)}
+  @media(max-width:600px){.news-article-content h2{font-size:20px}}
+</style>
