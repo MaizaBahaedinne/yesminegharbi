@@ -41,7 +41,7 @@
                             <button type="button" data-command="unlink" title="Retirer le lien" aria-label="Retirer le lien"><i class="fa-solid fa-link-slash"></i></button>
                         </div>
                         <div id="news-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Contenu de l’article" style="min-height:360px;padding:20px;line-height:1.75;outline:none" data-placeholder="Rédigez votre article ici…"><?= old('contenu', $article['contenu'] ?? '') ?></div>
-                        <textarea id="news-content" name="contenu" hidden required><?= esc(old('contenu', $article['contenu'] ?? '')) ?></textarea>
+                        <textarea id="news-content" name="contenu" hidden><?= esc(old('contenu', $article['contenu'] ?? '')) ?></textarea>
                     </div>
                     <small style="color:#777">Écrivez et structurez l’article avec les outils. Le lecteur verra cette mise en forme. Les vidéos Facebook restent dans le champ dédié ci-dessous.</small>
                 </div>
