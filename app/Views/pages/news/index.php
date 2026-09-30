@@ -18,7 +18,11 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
         <?php foreach ($articles as $article): ?>
           <?php $videos = \App\Models\NewsArticleModel::videoUrlsFromStored($article['video_urls'] ?? ''); ?>
-          <article style="background:#fff;border:1px solid var(--beige-dark);border-radius:12px;padding:24px;display:flex;flex-direction:column;min-height:240px">
+          <article style="background:#fff;border:1px solid var(--beige-dark);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:240px">
+            <a href="<?= site_url('actualites/' . $article['slug']) ?>" tabindex="-1" aria-hidden="true" style="display:block;aspect-ratio:16/9;background:var(--beige);overflow:hidden">
+              <img src="<?= base_url(esc($article['thumbnail'] ?: 'assets/img/yesmine-hero.png')) ?>" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover">
+            </a>
+            <div style="padding:20px 24px 24px;display:flex;flex:1;flex-direction:column">
             <div style="display:flex;align-items:center;gap:8px;color:var(--gris);font-size:12px;margin-bottom:14px">
               <span style="color:var(--rouge);font-weight:700;text-transform:uppercase">Article</span>
               <span aria-hidden="true">·</span>
@@ -28,6 +32,7 @@
             <h2 style="font-family:'Playfair Display',serif;font-size:23px;line-height:1.25;margin:0 0 12px"><?= esc($article['titre']) ?></h2>
             <p style="color:var(--gris);font-size:14px;line-height:1.7;margin:0 0 24px;flex:1"><?= esc($article['extrait'] ?: mb_substr(trim(strip_tags($article['contenu'])), 0, 180) . '…') ?></p>
             <a href="<?= site_url('actualites/' . $article['slug']) ?>" style="color:var(--rouge);font-weight:700;font-size:14px;text-decoration:none">Lire l’article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
           </article>
         <?php endforeach; ?>
       </div>

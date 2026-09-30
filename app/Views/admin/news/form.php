@@ -5,7 +5,7 @@
         <a href="<?= base_url('admin/news') ?>" class="btn btn-secondary btn-sm">← Retour</a>
     </div>
     <div style="padding:1.5rem">
-        <form action="<?= $isEdit ? base_url('admin/news/' . $article['id'] . '/update') : base_url('admin/news/store') ?>" method="post">
+        <form action="<?= $isEdit ? base_url('admin/news/' . $article['id'] . '/update') : base_url('admin/news/store') ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field() ?>
             <div class="form-grid">
                 <div class="form-group full">
@@ -23,6 +23,20 @@
                 <div class="form-group full">
                     <label for="news-excerpt">Résumé (facultatif)</label>
                     <textarea id="news-excerpt" name="extrait" rows="3" maxlength="1000" placeholder="Résumé visible dans la liste des articles"><?= esc(old('extrait', $article['extrait'] ?? '')) ?></textarea>
+                </div>
+                <div class="form-group full">
+                    <label for="news-thumbnail">Miniature de l’article *</label>
+                    <?php if (!empty($article['thumbnail'])): ?>
+                        <div style="max-width:420px;margin-bottom:12px">
+                            <img src="<?= base_url(esc($article['thumbnail'])) ?>" alt="Miniature actuelle de l’article" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid #ddd">
+                            <small style="display:block;color:#777;margin-top:5px">Choisissez une nouvelle image pour remplacer la miniature actuelle.</small>
+                        </div>
+                    <?php endif; ?>
+                    <input id="news-thumbnail" type="file" name="thumbnail" accept="image/jpeg,image/png,image/webp" <?= empty($article['thumbnail']) ? 'required' : '' ?>>
+                    <small style="color:#777">JPG, PNG ou WebP · 5 Mo maximum · format conseillé : paysage 16:9.</small>
+                    <div id="thumbnailPreview" style="display:none;max-width:420px;margin-top:12px">
+                        <img alt="Aperçu de la nouvelle miniature" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid #ddd">
+                    </div>
                 </div>
                 <div class="form-group full">
                     <label for="news-content">Article *</label>
@@ -69,6 +83,22 @@
     #news-editor ul,#news-editor ol{padding-left:1.5rem}
 </style>
 <script>
+(function () {
+    const input = document.getElementById('news-thumbnail');
+    const preview = document.querySelector('#thumbnailPreview img');
+    const previewWrap = document.getElementById('thumbnailPreview');
+    input.addEventListener('change', function () {
+        const file = input.files && input.files[0];
+        if (!file) {
+            previewWrap.style.display = 'none';
+            preview.removeAttribute('src');
+            return;
+        }
+        preview.src = URL.createObjectURL(file);
+        previewWrap.style.display = 'block';
+    });
+})();
+
 (function () {
     const editor = document.getElementById('news-editor');
     const field = document.getElementById('news-content');

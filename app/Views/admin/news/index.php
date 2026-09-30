@@ -11,7 +11,10 @@
         <?php foreach ($articles as $article): ?>
             <?php $videos = \App\Models\NewsArticleModel::videoUrlsFromStored($article['video_urls'] ?? ''); ?>
             <tr>
-                <td><strong><?= esc($article['titre']) ?></strong><br><small style="color:#888">/actualites/<?= esc($article['slug']) ?></small></td>
+                <td style="display:flex;align-items:center;gap:12px;min-width:260px">
+                    <img src="<?= base_url(esc($article['thumbnail'] ?: 'assets/img/yesmine-hero.png')) ?>" alt="" width="104" height="59" style="object-fit:cover;border-radius:6px;border:1px solid #eee;flex-shrink:0">
+                    <span><strong><?= esc($article['titre']) ?></strong><br><small style="color:#888">/actualites/<?= esc($article['slug']) ?></small></span>
+                </td>
                 <td><span class="badge <?= $article['statut'] === 'publie' ? 'badge-green' : 'badge-grey' ?>"><?= $article['statut'] === 'publie' ? 'Publié' : 'Brouillon' ?></span></td>
                 <td><?= !empty($article['published_at']) ? esc(date('d/m/Y H:i', strtotime($article['published_at']))) : '—' ?></td>
                 <td><?= count($videos) ?></td>

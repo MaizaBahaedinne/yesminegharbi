@@ -21,6 +21,7 @@ $content = preg_replace_callback(
         <time datetime="<?= esc(date('c', strtotime($article['published_at']))) ?>"><?= esc(date('d/m/Y', strtotime($article['published_at']))) ?></time>
         <?php if ($videoUrls): ?><span> · <i class="fa-brands fa-facebook" aria-hidden="true"></i> <?= count($videoUrls) ?> vidéo<?= count($videoUrls) > 1 ? 's' : '' ?></span><?php endif; ?>
       </div>
+      <img src="<?= base_url(esc($article['thumbnail'] ?: 'assets/img/yesmine-hero.png')) ?>" alt="Miniature : <?= esc($article['titre']) ?>" fetchpriority="high" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-top:20px">
       <h1 style="color:#fff;margin-top:12px"><?= esc($article['titre']) ?></h1>
       <?php if (!empty($article['extrait'])): ?><p style="color:rgba(255,255,255,.75);font-size:17px;line-height:1.65;margin-top:16px"><?= esc($article['extrait']) ?></p><?php endif; ?>
     </div>

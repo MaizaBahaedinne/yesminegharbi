@@ -14,7 +14,7 @@
   <meta property="og:title"       content="<?= esc($page_title ?? 'Yesmine Gharbi') ?>">
   <meta property="og:description" content="<?= esc($page_description ?? '') ?>">
   <meta property="og:type"        content="website">
-  <meta property="og:image"       content="<?= base_url('assets/images/og.jpg') ?>">
+  <meta property="og:image"       content="<?= esc($og_image ?? base_url('assets/img/yesmine-hero.png')) ?>">
   <title><?= esc($page_title ?? 'Yesmine Gharbi') ?></title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">

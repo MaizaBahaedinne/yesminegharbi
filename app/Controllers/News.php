@@ -35,6 +35,7 @@ class News extends BaseController
         return $this->render('pages/news/detail', [
             'page_title'       => $article['titre'] . ' — Actualités · Yesmine Gharbi',
             'page_description' => $article['extrait'] ?: mb_substr(trim(strip_tags($article['contenu'])), 0, 160),
+            'og_image'         => base_url($article['thumbnail'] ?: 'assets/img/yesmine-hero.png'),
             'article'          => $article,
             'videoUrls'        => NewsArticleModel::videoUrlsFromStored($article['video_urls'] ?? ''),
         ]);

@@ -9,7 +9,7 @@ class NewsArticleModel extends Model
     protected $table         = 'news_articles';
     protected $primaryKey    = 'id';
     protected $returnType    = 'array';
-    protected $allowedFields = ['slug', 'titre', 'extrait', 'contenu', 'video_urls', 'statut', 'published_at'];
+    protected $allowedFields = ['slug', 'titre', 'extrait', 'thumbnail', 'contenu', 'video_urls', 'statut', 'published_at'];
     protected $useTimestamps = true;
 
     public function published(): array
