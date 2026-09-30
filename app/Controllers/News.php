@@ -32,6 +32,11 @@ class News extends BaseController
             throw PageNotFoundException::forPageNotFound();
         }
 
+        $canonicalSlug = NewsArticleModel::routeSlug((string) $article['slug']);
+        if ($slug !== $canonicalSlug) {
+            return redirect()->to(site_url('actualites/' . $canonicalSlug), 301);
+        }
+
         return $this->render('pages/news/detail', [
             'page_title'       => $article['titre'] . ' — Actualités · Yesmine Gharbi',
             'page_description' => $article['extrait'] ?: mb_substr(trim(strip_tags($article['contenu'])), 0, 160),

@@ -13,7 +13,7 @@
             <tr>
                 <td style="display:flex;align-items:center;gap:12px;min-width:260px">
                     <img src="<?= base_url(esc($article['thumbnail'] ?: 'assets/img/yesmine-hero.png')) ?>" alt="" width="104" height="59" style="object-fit:cover;border-radius:6px;border:1px solid #eee;flex-shrink:0">
-                    <span><strong><?= esc($article['titre']) ?></strong><br><small style="color:#888">/actualites/<?= esc($article['slug']) ?></small></span>
+                    <span><strong><?= esc($article['titre']) ?></strong><br><small style="color:#888">/actualites/<?= esc(\App\Models\NewsArticleModel::routeSlug($article['slug'])) ?></small></span>
                 </td>
                 <td><span class="badge <?= $article['statut'] === 'publie' ? 'badge-green' : 'badge-grey' ?>"><?= $article['statut'] === 'publie' ? 'Publié' : 'Brouillon' ?></span></td>
                 <td><?= !empty($article['published_at']) ? esc(date('d/m/Y H:i', strtotime($article['published_at']))) : '—' ?></td>
@@ -21,7 +21,7 @@
                 <td style="display:flex;gap:.5rem;align-items:center">
                     <a href="<?= base_url('admin/news/' . $article['id'] . '/edit') ?>" class="btn btn-secondary btn-sm">Modifier</a>
                     <?php if ($article['statut'] === 'publie' && strtotime($article['published_at']) <= time()): ?>
-                    <a href="<?= site_url('actualites/' . $article['slug']) ?>" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Voir"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    <a href="<?= site_url('actualites/' . \App\Models\NewsArticleModel::routeSlug($article['slug'])) ?>" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Voir"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                     <?php endif; ?>
                     <form action="<?= base_url('admin/news/' . $article['id'] . '/delete') ?>" method="post" onsubmit="return confirm('Supprimer cet article ?')">
                         <?= csrf_field() ?>

@@ -22,10 +22,35 @@ class NewsArticleModel extends Model
 
     public function bySlug(string $slug): ?array
     {
-        return $this->where('slug', $slug)
+        $article = $this->where('slug', $slug)
             ->where('statut', 'publie')
             ->where('published_at <=', date('Y-m-d H:i:s'))
             ->first();
+
+        if ($article) {
+            return $article;
+        }
+
+        foreach ($this->published() as $candidate) {
+            if (self::routeSlug((string) $candidate['slug']) === self::routeSlug($slug)) {
+                return $candidate;
+            }
+        }
+
+        return null;
+    }
+
+    public static function routeSlug(string $value): string
+    {
+        if (function_exists('transliterator_transliterate')) {
+            $transliterated = transliterator_transliterate('Any-Latin; Latin-ASCII', $value);
+        } else {
+            $transliterated = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $value);
+        }
+
+        $transliterated = strtolower((string) ($transliterated ?: $value));
+
+        return trim(preg_replace('/[^a-z0-9]+/', '-', $transliterated) ?? '', '-');
     }
 
     public static function facebookVideoUrls(?string $raw): array
