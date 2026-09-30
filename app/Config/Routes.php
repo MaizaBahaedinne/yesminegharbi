@@ -21,6 +21,8 @@ $routes->setAutoRoute(false);
 $routes->get('/',                        'Home::index',                    ['as' => 'home']);
 $routes->get('/formations',              'Formations::index',               ['as' => 'formations']);
 $routes->get('/formations/(:segment)',   'Formations::detail/$1',           ['as' => 'formation-detail']);
+$routes->get('/actualites',               'News::index',                      ['as' => 'news']);
+$routes->get('/actualites/(:segment)',    'News::detail/$1',                  ['as' => 'news-detail']);
 $routes->get('/ressources',              'Ressources::index',               ['as' => 'ressources']);
 $routes->get('/ressources-gratuites',    'Ressources::gratuites',           ['as' => 'ressources-gratuites']);
 $routes->get('/ressources-premium',      'Ressources::premium',             ['as' => 'ressources-premium']);
@@ -117,6 +119,14 @@ $routes->group('admin', ['filter' => 'adminauth', 'namespace' => 'App\Controller
     $routes->get('ressources/(:num)/edit','Ressources::edit/$1',            ['as' => 'admin-ressource-edit']);
     $routes->post('ressources/(:num)/update','Ressources::update/$1',       ['as' => 'admin-ressource-update']);
     $routes->post('ressources/(:num)/delete','Ressources::delete/$1',       ['as' => 'admin-ressource-delete']);
+
+    // Articles
+    $routes->get('news',                  'News::index',                      ['as' => 'admin-news']);
+    $routes->get('news/new',              'News::create',                     ['as' => 'admin-news-new']);
+    $routes->post('news/store',           'News::store',                      ['as' => 'admin-news-store']);
+    $routes->get('news/(:num)/edit',      'News::edit/$1',                    ['as' => 'admin-news-edit']);
+    $routes->post('news/(:num)/update',   'News::update/$1',                  ['as' => 'admin-news-update']);
+    $routes->post('news/(:num)/delete',   'News::delete/$1',                  ['as' => 'admin-news-delete']);
 
     // Newsletter & Messages
     $routes->get('newsletter',           'Newsletter::index',               ['as' => 'admin-newsletter']);

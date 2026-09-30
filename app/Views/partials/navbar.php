@@ -15,6 +15,7 @@ $initials = $initials ?: 'U';
 
   <ul class="nav-links">
     <li><a href="<?= site_url('formations') ?>"           class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations</a></li>
+    <li><a href="<?= site_url('actualites') ?>"            class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités</a></li>
     <li><a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources</a></li>
     <li><a href="<?= site_url('cv-ats') ?>"               class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS</a></li>
     <li><a href="<?= site_url('entreprises') ?>"          class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises</a></li>
@@ -48,6 +49,7 @@ $initials = $initials ?: 'U';
 <div class="nav-mobile" id="navMobile" aria-hidden="true">
   <a href="<?= site_url('/') ?>">Accueil</a>
   <a href="<?= site_url('formations') ?>">Formations</a>
+  <a href="<?= site_url('actualites') ?>">Actualités</a>
   <a href="<?= site_url('ressources') ?>">Ressources</a>
   <a href="<?= site_url('cv-ats') ?>">CV ATS</a>
   <a href="<?= site_url('entreprises') ?>">Entreprises</a>
