@@ -1,18 +1,27 @@
 <?php
 $thumbnailUrl = base_url($article['thumbnail'] ?: 'assets/img/yesmine-hero.png');
 $content = html_entity_decode((string) $article['contenu'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-$content = preg_replace_callback(
-  '~(?<![\p{L}\d>])([4-6]\.\s*[^<\r\n]{5,120}?\(/\d+\))~u',
-  static fn (array $match): string => '<h2>' . htmlspecialchars($match[1], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</h2>',
-  $content
-);
-$content = preg_replace('/\s*•\s*/u', '<br>• ', $content);
+if (($article['slug'] ?? '') === 'checklist-diagnostic-linkedin') {
+  $content = preg_replace('~</?blockquote\b[^>]*>~i', '', $content);
+  $content = preg_replace_callback(
+    '~(?<![\p{L}\d])([4-6]\.\s*[^<\r\n]{5,120}?\(/\d+\))~u',
+    static fn (array $match): string => '<h2>' . $match[1] . '</h2>',
+    $content
+  );
+  $content = preg_replace_callback(
+    '~•\s*(.*?)(?=•|Problème majeur si score|<h2>|[4-6]\.\s|$)~su',
+    static fn (array $match): string => '<p>• ' . trim($match[1]) . '</p>',
+    $content
+  );
+  $content = preg_replace_callback(
+    '~(Problème majeur si score\s*&lt;\s*\d+\s*:?)\s*(.*?)(?=<h2>|$)~isu',
+    static fn (array $match): string => '<blockquote><strong>' . $match[1] . '</strong> ' . trim($match[2]) . '</blockquote>',
+    $content
+  );
+} else {
+  $content = preg_replace('/\s*•\s*/u', '<br>• ', $content);
+}
 $content = \App\Models\NewsArticleModel::sanitizeContent($content);
-$content = preg_replace_callback(
-  '~(Problème majeur si score\s*&lt;\s*\d+\s*:?)~iu',
-  static fn (array $match): string => '<br><strong>' . $match[1] . '</strong>',
-  $content
-);
 ?>
 <article>
   <header class="page-header news-hero" style="background-image:linear-gradient(90deg,rgba(15,15,15,.88),rgba(15,15,15,.38)),url('<?= esc($thumbnailUrl) ?>');color:#fff">

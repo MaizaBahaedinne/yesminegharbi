@@ -62,7 +62,7 @@ class NewsArticleModel extends Model
 
     public static function sanitizeContent(string $html): string
     {
-        $allowed = ['p', 'br', 'h2', 'h3', 'strong', 'b', 'em', 'i', 'u', 'ul', 'ol', 'li', 'blockquote', 'a'];
+        $allowed = ['p', 'br', 'h2', 'h3', 'h4', 'strong', 'b', 'em', 'i', 'u', 's', 'strike', 'ul', 'ol', 'li', 'blockquote', 'a'];
         $document = new \DOMDocument('1.0', 'UTF-8');
         $previous = libxml_use_internal_errors(true);
         $document->loadHTML('<?xml encoding="utf-8" ?><div>' . $html . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -73,6 +73,43 @@ class NewsArticleModel extends Model
         if (! $root) {
             return '';
         }
+
+        $normalizeLists = static function (\DOMNode $parent) use (&$normalizeLists, $document): void {
+            foreach (iterator_to_array($parent->childNodes) as $child) {
+                if (! $child instanceof \DOMElement) {
+                    continue;
+                }
+                $normalizeLists($child);
+                if (strtolower($child->tagName) !== 'ol') {
+                    continue;
+                }
+
+                $fragment = $document->createDocumentFragment();
+                $list = null;
+                $listType = null;
+                foreach (iterator_to_array($child->childNodes) as $item) {
+                    if (! $item instanceof \DOMElement || strtolower($item->tagName) !== 'li') {
+                        $fragment->appendChild($item);
+                        continue;
+                    }
+
+                    $type = $item->getAttribute('data-list') === 'bullet' ? 'ul' : 'ol';
+                    if ($listType !== $type) {
+                        $listType = $type;
+                        $list = $document->createElement($type);
+                        $fragment->appendChild($list);
+                    }
+                    $newItem = $document->createElement('li');
+                    while ($item->firstChild) {
+                        $newItem->appendChild($item->firstChild);
+                    }
+                    $list->appendChild($newItem);
+                }
+
+                $parent->replaceChild($fragment, $child);
+            }
+        };
+        $normalizeLists($root);
 
         $clean = static function (\DOMNode $parent) use (&$clean, $allowed): void {
             for ($node = $parent->firstChild; $node !== null;) {
