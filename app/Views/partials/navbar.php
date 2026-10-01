@@ -11,56 +11,67 @@ if ($displayName !== '') {
 $initials = $initials ?: 'U';
 ?>
 <nav>
-  <a href="<?= site_url('/') ?>" class="nav-logo">Yesmine <span>Gharbi</span></a>
+  <a href="<?= site_url('/') ?>" class="nav-logo" aria-label="Yesmine Gharbi, accueil">Yesmine <span>Gharbi</span><small>RECRUTEMENT · CARRIÈRE</small></a>
 
   <ul class="nav-links">
-    <li><a href="<?= site_url('formations') ?>"           class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations</a></li>
-    <li><a href="<?= site_url('actualites') ?>"            class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités</a></li>
+    <li><a href="<?= site_url('formations') ?>" class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations</a></li>
+    <li><a href="<?= site_url('actualites') ?>" class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités</a></li>
     <li><a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources</a></li>
-    <li><a href="<?= site_url('cv-ats') ?>"               class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS</a></li>
-    <li><a href="<?= site_url('entreprises') ?>"          class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises</a></li>
-    <li><a href="<?= site_url('a-propos') ?>"             class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos</a></li>
-    <li><a href="<?= site_url('contact') ?>" class="nav-cta">Me contacter</a></li>
+    <li><a href="<?= site_url('cv-ats') ?>" class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS</a></li>
+    <li><a href="<?= site_url('entreprises') ?>" class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises</a></li>
+    <li><a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos</a></li>
+    <li class="nav-actions">
+      <a href="<?= site_url('contact') ?>" class="nav-cta"><i class="fa-regular fa-paper-plane" aria-hidden="true"></i><span>Me contacter</span></a>
     <?php if (!empty($isLoggedIn)): ?>
-      <li style="position:relative">
-        <button type="button" id="userMenuBtn" aria-expanded="false" style="display:flex;align-items:center;gap:.6rem;padding:.5rem .8rem;border-radius:999px;background:var(--beige);color:var(--noir);text-decoration:none;border:0;cursor:pointer">
-          <span style="width:34px;height:34px;border-radius:50%;background:var(--rouge);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem"><?= esc($initials) ?></span>
-          <span style="font-weight:600"><?= esc($displayName ?: 'Mon compte') ?></span>
-          <span style="font-size:.75rem;color:var(--gris)"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+      <div class="nav-account">
+        <button type="button" id="userMenuBtn" class="nav-account-trigger" aria-expanded="false" aria-controls="userMenuPanel">
+          <span class="nav-avatar"><?= esc($initials) ?></span>
+          <span class="nav-account-name"><?= esc($displayName ?: 'Mon compte') ?></span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
         </button>
-        <div id="userMenuPanel" style="position:absolute;top:calc(100% + 10px);right:0;min-width:220px;background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12);padding:.45rem;display:none;z-index:1200">
-          <a href="<?= site_url('mon-compte') ?>" style="display:block;padding:.7rem .8rem;border-radius:8px;color:var(--noir);text-decoration:none">Gestion de mon profil</a>
-          <a href="<?= site_url('mon-compte/commandes') ?>" style="display:block;padding:.7rem .8rem;border-radius:8px;color:var(--noir);text-decoration:none">Mes commandes</a>
-          <a href="<?= site_url('mon-compte/cv') ?>" style="display:block;padding:.7rem .8rem;border-radius:8px;color:var(--noir);text-decoration:none">Mes CV</a>
-          <a href="<?= site_url('deconnexion') ?>" style="display:block;padding:.7rem .8rem;border-radius:8px;color:var(--rouge);text-decoration:none">Se déconnecter</a>
+        <div id="userMenuPanel" class="nav-account-menu" hidden>
+          <span class="nav-account-heading">Mon espace</span>
+          <a href="<?= site_url('mon-compte') ?>"><i class="fa-regular fa-user" aria-hidden="true"></i> Gestion de mon profil</a>
+          <a href="<?= site_url('mon-compte/commandes') ?>"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Mes commandes</a>
+          <a href="<?= site_url('mon-compte/cv') ?>"><i class="fa-regular fa-file-lines" aria-hidden="true"></i> Mes CV</a>
+          <a href="<?= site_url('deconnexion') ?>" class="nav-account-logout"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Se déconnecter</a>
         </div>
-      </li>
+      </div>
     <?php else: ?>
-      <li><a href="<?= site_url('connexion') ?>" style="padding:.65rem 1rem;border-radius:999px;background:var(--rouge);color:#fff;font-weight:600;text-decoration:none">Connexion / Inscription</a></li>
+      <a href="<?= site_url('connexion') ?>" class="nav-login">Connexion</a>
     <?php endif; ?>
+    </li>
   </ul>
 
-  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
+  <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMobile">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </nav>
 
-<!-- Mobile drawer -->
-<div class="nav-mobile" id="navMobile" aria-hidden="true">
-  <a href="<?= site_url('/') ?>">Accueil</a>
-  <a href="<?= site_url('formations') ?>">Formations</a>
-  <a href="<?= site_url('actualites') ?>">Actualités</a>
-  <a href="<?= site_url('ressources') ?>">Ressources</a>
-  <a href="<?= site_url('cv-ats') ?>">CV ATS</a>
-  <a href="<?= site_url('entreprises') ?>">Entreprises</a>
-  <a href="<?= site_url('a-propos') ?>">À propos</a>
-  <?php if (!empty($isLoggedIn)): ?>
-    <a href="<?= site_url('mon-compte') ?>" style="display:flex;align-items:center;gap:.6rem;margin-top:12px">
-      <span style="width:34px;height:34px;border-radius:50%;background:var(--rouge);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem"><?= esc($initials) ?></span>
-      <span><?= esc($displayName ?: 'Mon compte') ?></span>
-    </a>
-  <?php else: ?>
-    <a href="<?= site_url('connexion') ?>" class="nav-cta" style="margin-top:12px;display:block;text-align:center;background:var(--rouge);color:#fff">Connexion / Inscription</a>
-  <?php endif; ?>
-  <a href="<?= site_url('contact') ?>" class="nav-cta" style="margin-top:12px;display:block;text-align:center">Me contacter</a>
+<div class="nav-mobile" id="navMobile" aria-hidden="true" inert>
+  <button type="button" class="nav-mobile-backdrop" data-close-mobile aria-label="Fermer le menu"></button>
+  <div class="nav-mobile-panel" role="dialog" aria-modal="true" aria-label="Navigation principale">
+    <div class="nav-mobile-head">
+      <a href="<?= site_url('/') ?>" class="nav-logo">Yesmine <span>Gharbi</span></a>
+      <button type="button" class="nav-mobile-close" data-close-mobile aria-label="Fermer le menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <span class="nav-mobile-label">Explorer</span>
+    <a href="<?= site_url('formations') ?>" class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="<?= site_url('actualites') ?>" class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="<?= site_url('cv-ats') ?>" class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="<?= site_url('entreprises') ?>" class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <div class="nav-mobile-actions">
+      <a href="<?= site_url('contact') ?>" class="nav-cta"><i class="fa-regular fa-paper-plane" aria-hidden="true"></i> Me contacter</a>
+      <?php if (!empty($isLoggedIn)): ?>
+        <a href="<?= site_url('mon-compte') ?>" class="nav-mobile-account"><span class="nav-avatar"><?= esc($initials) ?></span><?= esc($displayName ?: 'Mon compte') ?></a>
+        <a href="<?= site_url('mon-compte/commandes') ?>" class="nav-mobile-sub">Mes commandes</a>
+        <a href="<?= site_url('mon-compte/cv') ?>" class="nav-mobile-sub">Mes CV</a>
+        <a href="<?= site_url('deconnexion') ?>" class="nav-mobile-sub nav-account-logout">Se déconnecter</a>
+      <?php else: ?>
+        <a href="<?= site_url('connexion') ?>" class="nav-login">Connexion / Inscription</a>
+      <?php endif; ?>
+    </div>
+  </div>
 </div>
