@@ -169,7 +169,6 @@ body.nav-drawer-open{overflow:hidden}
   #main{padding-top:0}
   .nav-mobile-panel{padding-top:calc(var(--nav-h) + 18px)}
 }
-.nav-mobile a:last-child { border: none; }
 
 /* ─── PAGE OFFSET ────────────────────────────── */
 #main { padding-top: 0; }
