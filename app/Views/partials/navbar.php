@@ -15,9 +15,9 @@ $initials = $initials ?: 'U';
 
   <ul class="nav-links">
     <li><a href="<?= site_url('formations') ?>" class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations</a></li>
-    <li><a href="<?= site_url('actualites') ?>" class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités</a></li>
     <li><a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources</a></li>
     <li><a href="<?= site_url('cv-ats') ?>" class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS</a></li>
+    <li><a href="<?= site_url('actualites') ?>" class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités</a></li>
     <li><a href="<?= site_url('entreprises') ?>" class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises</a></li>
     <li><a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos</a></li>
     <li class="nav-actions">
@@ -57,9 +57,9 @@ $initials = $initials ?: 'U';
     </div>
     <span class="nav-mobile-label">Explorer</span>
     <a href="<?= site_url('formations') ?>" class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-    <a href="<?= site_url('actualites') ?>" class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('cv-ats') ?>" class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="<?= site_url('actualites') ?>" class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('entreprises') ?>" class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <div class="nav-mobile-actions">

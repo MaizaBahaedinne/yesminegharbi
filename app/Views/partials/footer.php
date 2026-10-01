@@ -3,8 +3,9 @@
 
   <ul class="footer-links">
     <li><a href="<?= site_url('formations') ?>">Formations</a></li>
-    <li><a href="<?= site_url('actualites') ?>">Actualités</a></li>
     <li><a href="<?= site_url('ressources') ?>">Ressources</a></li>
+    <li><a href="<?= site_url('cv-ats') ?>">CV ATS</a></li>
+    <li><a href="<?= site_url('actualites') ?>">Actualités</a></li>
     <li><a href="<?= site_url('entreprises') ?>">Entreprises</a></li>
     <li><a href="<?= site_url('a-propos') ?>">À propos</a></li>
     <li><a href="<?= site_url('contact') ?>">Contact</a></li>
