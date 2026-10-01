@@ -11,7 +11,7 @@ if ($displayName !== '') {
 $initials = $initials ?: 'U';
 ?>
 <nav>
-  <a href="<?= site_url('/') ?>" class="nav-logo" aria-label="Yesmine Gharbi, accueil">Yesmine <span>Gharbi</span><small>RECRUTEMENT · CARRIÈRE</small></a>
+  <a href="<?= site_url('/') ?>" class="nav-logo" aria-label="Yesmine Gharbi, accueil"><span class="nav-brand-name">Yesmine <span>Gharbi</span></span><small>COACHING · RECRUTEMENT &amp; CARRIÈRE</small></a>
 
   <ul class="nav-links">
     <li><a href="<?= site_url('formations') ?>" class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations</a></li>
@@ -52,7 +52,7 @@ $initials = $initials ?: 'U';
   <button type="button" class="nav-mobile-backdrop" data-close-mobile aria-label="Fermer le menu"></button>
   <div class="nav-mobile-panel" role="dialog" aria-modal="true" aria-label="Navigation principale">
     <div class="nav-mobile-head">
-      <a href="<?= site_url('/') ?>" class="nav-logo">Yesmine <span>Gharbi</span></a>
+      <a href="<?= site_url('/') ?>" class="nav-logo"><span class="nav-brand-name">Yesmine <span>Gharbi</span></span><small>COACHING · RECRUTEMENT &amp; CARRIÈRE</small></a>
       <button type="button" class="nav-mobile-close" data-close-mobile aria-label="Fermer le menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
     <span class="nav-mobile-label">Explorer</span>
