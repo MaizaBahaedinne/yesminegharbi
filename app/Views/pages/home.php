@@ -84,10 +84,7 @@ $iconeRessource = [
      TRUST BAND
      ============================================= -->
 <div class="trust-band">
-  <div class="trust-profile">
-    <strong>Yesmine Gharbi</strong>
-    <span>Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
-  </div>
+  <div class="trust-followers">
   <?php
   $nets = [
       ['key'=>'tiktok',    'label'=>'TikTok',    'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>'],
@@ -106,6 +103,23 @@ $iconeRessource = [
     <span><?= $n['svg'] ?> <?= $n['label'] ?></span>
   </a>
   <?php endforeach; ?>
+  </div>
+
+  <div class="trust-about" id="apropos">
+    <img src="<?= base_url('assets/img/yesmine.jpg') ?>" alt="Yesmine Gharbi" loading="lazy">
+    <div class="trust-about-content">
+      <h2>Yesmine Gharbi</h2>
+      <span class="trust-about-title">Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
+      <p>Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.</p>
+      <p>Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.</p>
+      <div class="social-links">
+        <a href="<?= esc(($settings['tiktok_url'] ?? '') ?: 'https://www.tiktok.com/@yesmine_gharbi') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok" aria-hidden="true"></i> TikTok</a>
+        <a href="<?= esc(($settings['instagram_url'] ?? '') ?: 'https://www.instagram.com/yesmine_gharbi/?hl=fr') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</a>
+        <a href="<?= esc(($settings['linkedin_url'] ?? '') ?: 'https://www.linkedin.com/in/yesmine-gharbi/') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        <a href="<?= esc(($settings['facebook_url'] ?? '') ?: 'https://www.facebook.com/yesmineegharbi/') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- =============================================
@@ -299,27 +313,6 @@ $iconeRessource = [
     </div>
     </div>
   <?php endif; ?>
-</section>
-
-<!-- =============================================
-     À PROPOS MINI
-     ============================================= -->
-<section class="section-alt" id="apropos">
-  <div class="apropos-mini">
-    <div class="apropos-photo">
-      <img src="<?= base_url('assets/img/yesmine.jpg') ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <div class="apropos-content">
-      <p>Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.</p>
-      <p>Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.</p>
-      <div class="social-links">
-        <a href="<?= esc(($settings['tiktok_url'] ?? '') ?: 'https://www.tiktok.com/@yesmine_gharbi') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok" aria-hidden="true"></i> TikTok</a>
-        <a href="<?= esc(($settings['instagram_url'] ?? '') ?: 'https://www.instagram.com/yesmine_gharbi/?hl=fr') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</a>
-        <a href="<?= esc(($settings['linkedin_url'] ?? '') ?: 'https://www.linkedin.com/in/yesmine-gharbi/') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
-        <a href="<?= esc(($settings['facebook_url'] ?? '') ?: 'https://www.facebook.com/yesmineegharbi/') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- =============================================
