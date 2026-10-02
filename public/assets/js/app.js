@@ -4,6 +4,24 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  document.querySelectorAll('.partners-section').forEach((section) => {
+    const track = section.querySelector('[data-carousel]');
+    if (!track) return;
+
+    section.querySelectorAll('.partner-scroll').forEach((button) => {
+      button.addEventListener('click', () => {
+        const direction = button.dataset.scroll === 'next' ? 1 : -1;
+        track.scrollBy({ left: direction * Math.max(track.clientWidth * 0.8, 220), behavior: 'smooth' });
+      });
+    });
+
+    track.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      track.scrollBy({ left: (event.key === 'ArrowRight' ? 1 : -1) * Math.max(track.clientWidth * 0.8, 220), behavior: 'smooth' });
+    });
+  });
+
   /* ─── Burger menu ──────────────────────────── */
   const burger    = document.getElementById('navBurger');
   const mobileNav = document.getElementById('navMobile');

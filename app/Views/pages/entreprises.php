@@ -93,46 +93,58 @@
 </section>
 
 <?php if (!empty($partners)): ?>
-<section class="partners-section" id="partenaires">
-  <div class="section-header">
-    <span class="section-tag">Ils nous font confiance</span>
-    <h2>Nos partenaires</h2>
-    <p class="section-desc">Des collaborations qui mettent en lumière les entreprises et leurs équipes.</p>
+<section class="partners-section partners-logos" id="partenaires">
+  <div class="partners-heading">
+    <div>
+      <span class="section-tag">Ils nous font confiance</span>
+      <h2>Nos partenaires</h2>
+    </div>
+    <div class="partners-controls" aria-label="Défilement des logos partenaires">
+      <button type="button" class="partner-scroll" data-scroll="previous" aria-label="Logos précédents"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+      <button type="button" class="partner-scroll" data-scroll="next" aria-label="Logos suivants"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
   </div>
-
-  <div class="partners-grid">
+  <div class="partners-carousel" data-carousel="partner-logos" tabindex="0" aria-label="Logos des partenaires">
     <?php foreach ($partners as $partner): ?>
-      <article class="partner-item">
-        <div class="partner-logo-wrap">
-          <img src="<?= base_url(esc($partner['logo'])) ?>" alt="Logo <?= esc($partner['nom']) ?>" loading="lazy">
-        </div>
-        <h3><?= esc($partner['nom']) ?></h3>
-        <?php $embedUrl = \App\Models\PartnerModel::instagramEmbedUrl($partner['instagram_url'] ?? ''); ?>
-        <?php if ($embedUrl): ?>
-          <div class="partner-reel">
-            <iframe src="<?= esc($embedUrl) ?>" title="Reel Instagram avec <?= esc($partner['nom']) ?>" loading="lazy" allowtransparency="true" allowfullscreen></iframe>
-          </div>
-          <a class="partner-instagram-link" href="<?= esc($partner['instagram_url']) ?>" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i> Voir sur Instagram
-          </a>
-        <?php endif; ?>
-      </article>
+      <div class="partner-logo-slide">
+        <img src="<?= base_url(esc($partner['logo'])) ?>" alt="Logo <?= esc($partner['nom']) ?>" loading="lazy">
+      </div>
     <?php endforeach; ?>
   </div>
 </section>
 
-<style>
-  .partners-section{background:#fff}
-  .partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),360px));justify-content:center;gap:24px;max-width:1120px;margin:0 auto}
-  .partner-item{min-width:0;padding:20px;border:1px solid var(--beige-dark);border-radius:10px;background:#fff}
-  .partner-logo-wrap{height:120px;display:flex;align-items:center;justify-content:center;padding:12px;background:#fff}
-  .partner-logo-wrap img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-  .partner-item h3{margin:12px 0 16px;text-align:center;font:600 16px 'DM Sans',sans-serif}
-  .partner-reel{position:relative;aspect-ratio:9/16;max-height:520px;background:#f6f3ef;border-radius:8px;overflow:hidden}
-  .partner-reel iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .partner-instagram-link{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:14px;color:var(--rouge);font-size:13px;font-weight:700}
-  @media(max-width:600px){.partners-grid{grid-template-columns:minmax(0,1fr)}.partner-item{padding:16px}}
-</style>
+<?php $partnersWithReels = array_values(array_filter($partners, static fn ($partner) => !empty($partner['instagram_url']))); ?>
+<?php if ($partnersWithReels): ?>
+<section class="partners-section partners-reels">
+  <div class="partners-heading">
+    <div>
+      <span class="section-tag">En collaboration</span>
+      <h2>Nos Reels Instagram</h2>
+      <p class="section-desc">Découvrez les collaborations avec nos partenaires.</p>
+    </div>
+    <div class="partners-controls" aria-label="Défilement des Reels Instagram">
+      <button type="button" class="partner-scroll" data-scroll="previous" aria-label="Reels précédents"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+      <button type="button" class="partner-scroll" data-scroll="next" aria-label="Reels suivants"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <div class="partners-carousel partners-reel-track" data-carousel="partner-reels" tabindex="0" aria-label="Reels Instagram des partenaires">
+    <?php foreach ($partnersWithReels as $partner): ?>
+      <?php $embedUrl = \App\Models\PartnerModel::instagramEmbedUrl($partner['instagram_url']); ?>
+      <?php if ($embedUrl): ?>
+        <article class="partner-reel-slide">
+          <div class="partner-reel-frame">
+            <iframe src="<?= esc($embedUrl) ?>" title="Reel Instagram avec <?= esc($partner['nom']) ?>" loading="lazy" allowtransparency="true" allowfullscreen></iframe>
+          </div>
+          <div class="partner-reel-caption">
+            <strong><?= esc($partner['nom']) ?></strong>
+            <a href="<?= esc($partner['instagram_url']) ?>" target="_blank" rel="noopener noreferrer" aria-label="Voir le Reel de <?= esc($partner['nom']) ?> sur Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          </div>
+        </article>
+      <?php endif; ?>
+    <?php endforeach; ?>
+  </div>
+</section>
+<?php endif; ?>
 <?php endif; ?>
 
 <!-- CTA Contact -->
