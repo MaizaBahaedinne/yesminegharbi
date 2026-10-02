@@ -106,7 +106,6 @@ $iconeRessource = [
   </div>
 
   <div class="trust-about" id="apropos">
-    <img src="<?= base_url('assets/img/yesmine-hero.png') ?>" alt="Yesmine Gharbi" loading="lazy">
     <div class="trust-about-content">
       <h2>Yesmine Gharbi</h2>
       <span class="trust-about-title">Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
