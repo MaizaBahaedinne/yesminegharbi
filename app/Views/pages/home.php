@@ -84,6 +84,10 @@ $iconeRessource = [
      TRUST BAND
      ============================================= -->
 <div class="trust-band">
+  <div class="trust-profile">
+    <strong>Yesmine Gharbi</strong>
+    <span>Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
+  </div>
   <?php
   $nets = [
       ['key'=>'tiktok',    'label'=>'TikTok',    'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>'],
@@ -281,12 +285,18 @@ $iconeRessource = [
     <a href="<?= site_url('entreprises') ?>" class="home-partners-more">En savoir plus <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
   </div>
   <?php if (!empty($partners)): ?>
-    <div class="home-partners-logos" aria-label="Logos de nos partenaires">
+    <div class="home-partners-carousel-wrap">
+    <div class="partners-controls" aria-label="Défilement des logos partenaires">
+      <button type="button" class="partner-scroll" data-scroll="previous" aria-label="Logos précédents"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+      <button type="button" class="partner-scroll" data-scroll="next" aria-label="Logos suivants"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+    <div class="home-partners-logos" data-carousel="home-partners" tabindex="0" aria-label="Carrousel des logos partenaires">
       <?php foreach ($partners as $partner): ?>
         <a href="<?= site_url('entreprises#partenaires') ?>" aria-label="Découvrir nos collaborations avec <?= esc($partner['nom']) ?>">
           <img src="<?= base_url(esc($partner['logo'])) ?>" alt="Logo <?= esc($partner['nom']) ?>" loading="lazy">
         </a>
       <?php endforeach; ?>
+    </div>
     </div>
   <?php endif; ?>
 </section>
@@ -300,8 +310,6 @@ $iconeRessource = [
       <img src="<?= base_url('assets/img/yesmine.jpg') ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover">
     </div>
     <div class="apropos-content">
-      <h2>Yesmine Gharbi</h2>
-      <span class="apropos-title">Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
       <p>Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.</p>
       <p>Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.</p>
       <div class="social-links">

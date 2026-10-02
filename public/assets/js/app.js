@@ -4,9 +4,37 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  document.querySelectorAll('.partners-section').forEach((section) => {
-    const track = section.querySelector('[data-carousel]');
-    if (!track) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('motion-ready');
+    const revealTargets = document.querySelectorAll([
+      '.hero-content', '.hero-visual', '.section-header', '.audience-card',
+      '.formation-card', '.ressources-free', '.b2b-service', '.b2b-stat-card',
+      '.apropos-mini', '.temoignage', '.home-partners-heading', '.home-partners-logos a',
+      '.partners-heading', '.partner-logo-slide', '.partner-reel-slide'
+    ].join(','));
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+
+    const revealIndexes = new WeakMap();
+    revealTargets.forEach((element) => {
+      const parent = element.parentElement;
+      const index = parent ? (revealIndexes.get(parent) || 0) : 0;
+      if (parent) revealIndexes.set(parent, index + 1);
+      element.style.setProperty('--reveal-delay', Math.min(index * 75, 375) + 'ms');
+      element.classList.add('reveal-on-scroll');
+      revealObserver.observe(element);
+    });
+  }
+
+  document.querySelectorAll('[data-carousel]').forEach((track) => {
+    const section = track.closest('.partners-section, .home-partners');
+    if (!section) return;
 
     section.querySelectorAll('.partner-scroll').forEach((button) => {
       button.addEventListener('click', () => {
