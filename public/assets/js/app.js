@@ -57,6 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const userMenuBtn = document.getElementById('userMenuBtn');
   const userMenuPanel = document.getElementById('userMenuPanel');
 
+  document.querySelectorAll('.nav-tools-details').forEach((details) => {
+    const summary = details.querySelector('summary');
+    document.addEventListener('click', (event) => {
+      if (details.open && !details.contains(event.target)) details.open = false;
+    });
+    details.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && details.open) {
+        details.open = false;
+        summary?.focus();
+      }
+    });
+  });
+
   if (burger && mobileNav) {
     function setMobileMenu(open) {
       mobileNav.classList.toggle('open', open);
