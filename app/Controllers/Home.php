@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\FormationModel;
 use App\Models\RessourceModel;
 use App\Models\SettingsModel;
+use App\Models\PartnerModel;
 use App\Models\TestimonialModel;
 
 class Home extends BaseController
@@ -23,6 +24,7 @@ class Home extends BaseController
             'ressources_free'    => $ressourceModel->getFree(3),
             'ressources_premium' => $ressourceModel->getPremium(4),
             'settings'           => $settingsModel->getAll(),
+            'partners'           => (new PartnerModel())->activePartners(),
             'testimonials'       => $testimonialModel->getActive(),
         ];
 

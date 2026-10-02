@@ -23,6 +23,7 @@ $routes->get('/formations',              'Formations::index',               ['as
 $routes->get('/formations/(:segment)',   'Formations::detail/$1',           ['as' => 'formation-detail']);
 $routes->get('/actualites',               'News::index',                      ['as' => 'news']);
 $routes->get('/actualites/(:segment)',    'News::detail/$1',                  ['as' => 'news-detail']);
+$routes->get('/recherche',                 'Search::index',                     ['as' => 'search']);
 $routes->get('/ressources',              'Ressources::index',               ['as' => 'ressources']);
 $routes->get('/ressources-gratuites',    'Ressources::gratuites',           ['as' => 'ressources-gratuites']);
 $routes->get('/ressources-premium',      'Ressources::premium',             ['as' => 'ressources-premium']);

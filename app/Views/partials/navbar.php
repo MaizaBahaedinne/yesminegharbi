@@ -20,6 +20,14 @@ $initials = $initials ?: 'U';
     <li><a href="<?= site_url('actualites') ?>" class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités</a></li>
     <li><a href="<?= site_url('entreprises') ?>" class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises</a></li>
     <li><a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos</a></li>
+    <li class="nav-search-item">
+      <form action="<?= site_url('recherche') ?>" method="get" class="nav-search-form" role="search">
+        <label class="sr-only" for="nav-search">Rechercher sur le site</label>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="nav-search" type="search" name="q" placeholder="Rechercher" minlength="2" maxlength="100" required>
+        <button type="submit" aria-label="Lancer la recherche"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      </form>
+    </li>
     <li class="nav-actions">
       <a href="<?= site_url('contact') ?>" class="nav-cta"><i class="fa-regular fa-paper-plane" aria-hidden="true"></i><span>Me contacter</span></a>
     <?php if (!empty($isLoggedIn)): ?>
@@ -56,6 +64,12 @@ $initials = $initials ?: 'U';
       <button type="button" class="nav-mobile-close" data-close-mobile aria-label="Fermer le menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
     <span class="nav-mobile-label">Explorer</span>
+    <form action="<?= site_url('recherche') ?>" method="get" class="nav-mobile-search" role="search">
+      <label class="sr-only" for="mobile-search">Rechercher sur le site</label>
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input id="mobile-search" type="search" name="q" placeholder="Rechercher" minlength="2" maxlength="100" required>
+      <button type="submit" aria-label="Lancer la recherche"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+    </form>
     <a href="<?= site_url('formations') ?>" class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('cv-ats') ?>" class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>

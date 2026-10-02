@@ -86,6 +86,14 @@ body > nav {
 .nav-links>li:not(.nav-actions)>a.active{color:var(--rouge)}
 .nav-links>li:not(.nav-actions)>a.active::after,
 .nav-links>li:not(.nav-actions)>a:hover::after{transform:scaleX(1)}
+.nav-search-item{flex-shrink:0}
+.nav-search-form{width:156px;height:36px;display:flex;align-items:center;gap:7px;padding:0 8px 0 10px;border:1px solid #e8dfd4;border-radius:6px;background:#fff}
+.nav-search-form>i,.nav-mobile-search>i{color:#8c8378;font-size:12px;flex-shrink:0}
+.nav-search-form input,.nav-mobile-search input{width:100%;min-width:0;height:100%;padding:0;border:0;border-radius:0;background:transparent;color:var(--noir);font-size:12px;outline:0}
+.nav-search-form input:focus,.nav-mobile-search input:focus{border:0;outline:0}
+.nav-search-form button,.nav-mobile-search button{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;flex-shrink:0;padding:0;border-radius:4px;background:var(--rouge);color:#fff;font-size:11px}
+.nav-search-form button:hover,.nav-mobile-search button:hover{background:#c92700}
+.nav-links .sr-only,.nav-mobile .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .nav-actions{display:flex;align-items:center;gap:14px;margin-left:4px}
 
 .nav-cta {
@@ -147,6 +155,7 @@ body > nav {
 .nav-mobile-head .nav-logo{font-size:21px}
 .nav-mobile-close{width:38px;height:38px;border:1px solid #e8dfd4;border-radius:7px;background:#fff;color:var(--noir);font-size:17px}
 .nav-mobile-label{display:block;margin:22px 0 8px;color:#978e83;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.nav-mobile-search{height:46px;display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:0 10px;border:1px solid #e8dfd4;border-radius:7px;background:#fff}
 .nav-mobile-panel>a:not(.nav-cta):not(.nav-login){display:flex;align-items:center;justify-content:space-between;padding:13px 2px;border-bottom:1px solid #f0ebe4;color:#38342f;font-size:16px;font-weight:600}
 .nav-mobile-panel>a.active{color:var(--rouge)}
 .nav-mobile-panel>a>i{font-size:12px;color:#b4a99b}
@@ -158,13 +167,13 @@ body > nav {
 .nav-mobile-sub.nav-account-logout{color:var(--rouge)}
 body.nav-drawer-open{overflow:hidden}
 
-@media(max-width:1180px){
+@media(max-width:1300px){
   body > nav{gap:18px;padding-left:28px;padding-right:28px}
   .nav-links{gap:13px}
   .nav-links>li:not(.nav-actions)>a{font-size:12px}
   .nav-account-name{max-width:82px}
 }
-@media(max-width:1040px){
+@media(max-width:1180px){
   body > nav{--nav-h:68px;padding-left:5%;padding-right:5%}
   .nav-links{display:none}
   .nav-burger{display:flex}
@@ -775,6 +784,14 @@ textarea.form-input { resize: vertical; min-height: 140px; line-height: 1.6; }
 .wl-item { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; background: var(--beige); border-radius: 10px; font-size: 14px; color: var(--gris); }
 .wl-check { color: var(--rouge); font-weight: 700; flex-shrink: 0; }
 
+.home-partners{padding:52px 8%;background:#f8f5f0}
+.home-partners-heading{max-width:1120px;margin:0 auto 22px;display:flex;align-items:end;justify-content:space-between;gap:20px}
+.home-partners-heading h2{margin-top:5px;font:700 28px/1.2 'Playfair Display',serif;color:var(--noir)}
+.home-partners-more{display:inline-flex;align-items:center;gap:8px;color:var(--rouge);font-size:13px;font-weight:700;white-space:nowrap}
+.home-partners-logos{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:22px 34px}
+.home-partners-logos a{width:150px;height:88px;display:flex;align-items:center;justify-content:center;padding:10px}
+.home-partners-logos img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+
 /* ─── PARTNER CAROUSELS ─────────────────────── */
 .partners-section{padding:64px 8%}
 .partners-logos{background:#f8f5f0}
@@ -803,6 +820,10 @@ textarea.form-input { resize: vertical; min-height: 140px; line-height: 1.6; }
 }
 
 @media (max-width: 768px) {
+  .home-partners{padding:42px 5%}
+  .home-partners-heading h2{font-size:24px}
+  .home-partners-logos{gap:14px 20px}
+  .home-partners-logos a{width:calc(50% - 12px);max-width:150px;height:76px}
   .partners-section{padding:48px 5%}
   .partners-heading{align-items:center}
   .partners-heading h2{font-size:26px}
