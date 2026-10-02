@@ -200,6 +200,9 @@ textarea{resize:vertical;min-height:100px}
         <a href="<?= base_url('admin/news') ?>" <?= str_contains(current_url(), 'admin/news') ? 'class="active"' : '' ?>>
             <span class="nav-icon"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></span> Actualités
         </a>
+        <a href="<?= base_url('admin/partners') ?>" <?= str_contains(current_url(), 'admin/partners') ? 'class="active"' : '' ?>>
+            <span class="nav-icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></span> Partenaires
+        </a>
         <a href="<?= base_url('admin/testimonials') ?>" <?= str_contains(current_url(), 'admin/testimonials') ? 'class="active"' : '' ?>>
             <span class="nav-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span> Témoignages
         </a>

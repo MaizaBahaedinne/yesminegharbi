@@ -128,6 +128,14 @@ $routes->group('admin', ['filter' => 'adminauth', 'namespace' => 'App\Controller
     $routes->post('news/(:num)/update',   'News::update/$1',                  ['as' => 'admin-news-update']);
     $routes->post('news/(:num)/delete',   'News::delete/$1',                  ['as' => 'admin-news-delete']);
 
+    // Partenaires
+    $routes->get('partners',              'Partners::index',                   ['as' => 'admin-partners']);
+    $routes->get('partners/new',          'Partners::create',                  ['as' => 'admin-partner-new']);
+    $routes->post('partners/store',       'Partners::store',                   ['as' => 'admin-partner-store']);
+    $routes->get('partners/(:num)/edit',  'Partners::edit/$1',                 ['as' => 'admin-partner-edit']);
+    $routes->post('partners/(:num)/update','Partners::update/$1',              ['as' => 'admin-partner-update']);
+    $routes->post('partners/(:num)/delete','Partners::delete/$1',              ['as' => 'admin-partner-delete']);
+
     // Newsletter & Messages
     $routes->get('newsletter',           'Newsletter::index',               ['as' => 'admin-newsletter']);
     $routes->post('newsletter/(:num)/delete','Newsletter::delete/$1',       ['as' => 'admin-newsletter-delete']);

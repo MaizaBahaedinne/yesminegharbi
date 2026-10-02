@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\SettingsModel;
+use App\Models\PartnerModel;
 
 class Pages extends BaseController
 {
@@ -26,6 +27,7 @@ class Pages extends BaseController
             'page_title'       => 'Entreprises — Yesmine Gharbi',
             'page_description' => 'Marque employeur, formations RH sur-mesure et promotion auprès d\'une audience qualifiée.',
             'settings'         => $this->settings(),
+            'partners'         => (new PartnerModel())->activePartners(),
         ]);
     }
 
