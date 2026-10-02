@@ -358,7 +358,7 @@ h1 em { font-style: italic; color: var(--rouge); }
 /* ─── TRUST BAND ─────────────────────────────── */
 .trust-band {
   padding: 32px 8%;
-  background: var(--noir);
+  background: #f8f5f0;
   display: grid;
   grid-template-columns: minmax(0,1fr);
   justify-items: center;
@@ -368,15 +368,12 @@ h1 em { font-style: italic; color: var(--rouge); }
 .trust-profile{display:flex;flex-direction:column;gap:5px;padding-right:34px;border-right:1px solid rgba(255,255,255,.2);color:#fff}
 .trust-profile strong{font:700 25px/1.1 'Playfair Display',serif}
 .trust-profile span{max-width:280px;color:rgba(255,255,255,.68);font-size:12px;line-height:1.45}
-.trust-about{width:min(100%,1050px);display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:28px;padding-top:26px;border-top:1px solid rgba(255,255,255,.18);color:#fff}
+.trust-about{width:min(100%,1050px);display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:28px;padding-top:26px;border-top:1px solid var(--beige-dark);color:var(--noir)}
 .trust-about>img{width:150px;height:170px;object-fit:contain;object-position:center bottom;border-radius:8px}
-.trust-about-content h2{display:block!important;color:#fff!important;font:700 27px/1.2 'Playfair Display',serif;margin:0 0 5px}
-.trust-about-title{display:block;margin-bottom:13px;color:var(--sauge);font-size:12px;font-weight:700}
-.trust-about-content p{max-width:790px;margin:0 0 9px;color:rgba(255,255,255,.72);font-size:13px;line-height:1.7}
-.trust-about-content p strong{color:#fff}
-.trust-about .social-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.trust-about .social-link{padding:6px 10px;border:1px solid rgba(255,255,255,.18);border-radius:5px;color:rgba(255,255,255,.8);font-size:11px}
-.trust-about .social-link:hover{border-color:var(--sauge);color:#fff}
+.trust-about-content h2{display:block!important;color:var(--noir)!important;font:700 27px/1.2 'Playfair Display',serif;margin:0 0 5px}
+.trust-about-title{display:block;margin-bottom:13px;color:var(--rouge);font-size:12px;font-weight:700}
+.trust-about-content p{max-width:790px;margin:0 0 9px;color:var(--gris);font-size:13px;line-height:1.7}
+.trust-about-content p strong{color:var(--noir)}
 .home-partners-carousel-wrap{max-width:1120px;margin:0 auto}
 .home-partners-carousel-wrap .partners-controls{justify-content:flex-end;margin-bottom:10px}
 .home-partners-logos{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--beige-dark) transparent;padding:2px 2px 12px}
@@ -386,13 +383,13 @@ h1 em { font-style: italic; color: var(--rouge); }
 .trust-band .trust-item{min-width:105px}
 .trust-item {
   display: flex; flex-direction: column; align-items: center; gap: 6px;
-  color: rgba(255,255,255,.65); font-size: 13px; font-weight: 500;
+  color: var(--gris); font-size: 13px; font-weight: 500;
   text-align: center;
 }
 .trust-item span { display: flex; align-items: center; gap: 5px; }
 .trust-item span svg { flex-shrink: 0; }
-.trust-item strong { color: white; font-size: 36px; font-family: 'Playfair Display', serif; line-height: 1; }
-.trust-sep { color: rgba(255,255,255,.15); font-size: 28px; align-self: center; }
+.trust-item strong { color: var(--noir); font-size: 36px; font-family: 'Playfair Display', serif; line-height: 1; }
+.trust-sep { color: var(--beige-dark); font-size: 28px; align-self: center; }
 
 /* ─── SECTIONS ───────────────────────────────── */
 section { padding: 80px 8%; }
@@ -856,9 +853,6 @@ textarea.form-input { resize: vertical; min-height: 140px; line-height: 1.6; }
 @media (max-width: 768px) {
   .trust-band{gap:24px;padding:28px 5%}
   .trust-followers{gap:22px}
-  .trust-profile{width:100%;align-items:center;text-align:center;padding:0 0 18px;border-right:0;border-bottom:1px solid rgba(255,255,255,.18)}
-  .trust-profile strong{font-size:23px}
-  .trust-profile span{max-width:320px}
   .trust-about{grid-template-columns:100px minmax(0,1fr);gap:18px;padding-top:22px}
   .trust-about>img{width:100px;height:125px}
   .trust-about-content h2{font-size:23px}

@@ -112,12 +112,6 @@ $iconeRessource = [
       <span class="trust-about-title">Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
       <p>Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.</p>
       <p>Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.</p>
-      <div class="social-links">
-        <a href="<?= esc(($settings['tiktok_url'] ?? '') ?: 'https://www.tiktok.com/@yesmine_gharbi') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok" aria-hidden="true"></i> TikTok</a>
-        <a href="<?= esc(($settings['instagram_url'] ?? '') ?: 'https://www.instagram.com/yesmine_gharbi/?hl=fr') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</a>
-        <a href="<?= esc(($settings['linkedin_url'] ?? '') ?: 'https://www.linkedin.com/in/yesmine-gharbi/') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
-        <a href="<?= esc(($settings['facebook_url'] ?? '') ?: 'https://www.facebook.com/yesmineegharbi/') ?>" class="social-link" target="_blank" rel="noopener"><i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook</a>
-      </div>
     </div>
   </div>
 </div>
