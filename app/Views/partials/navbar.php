@@ -17,13 +17,9 @@ $initials = $initials ?: 'U';
     <li><a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos</a></li>
     <li class="nav-tools-item">
       <details class="nav-tools-details">
-        <summary class="<?= in_array($seg, ['cv-ats', 'recherche'], true) || ($seg === 'mon-compte' && service('uri')->getSegment(2) === 'cv') ? 'active' : '' ?>">Outils <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+        <summary class="<?= $seg === 'cv-ats' || ($seg === 'mon-compte' && service('uri')->getSegment(2) === 'cv') ? 'active' : '' ?>">Outils <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
         <div class="nav-tools-menu">
           <a href="<?= site_url('cv-ats') ?>"><i class="fa-solid fa-file-circle-check" aria-hidden="true"></i> CV ATS</a>
-          <a href="<?= site_url('recherche') ?>"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Recherche</a>
-          <?php if (!empty($isLoggedIn)): ?>
-            <a href="<?= site_url('mon-compte/cv') ?>"><i class="fa-regular fa-file-lines" aria-hidden="true"></i> Mes CV</a>
-          <?php endif; ?>
         </div>
       </details>
     </li>
@@ -31,6 +27,14 @@ $initials = $initials ?: 'U';
     <li><a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources</a></li>
     <li><a href="<?= site_url('entreprises') ?>" class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises</a></li>
     <li><a href="<?= site_url('actualites') ?>" class="<?= $seg === 'actualites' ? 'active' : '' ?>">Actualités</a></li>
+    <li class="nav-search-item">
+      <form action="<?= site_url('recherche') ?>" method="get" class="nav-search-form" role="search">
+        <label class="sr-only" for="nav-search">Rechercher sur le site</label>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="nav-search" type="search" name="q" placeholder="Rechercher" minlength="2" maxlength="100" required>
+        <button type="submit" aria-label="Lancer la recherche"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      </form>
+    </li>
     <li class="nav-actions">
       <a href="<?= site_url('contact') ?>" class="nav-cta"><i class="fa-regular fa-paper-plane" aria-hidden="true"></i><span>Me contacter</span></a>
     <?php if (!empty($isLoggedIn)): ?>
@@ -67,18 +71,15 @@ $initials = $initials ?: 'U';
       <button type="button" class="nav-mobile-close" data-close-mobile aria-label="Fermer le menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
     <span class="nav-mobile-label">Explorer</span>
-    <a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-    <span class="nav-mobile-label nav-mobile-tools-label">Outils</span>
-    <a href="<?= site_url('cv-ats') ?>" class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <form action="<?= site_url('recherche') ?>" method="get" class="nav-mobile-search" role="search">
       <label class="sr-only" for="mobile-search">Rechercher sur le site</label>
       <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
       <input id="mobile-search" type="search" name="q" placeholder="Rechercher" minlength="2" maxlength="100" required>
       <button type="submit" aria-label="Lancer la recherche"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
     </form>
-    <?php if (!empty($isLoggedIn)): ?>
-      <a href="<?= site_url('mon-compte/cv') ?>">Mes CV <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-    <?php endif; ?>
+    <a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>">À propos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <span class="nav-mobile-label nav-mobile-tools-label">Outils</span>
+    <a href="<?= site_url('cv-ats') ?>" class="<?= $seg === 'cv-ats' ? 'active' : '' ?>">CV ATS <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('formations') ?>" class="<?= $seg === 'formations' ? 'active' : '' ?>">Formations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('ressources') ?>" class="<?= in_array($seg, ['ressources', 'ressources-gratuites', 'ressources-premium'], true) ? 'active' : '' ?>">Ressources <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a href="<?= site_url('entreprises') ?>" class="<?= $seg === 'entreprises' ? 'active' : '' ?>">Entreprises <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
