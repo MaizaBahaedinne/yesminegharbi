@@ -22,7 +22,7 @@ class App extends BaseConfig
     public bool $negotiateLocale = false;
 
     /** @var list<string> */
-    public array $supportedLocales = ['fr'];
+    public array $supportedLocales = ['fr', 'en', 'ar'];
 
     public string $appTimezone = 'Africa/Tunis';
 

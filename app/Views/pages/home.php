@@ -43,15 +43,12 @@ $iconeRessource = [
      ============================================= -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-eyebrow">Spécialiste Recrutement &amp; Personal Branding</div>
-    <h1>Des conseils terrain,<br>pas des <em>manuels.</em></h1>
-    <p class="hero-sub">
-      Des ressources, des méthodes et des opportunités pour faire évoluer votre carrière et mieux recruter.
-      Tout au même endroit.
-    </p>
+    <div class="hero-eyebrow"><?= esc(lang('Site.home.hero_eyebrow')) ?></div>
+    <h1><?= lang('Site.home.hero_title') ?></h1>
+    <p class="hero-sub"><?= esc(lang('Site.home.hero_text')) ?></p>
     <div class="hero-btns">
-      <a href="<?= site_url('formations') ?>" class="btn-primary">Voir les formations →</a>
-      <a href="<?= site_url('ressources-gratuites') ?>" class="btn-secondary">Ressources gratuites</a>
+      <a href="<?= site_url('formations') ?>" class="btn-primary"><?= esc(lang('Site.home.see_trainings')) ?></a>
+      <a href="<?= site_url('ressources-gratuites') ?>" class="btn-secondary"><?= esc(lang('Site.home.free_resources')) ?></a>
     </div>
   </div>
 
@@ -70,11 +67,11 @@ $iconeRessource = [
       <img src="<?= base_url($heroPhoto) ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit">
       <div class="floating-card floating-card-1">
         <span class="fc-emoji"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
-        <span>Formation vendue !</span>
+        <span><?= esc(lang('Site.home.formation_sold')) ?></span>
       </div>
       <div class="floating-card floating-card-2">
         <span class="fc-emoji"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
-        <span>+200 avis 5 étoiles</span>
+        <span><?= esc(lang('Site.home.reviews')) ?></span>
       </div>
     </div>
   </div>
@@ -87,10 +84,10 @@ $iconeRessource = [
   <div class="trust-followers">
   <?php
   $nets = [
-      ['key'=>'tiktok',    'label'=>'TikTok',    'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>'],
-      ['key'=>'instagram', 'label'=>'Instagram', 'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>'],
-      ['key'=>'linkedin',  'label'=>'LinkedIn',  'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'],
-      ['key'=>'facebook',  'label'=>'Facebook',  'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>'],
+      ['key'=>'tiktok',    'label'=>lang('Site.home.social_tiktok'),    'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>'],
+      ['key'=>'instagram', 'label'=>lang('Site.home.social_instagram'), 'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>'],
+      ['key'=>'linkedin',  'label'=>lang('Site.home.social_linkedin'),  'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'],
+      ['key'=>'facebook',  'label'=>lang('Site.home.social_facebook'),  'svg'=>'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>'],
   ];
   foreach ($nets as $i => $n):
       $count = $settings[$n['key'].'_followers'] ?? '';
@@ -107,10 +104,10 @@ $iconeRessource = [
 
   <div class="trust-about" id="apropos">
     <div class="trust-about-content">
-      <h2>Yesmine Gharbi</h2>
-      <span class="trust-about-title">Spécialiste Recrutement &amp; Créatrice de contenu RH</span>
-      <p>Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.</p>
-      <p>Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.</p>
+      <h2><?= esc(lang('Site.home.about_title')) ?></h2>
+      <span class="trust-about-title"><?= esc(lang('Site.home.about_role')) ?></span>
+      <p><?= esc(lang('Site.home.about_p1')) ?></p>
+      <p><?= esc(lang('Site.home.about_p2')) ?></p>
     </div>
   </div>
 </div>
@@ -120,42 +117,42 @@ $iconeRessource = [
      ============================================= -->
 <section id="audience">
   <div class="section-header">
-    <span class="section-tag">Pour qui ?</span>
-    <h2>Un hub pour chaque profil</h2>
-    <p class="section-desc">Que vous cherchiez un emploi, que vous recrutiez, ou que vous souhaitiez renforcer votre marque employeur — il y a quelque chose pour vous.</p>
+    <span class="section-tag"><?= esc(lang('Site.home.audience_tag')) ?></span>
+    <h2><?= esc(lang('Site.home.audience_title')) ?></h2>
+    <p class="section-desc"><?= esc(lang('Site.home.audience_intro')) ?></p>
   </div>
   <div class="audience-grid">
     <div class="audience-card candidat">
       <span class="audience-icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></span>
-      <h3>Candidats &amp; futurs professionnels</h3>
-      <p>Étudiants, jeunes diplômés, professionnels ou personnes en reconversion : développez votre profil, préparez votre avenir professionnel et saisissez les bonnes opportunités.</p>
+      <h3><?= esc(lang('Site.home.candidates')) ?></h3>
+      <p><?= esc(lang('Site.home.candidates_text')) ?></p>
       <ul class="audience-list">
-        <li>Orientation &amp; évolution de carrière</li>
-        <li>Recherche d’emploi &amp; candidature</li>
-        <li>LinkedIn &amp; personal branding</li>
-        <li>Méthodes &amp; ressources pratiques</li>
+        <li><?= esc(lang('Site.home.candidate_1')) ?></li>
+        <li><?= esc(lang('Site.home.candidate_2')) ?></li>
+        <li><?= esc(lang('Site.home.candidate_3')) ?></li>
+        <li><?= esc(lang('Site.home.candidate_4')) ?></li>
       </ul>
     </div>
     <div class="audience-card rh">
       <span class="audience-icon"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i></span>
-      <h3>Recruteurs &amp; RH</h3>
-      <p>Des conseils, méthodes et ressources issus du terrain pour mieux recruter et développer vos pratiques RH.</p>
+      <h3><?= esc(lang('Site.home.recruiters')) ?></h3>
+      <p><?= esc(lang('Site.home.recruiters_text')) ?></p>
       <ul class="audience-list">
-        <li>Sourcing &amp; recherche de candidats</li>
-        <li>Évaluation candidats</li>
-        <li>Processus de recrutement</li>
-        <li>Ressources RH</li>
+        <li><?= esc(lang('Site.home.recruiter_1')) ?></li>
+        <li><?= esc(lang('Site.home.recruiter_2')) ?></li>
+        <li><?= esc(lang('Site.home.recruiter_3')) ?></li>
+        <li><?= esc(lang('Site.home.recruiter_4')) ?></li>
       </ul>
     </div>
     <div class="audience-card entreprise">
       <span class="audience-icon"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
-      <h3>Entreprises</h3>
-      <p>Développez votre marque employeur grâce à la visibilité, au contenu et à une stratégie de communication adaptée à vos objectifs.</p>
+      <h3><?= esc(lang('Site.home.companies')) ?></h3>
+      <p><?= esc(lang('Site.home.companies_text')) ?></p>
       <ul class="audience-list">
-        <li>Visibilité &amp; présence employeur</li>
-        <li>Mise en avant sur mes réseaux</li>
-        <li>Stratégie de communication marque employeur</li>
-        <li>Accompagnement &amp; conseil</li>
+        <li><?= esc(lang('Site.home.company_1')) ?></li>
+        <li><?= esc(lang('Site.home.company_2')) ?></li>
+        <li><?= esc(lang('Site.home.company_3')) ?></li>
+        <li><?= esc(lang('Site.home.company_4')) ?></li>
       </ul>
     </div>
   </div>
@@ -166,9 +163,9 @@ $iconeRessource = [
      ============================================= -->
 <section class="section-alt" id="formations">
   <div class="section-header">
-    <span class="section-tag">Formations</span>
-    <h2>Apprendre du terrain, <em>pas des livres</em></h2>
-    <p class="section-desc">Des formations vidéo pratiques, conçues à partir de l'expérience réelle du recrutement en Tunisie et à l'international.</p>
+    <span class="section-tag"><?= esc(lang('Site.home.training_tag')) ?></span>
+    <h2><?= lang('Site.home.training_title') ?></h2>
+    <p class="section-desc"><?= esc(lang('Site.home.training_intro')) ?></p>
   </div>
 
   <div class="formations-grid">
@@ -201,11 +198,11 @@ $iconeRessource = [
         <p><?= esc($f['description_courte']) ?></p>
         <div class="formation-footer">
           <?php if ($f['statut'] === 'bientot'): ?>
-            <div class="prix" style="color:var(--gris)">À venir</div>
-            <a href="<?= site_url('formations/' . $f['slug']) ?>" class="btn-sm" style="border-color:var(--beige-dark);color:var(--gris)">Notifier →</a>
+            <div class="prix" style="color:var(--gris)"><?= esc(lang('Site.home.coming_soon')) ?></div>
+            <a href="<?= site_url('formations/' . $f['slug']) ?>" class="btn-sm" style="border-color:var(--beige-dark);color:var(--gris)"><?= esc(lang('Site.home.notify')) ?></a>
           <?php else: ?>
             <div class="prix"><?= number_format((float)$f['prix'], 0) ?> TND <span>· <?= (int)$f['modules_count'] ?> modules</span></div>
-            <a href="<?= site_url('formations/' . $f['slug']) ?>" class="btn-sm">Accéder →</a>
+            <a href="<?= site_url('formations/' . $f['slug']) ?>" class="btn-sm"><?= esc(lang('Site.home.access')) ?></a>
           <?php endif; ?>
         </div>
       </div>
@@ -214,7 +211,7 @@ $iconeRessource = [
   </div>
 
   <div class="center">
-    <a href="<?= site_url('formations') ?>" class="voir-tout">Voir toutes les formations →</a>
+    <a href="<?= site_url('formations') ?>" class="voir-tout"><?= esc(lang('Site.home.all_trainings')) ?></a>
   </div>
 </section>
 
@@ -223,9 +220,9 @@ $iconeRessource = [
      ============================================= -->
 <section id="ressources">
   <div class="section-header">
-    <span class="section-tag">Ressources</span>
-    <h2>Guides, templates &amp; outils</h2>
-    <p class="section-desc">Des ressources concrètes à utiliser immédiatement — gratuites ou premium.</p>
+    <span class="section-tag"><?= esc(lang('Site.home.resources_tag')) ?></span>
+    <h2><?= esc(lang('Site.home.resources_title')) ?></h2>
+    <p class="section-desc"><?= esc(lang('Site.home.resources_intro')) ?></p>
   </div>
 
   <div class="ressources-grid">
@@ -233,8 +230,8 @@ $iconeRessource = [
     <!-- Gratuites -->
     <div class="ressources-free">
       <div class="ressource-header">
-        <h3>Ressources gratuites</h3>
-        <span style="font-size:12px;color:var(--gris)">Avec votre email</span>
+        <h3><?= esc(lang('Site.home.free_resources_title')) ?></h3>
+        <span style="font-size:12px;color:var(--gris)"><?= esc(lang('Site.home.with_email')) ?></span>
       </div>
       <div class="ressource-items">
         <?php foreach ($ressources_free as $r): ?>
@@ -246,21 +243,21 @@ $iconeRessource = [
             <h4><?= esc($r['titre']) ?></h4>
             <span><?= esc(strtoupper($r['type'])) ?></span>
           </div>
-          <span class="ri-badge badge-free">Gratuit</span>
+          <span class="ri-badge badge-free"><?= esc(lang('Site.home.free')) ?></span>
         </button>
         <?php endforeach; ?>
       </div>
       <div class="email-form">
         <input type="email" id="quickEmail" placeholder="votre@email.com">
-        <button type="button" onclick="openDownloadAll()">Télécharger</button>
+        <button type="button" onclick="openDownloadAll()"><?= esc(lang('Site.home.download')) ?></button>
       </div>
     </div>
 
     <!-- Premium -->
     <div class="ressources-free">
       <div class="ressource-header">
-        <h3>Ressources premium</h3>
-        <span style="font-size:12px;color:var(--rouge);font-weight:600">Accès immédiat</span>
+        <h3><?= esc(lang('Site.home.premium_resources_title')) ?></h3>
+        <span style="font-size:12px;color:var(--rouge);font-weight:600"><?= esc(lang('Site.home.instant_access')) ?></span>
       </div>
       <div class="ressource-items">
         <?php foreach ($ressources_premium as $r): ?>
@@ -275,7 +272,7 @@ $iconeRessource = [
         <?php endforeach; ?>
       </div>
       <div style="margin-top:16px">
-        <a href="<?= site_url('ressources-premium') ?>" class="btn-primary" style="display:block;text-align:center">Voir toutes les ressources →</a>
+        <a href="<?= site_url('ressources-premium') ?>" class="btn-primary" style="display:block;text-align:center"><?= esc(lang('Site.home.all_resources')) ?></a>
       </div>
     </div>
 
@@ -286,10 +283,10 @@ $iconeRessource = [
 <section class="home-partners" id="entreprises">
   <div class="home-partners-heading">
     <div>
-      <span class="section-tag">Ils nous font confiance</span>
-      <h2>Nos partenaires</h2>
+      <span class="section-tag"><?= esc(lang('Site.home.partners_tag')) ?></span>
+      <h2><?= esc(lang('Site.home.partners_title')) ?></h2>
     </div>
-    <a href="<?= site_url('entreprises') ?>" class="home-partners-more">En savoir plus <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="<?= site_url('entreprises') ?>" class="home-partners-more"><?= esc(lang('Site.home.more')) ?> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
   </div>
   <?php if (!empty($partners)): ?>
     <div class="home-partners-carousel-wrap">
@@ -313,8 +310,8 @@ $iconeRessource = [
      ============================================= -->
 <section id="temoignages">
   <div class="section-header">
-    <span class="section-tag">Ils en parlent</span>
-    <h2>Ce que disent nos apprenants</h2>
+    <span class="section-tag"><?= esc(lang('Site.home.testimonials_tag')) ?></span>
+    <h2><?= esc(lang('Site.home.testimonials_title')) ?></h2>
   </div>
   <div class="temoignages-grid">
     <?php if (! empty($testimonials)): ?>
@@ -330,7 +327,7 @@ $iconeRessource = [
         <?php endforeach; ?>
     <?php else: ?>
         <div class="temoignage" style="grid-column:1/-1;text-align:center;">
-            <p>Aucun témoignage disponible pour le moment.</p>
+            <p><?= esc(lang('Site.home.no_testimonials')) ?></p>
         </div>
     <?php endif; ?>
   </div>
@@ -340,14 +337,14 @@ $iconeRessource = [
      NEWSLETTER CTA FINAL
      ============================================= -->
 <div class="cta-final" id="contact">
-  <span class="section-tag">Rejoindre la communauté</span>
-  <h2>Restez au courant de tout</h2>
-  <p>Nouvelles formations, ressources gratuites, conseils exclusifs — directement dans votre boîte mail.</p>
+  <span class="section-tag"><?= esc(lang('Site.home.community_tag')) ?></span>
+  <h2><?= esc(lang('Site.home.newsletter_title')) ?></h2>
+  <p><?= esc(lang('Site.home.newsletter_text')) ?></p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
     <?= csrf_field() ?>
-    <input type="email" name="email" placeholder="votre@email.com" required>
-    <button type="submit">Je m'abonne</button>
+    <input type="email" name="email" placeholder="<?= esc(lang('Site.home.search_placeholder')) ?>" required>
+    <button type="submit"><?= esc(lang('Site.home.subscribe')) ?></button>
   </form>
-  <p style="font-size:12px;color:var(--gris);margin-top:12px">Pas de spam. Désabonnement en un clic.</p>
+  <p style="font-size:12px;color:var(--gris);margin-top:12px"><?= esc(lang('Site.home.no_spam')) ?></p>
   <div id="newsletterMsg" style="margin-top:10px;font-size:14px;font-weight:600"></div>
 </div>

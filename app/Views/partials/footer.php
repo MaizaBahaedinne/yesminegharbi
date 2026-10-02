@@ -2,14 +2,14 @@
   <a href="<?= site_url('/') ?>" class="footer-logo">Yesmine <span>Gharbi</span></a>
 
   <ul class="footer-links">
-    <li><a href="<?= site_url('formations') ?>">Formations</a></li>
-    <li><a href="<?= site_url('ressources') ?>">Ressources</a></li>
-    <li><a href="<?= site_url('cv-ats') ?>">CV ATS</a></li>
-    <li><a href="<?= site_url('actualites') ?>">Actualités</a></li>
-    <li><a href="<?= site_url('entreprises') ?>">Entreprises</a></li>
-    <li><a href="<?= site_url('a-propos') ?>">À propos</a></li>
-    <li><a href="<?= site_url('contact') ?>">Contact</a></li>
-    <li><a href="#">Mentions légales</a></li>
+    <li><a href="<?= site_url('formations') ?>"><?= esc(lang('Site.nav.training')) ?></a></li>
+    <li><a href="<?= site_url('ressources') ?>"><?= esc(lang('Site.nav.resources')) ?></a></li>
+    <li><a href="<?= site_url('cv-ats') ?>"><?= esc(lang('Site.nav.cv')) ?></a></li>
+    <li><a href="<?= site_url('actualites') ?>"><?= esc(lang('Site.nav.news')) ?></a></li>
+    <li><a href="<?= site_url('entreprises') ?>"><?= esc(lang('Site.nav.companies')) ?></a></li>
+    <li><a href="<?= site_url('a-propos') ?>"><?= esc(lang('Site.nav.about')) ?></a></li>
+    <li><a href="<?= site_url('contact') ?>"><?= esc(lang('Site.nav.contact')) ?></a></li>
+    <li><a href="#"><?= esc(lang('Site.footer.legal')) ?></a></li>
   </ul>
 
   <span class="footer-copy">© <?= date('Y') ?> Yesmine Gharbi · yesminegharbi.com</span>

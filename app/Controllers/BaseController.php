@@ -18,7 +18,7 @@ abstract class BaseController extends Controller
     protected $request;
 
     /** @var array<string, mixed> */
-    protected $helpers = ['url', 'form', 'html', 'text'];
+    protected $helpers = ['url', 'form', 'html', 'text', 'language'];
 
     /** @var array<string, mixed> Data shared with every view */
     protected array $viewData = [];
@@ -30,11 +30,24 @@ abstract class BaseController extends Controller
     ): void {
         parent::initController($request, $response, $logger);
 
+        $supportedLocales = ['fr', 'en', 'ar'];
+        $requestedLocale = (string) $this->request->getGet('lang');
+        if (in_array($requestedLocale, $supportedLocales, true)) {
+            session()->set('site_locale', $requestedLocale);
+        }
+        $locale = (string) session()->get('site_locale');
+        if (! in_array($locale, $supportedLocales, true)) {
+            $locale = 'fr';
+        }
+        $this->request->setLocale($locale);
+        service('language')->setLocale($locale);
+
         // Global view data available in all views
         $this->viewData = [
             'currentUri' => service('uri'),
             'isLoggedIn' => session()->has('user_id'),
             'user'       => session()->get('user'),
+            'siteLocale' => $locale,
         ];
     }
 
