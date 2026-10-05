@@ -167,8 +167,10 @@ body > nav {
 .nav-mobile.open{visibility:visible;pointer-events:auto}
 .nav-mobile-backdrop{position:absolute;inset:0;width:100%;height:100%;background:rgba(22,20,18,.42);opacity:0;transition:opacity .24s ease}
 .nav-mobile.open .nav-mobile-backdrop{opacity:1}
-.nav-mobile-panel{position:absolute;top:0;right:0;bottom:0;width:min(420px,90vw);overflow-y:auto;padding:25px 26px 30px;background:#fff;box-shadow:-16px 0 44px rgba(0,0,0,.13);transform:translateX(102%);transition:transform .26s cubic-bezier(.2,.8,.2,1)}
+.nav-mobile-panel{position:absolute;top:0;right:0;bottom:0;width:min(420px,90vw);overflow-y:auto;padding:25px clamp(16px,6vw,26px) 30px;background:#fff;box-shadow:-16px 0 44px rgba(0,0,0,.13);transform:translateX(102%);transition:transform .26s cubic-bezier(.2,.8,.2,1)}
 .nav-mobile.open .nav-mobile-panel{transform:translateX(0)}
+html[dir="ltr"] .nav-mobile-panel{right:0;left:auto;transform:translateX(102%)}
+html[dir="ltr"] .nav-mobile.open .nav-mobile-panel{transform:translateX(0)}
 .nav-mobile-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid #eee7dd}
 .nav-mobile-head .nav-logo{font-size:21px}
 .nav-mobile-close{width:38px;height:38px;border:1px solid #e8dfd4;border-radius:7px;background:#fff;color:var(--noir);font-size:17px}
