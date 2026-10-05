@@ -329,6 +329,7 @@ class Ressources extends BaseController
 
     private function renderUnifiedResourcesPage(): string
     {
+        $isArabic = ($this->viewData['siteLocale'] ?? 'fr') === 'ar';
         $access = (string) ($this->request->getGet('access') ?? 'tous');
         $type = (string) ($this->request->getGet('type') ?? 'tous');
         $thematique = (string) ($this->request->getGet('thematique') ?? 'tous');
@@ -368,8 +369,8 @@ class Ressources extends BaseController
         $resources = $builder->findAll();
 
         return $this->render('pages/ressources', [
-            'page_title'       => 'Ressources Gratuites et Premium — Yesmine Gharbi',
-            'page_description' => 'Découvrez toutes les ressources: gratuites et premium, sur une seule page.',
+            'page_title'       => $isArabic ? 'الموارد المجانية والمميزة — ياسمين الغربي' : 'Ressources Gratuites et Premium — Yesmine Gharbi',
+            'page_description' => $isArabic ? 'اكتشفوا جميع الموارد المجانية والمميزة في مكان واحد.' : 'Découvrez toutes les ressources: gratuites et premium, sur une seule page.',
             'resources'        => $resources,
             'ownedResourceIds' => $ownedResourceIds,
             'active_access'    => in_array($access, ['tous', 'gratuit', 'premium'], true) ? $access : 'tous',

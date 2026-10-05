@@ -17,10 +17,11 @@ class Formations extends BaseController
     {
         $niveau = $this->request->getGet('niveau');
         $theme  = $this->request->getGet('theme');
+        $isArabic = ($this->viewData['siteLocale'] ?? 'fr') === 'ar';
 
         $data = [
-            'page_title'       => 'Formations — Yesmine Gharbi',
-            'page_description' => 'Catalogue des formations en recrutement, CV, entretien et personal branding.',
+            'page_title'       => $isArabic ? 'التدريبات — ياسمين الغربي' : 'Formations — Yesmine Gharbi',
+            'page_description' => $isArabic ? 'تدريبات عملية في التوظيف والسيرة الذاتية والمقابلات وبناء العلامة الشخصية.' : 'Catalogue des formations en recrutement, CV, entretien et personal branding.',
             'formations'       => $this->model->getFiltered($niveau, $theme),
             'active_niveau'    => $niveau ?? 'tous',
             'active_theme'     => $theme  ?? 'tous',

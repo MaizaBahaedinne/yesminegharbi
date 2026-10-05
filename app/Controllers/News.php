@@ -17,10 +17,11 @@ class News extends BaseController
     public function index(): string
     {
         $articles = $this->model->published();
+        $isArabic = ($this->viewData['siteLocale'] ?? 'fr') === 'ar';
 
         return $this->render('pages/news/index', [
-            'page_title'       => 'Actualités & articles — Yesmine Gharbi',
-            'page_description' => 'Conseils concrets sur la carrière, le recrutement et la marque employeur.',
+            'page_title'       => $isArabic ? 'الأخبار والمقالات — ياسمين الغربي' : 'Actualités & articles — Yesmine Gharbi',
+            'page_description' => $isArabic ? 'نصائح عملية حول المسار المهني والتوظيف والعلامة كجهة عمل.' : 'Conseils concrets sur la carrière, le recrutement et la marque employeur.',
             'articles'         => $articles,
         ]);
     }

@@ -1,4 +1,27 @@
 <?php
+$isArabic = ($siteLocale ?? 'fr') === 'ar';
+$text = $isArabic ? [
+  'all_trainings' => 'جميع التدريبات', 'intro' => 'تدريبات فيديو عملية مبنية على خبرة واقعية في مجال التوظيف.',
+  'level' => 'المستوى', 'theme' => 'الموضوع', 'all' => 'الكل', 'junior' => 'مبتدئ', 'experienced' => 'ذو خبرة',
+  'cv' => 'السيرة الذاتية', 'interview' => 'المقابلة', 'recruitment' => 'التوظيف', 'branding' => 'العلامة الشخصية',
+  'empty' => 'لا توجد تدريبات تطابق عوامل التصفية.', 'show_all' => 'عرض جميع التدريبات',
+  'available' => 'متاح', 'soon' => 'قريباً', 'popular' => 'الأكثر رواجاً', 'all_levels' => 'جميع المستويات',
+  'modules' => 'وحدات', 'coming' => 'قريباً', 'notify' => 'أعلمني ←', 'access' => 'ابدأ الآن ←',
+  'notifications' => 'الإشعارات', 'notify_title' => 'كن أول من يعلم عند الإطلاق',
+  'notify_text' => 'تصل تدريبات جديدة قريباً. اترك بريدك الإلكتروني لتكون من أوائل المستفيدين.',
+  'email' => 'بريدك الإلكتروني', 'notify_button' => 'أعلمني',
+] : [
+  'all_trainings' => 'Toutes les formations', 'intro' => "Des formations vidéo pratiques, conçues à partir de l'expérience réelle du recrutement.",
+  'level' => 'Niveau', 'theme' => 'Thème', 'all' => 'Tous', 'junior' => 'Junior', 'experienced' => 'Expérimenté',
+  'cv' => 'CV', 'interview' => 'Entretien', 'recruitment' => 'Recrutement', 'branding' => 'Personal Branding',
+  'empty' => 'Aucune formation ne correspond à vos filtres.', 'show_all' => 'Voir toutes les formations',
+  'available' => 'Disponible', 'soon' => 'Bientôt', 'popular' => 'Populaire', 'all_levels' => 'Tous niveaux',
+  'modules' => 'modules', 'coming' => 'À venir', 'notify' => 'Notifier →', 'access' => 'Accéder →',
+  'notifications' => 'Notifications', 'notify_title' => "Soyez notifié·e à l'ouverture",
+  'notify_text' => 'Les nouvelles formations arrivent bientôt. Laissez votre email pour y accéder en premier.',
+  'email' => 'votre@email.com', 'notify_button' => 'Me notifier',
+];
+$themeLabels = $isArabic ? ['cv' => $text['cv'], 'entretien' => $text['interview'], 'recrutement' => $text['recruitment'], 'branding' => $text['branding']] : [];
 $iconesFormation = [
     'cv'          => '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>',
     'entretien'   => '<i class="fa-solid fa-microphone" aria-hidden="true"></i>',
@@ -25,9 +48,9 @@ $coverIcons = [
 <!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-header-inner">
-    <span class="section-tag">Formations</span>
-    <h1>Toutes les formations</h1>
-    <p>Des formations vidéo pratiques, conçues à partir de l'expérience réelle du recrutement.</p>
+    <span class="section-tag"><?= esc($text['all_trainings']) ?></span>
+    <h1><?= esc($text['all_trainings']) ?></h1>
+    <p><?= esc($text['intro']) ?></p>
   </div>
 </div>
 
@@ -35,26 +58,26 @@ $coverIcons = [
   <!-- Filtres -->
   <div class="filter-area">
     <div class="filter-row">
-      <span class="filter-label">Niveau :</span>
-      <a href="?niveau=tous&theme=<?= esc($active_theme) ?>" class="filter-btn <?= $active_niveau === 'tous' ? 'active' : '' ?>">Tous</a>
-      <a href="?niveau=junior&theme=<?= esc($active_theme) ?>" class="filter-btn <?= $active_niveau === 'junior' ? 'active' : '' ?>">Junior</a>
-      <a href="?niveau=experimente&theme=<?= esc($active_theme) ?>" class="filter-btn <?= $active_niveau === 'experimente' ? 'active' : '' ?>">Expérimenté</a>
+      <span class="filter-label"><?= esc($text['level']) ?> :</span>
+      <a href="?niveau=tous&theme=<?= esc($active_theme) ?>" class="filter-btn <?= $active_niveau === 'tous' ? 'active' : '' ?>"><?= esc($text['all']) ?></a>
+      <a href="?niveau=junior&theme=<?= esc($active_theme) ?>" class="filter-btn <?= $active_niveau === 'junior' ? 'active' : '' ?>"><?= esc($text['junior']) ?></a>
+      <a href="?niveau=experimente&theme=<?= esc($active_theme) ?>" class="filter-btn <?= $active_niveau === 'experimente' ? 'active' : '' ?>"><?= esc($text['experienced']) ?></a>
     </div>
     <div class="filter-row" style="margin-top:10px">
-      <span class="filter-label">Thème :</span>
-      <a href="?niveau=<?= esc($active_niveau) ?>&theme=tous"          class="filter-btn <?= $active_theme === 'tous' ? 'active' : '' ?>">Tous</a>
-      <a href="?niveau=<?= esc($active_niveau) ?>&theme=cv"            class="filter-btn <?= $active_theme === 'cv' ? 'active' : '' ?>">CV</a>
-      <a href="?niveau=<?= esc($active_niveau) ?>&theme=entretien"     class="filter-btn <?= $active_theme === 'entretien' ? 'active' : '' ?>">Entretien</a>
-      <a href="?niveau=<?= esc($active_niveau) ?>&theme=recrutement"   class="filter-btn <?= $active_theme === 'recrutement' ? 'active' : '' ?>">Recrutement</a>
-      <a href="?niveau=<?= esc($active_niveau) ?>&theme=branding"      class="filter-btn <?= $active_theme === 'branding' ? 'active' : '' ?>">Personal Branding</a>
+      <span class="filter-label"><?= esc($text['theme']) ?> :</span>
+      <a href="?niveau=<?= esc($active_niveau) ?>&theme=tous"          class="filter-btn <?= $active_theme === 'tous' ? 'active' : '' ?>"><?= esc($text['all']) ?></a>
+      <a href="?niveau=<?= esc($active_niveau) ?>&theme=cv"            class="filter-btn <?= $active_theme === 'cv' ? 'active' : '' ?>"><?= esc($isArabic ? $text['cv'] : 'CV') ?></a>
+      <a href="?niveau=<?= esc($active_niveau) ?>&theme=entretien"     class="filter-btn <?= $active_theme === 'entretien' ? 'active' : '' ?>"><?= esc($text['interview']) ?></a>
+      <a href="?niveau=<?= esc($active_niveau) ?>&theme=recrutement"   class="filter-btn <?= $active_theme === 'recrutement' ? 'active' : '' ?>"><?= esc($text['recruitment']) ?></a>
+      <a href="?niveau=<?= esc($active_niveau) ?>&theme=branding"      class="filter-btn <?= $active_theme === 'branding' ? 'active' : '' ?>"><?= esc($text['branding']) ?></a>
     </div>
   </div>
 
   <!-- Grille -->
   <?php if (empty($formations)): ?>
   <div style="text-align:center;padding:60px 0;color:var(--gris)">
-    <p>Aucune formation ne correspond à vos filtres.</p>
-    <a href="<?= site_url('formations') ?>" class="btn-sm" style="margin-top:16px;display:inline-block">Voir toutes les formations</a>
+    <p><?= esc($text['empty']) ?></p>
+    <a href="<?= site_url('formations') ?>" class="btn-sm" style="margin-top:16px;display:inline-block"><?= esc($text['show_all']) ?></a>
   </div>
   <?php else: ?>
   <div class="formations-grid">
@@ -74,32 +97,32 @@ $coverIcons = [
           </div>
         <?php endif; ?>
         <?php if ($f['statut'] === 'disponible'): ?>
-          <span class="formation-badge badge-disponible">Disponible</span>
+          <span class="formation-badge badge-disponible"><?= esc($text['available']) ?></span>
         <?php else: ?>
-          <span class="formation-badge badge-bientot">Bientôt</span>
+          <span class="formation-badge badge-bientot"><?= esc($text['soon']) ?></span>
         <?php endif; ?>
         <?php if ($f['is_populaire']): ?>
-          <span class="formation-badge" style="left:auto;right:12px;background:var(--or);color:white"><i class="fa-solid fa-star" aria-hidden="true"></i> Populaire</span>
+          <span class="formation-badge" style="left:auto;right:12px;background:var(--or);color:white"><i class="fa-solid fa-star" aria-hidden="true"></i> <?= esc($text['popular']) ?></span>
         <?php endif; ?>
       </div>
       <div class="formation-body">
         <div class="formation-meta">
-          <span class="tag"><?= $f['theme'] === 'branding' ? 'Personal Branding' : ucfirst(esc($f['theme'])) ?></span>
-          <span class="tag"><?= $f['niveau'] === 'tous' ? 'Tous niveaux' : ucfirst(esc($f['niveau'])) ?></span>
+          <span class="tag"><?= esc($themeLabels[$f['theme']] ?? ($f['theme'] === 'branding' ? $text['branding'] : ucfirst($f['theme']))) ?></span>
+          <span class="tag"><?= esc($f['niveau'] === 'tous' ? $text['all_levels'] : ($isArabic ? ($f['niveau'] === 'junior' ? $text['junior'] : $text['experienced']) : ucfirst($f['niveau']))) ?></span>
         </div>
         <h3><?= esc($f['titre']) ?></h3>
         <p><?= esc($f['description_courte']) ?></p>
         <div style="display:flex;gap:12px;margin-bottom:16px;font-size:13px;color:var(--gris)">
-          <span><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> <?= (int)$f['modules_count'] ?> modules</span>
+          <span><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> <?= (int)$f['modules_count'] ?> <?= esc($text['modules']) ?></span>
           <span><i class="fa-solid fa-stopwatch" aria-hidden="true"></i> <?= esc($f['heures']) ?></span>
         </div>
         <div class="formation-footer">
           <?php if ($f['statut'] === 'bientot'): ?>
-            <div class="prix" style="color:var(--gris)">À venir</div>
-            <a href="<?= site_url('formations/' . $f['slug']) ?>" class="btn-sm" style="border-color:var(--beige-dark);color:var(--gris)">Notifier →</a>
+            <div class="prix" style="color:var(--gris)"><?= esc($text['coming']) ?></div>
+            <a href="<?= site_url('formations/' . $f['slug']) ?>" class="btn-sm" style="border-color:var(--beige-dark);color:var(--gris)"><?= esc($text['notify']) ?></a>
           <?php else: ?>
-            <div class="prix"><?= number_format((float)$f['prix'], 0) ?> TND <span>· <?= (int)$f['modules_count'] ?> modules</span></div>
-            <a href="<?= site_url('formations/' . $f['slug']) ?>" class="btn-sm">Accéder →</a>
+            <div class="prix"><?= number_format((float)$f['prix'], 0) ?> TND <span>· <?= (int)$f['modules_count'] ?> <?= esc($text['modules']) ?></span></div>
+            <a href="<?= site_url('formations/' . $f['slug']) ?>" class="btn-sm"><?= esc($text['access']) ?></a>
           <?php endif; ?>
         </div>
       </div>
@@ -111,14 +134,14 @@ $coverIcons = [
 
 <!-- CTA NOTIFICATION -->
 <div class="cta-final">
-  <span class="section-tag">Notifications</span>
-  <h2>Soyez notifié·e à l'ouverture</h2>
-  <p>Les nouvelles formations arrivent bientôt. Laissez votre email pour y accéder en premier.</p>
+  <span class="section-tag"><?= esc($text['notifications']) ?></span>
+  <h2><?= esc($text['notify_title']) ?></h2>
+  <p><?= esc($text['notify_text']) ?></p>
   <form class="newsletter-form" id="newsletterForm" novalidate>
     <?= csrf_field() ?>
     <input type="hidden" name="tag" value="notif-formations">
-    <input type="email" name="email" placeholder="votre@email.com" required>
-    <button type="submit">Me notifier</button>
+    <input type="email" name="email" placeholder="<?= esc($text['email']) ?>" required>
+    <button type="submit"><?= esc($text['notify_button']) ?></button>
   </form>
   <div id="newsletterMsg" style="margin-top:10px;font-size:14px;font-weight:600"></div>
 </div>

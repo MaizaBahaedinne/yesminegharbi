@@ -1,8 +1,32 @@
+<?php
+$isArabic = ($siteLocale ?? 'fr') === 'ar';
+$text = $isArabic ? [
+  'about' => 'من أنا', 'role' => 'متخصصة في التوظيف وصانعة محتوى في الموارد البشرية',
+  'hello' => 'مرحباً، أنا ياسمين', 'specialty' => 'متخصصة في التوظيف وبناء العلامة الشخصية',
+  'intro1' => 'بعد سنوات من الخبرة في <strong>التوظيف وصناعة المحتوى</strong>، أحوّل ما تعلمته من الميدان إلى <strong>معارف وأساليب وموارد عملية</strong>.',
+  'intro2' => 'أساعدك على <strong>تطوير مسارك المهني واغتنام فرص جديدة وتنمية مهاراتك وتحسين التوظيف وجذب المواهب</strong> بوضوح واستراتيجيات أفضل.',
+  'stats' => 'بالأرقام', 'achievements' => 'ما حققته', 'followers' => 'متابعون على الشبكات',
+  'published' => 'محتوى منشور', 'experience' => 'سنوات من الخبرة الميدانية', 'resources' => 'موارد أُعدّت',
+  'philosophy' => 'فلسفتي', 'why' => 'لماذا «من الميدان، لا من الكتب»؟',
+  'philosophy_text' => 'أتاحت لي سنوات العمل في التوظيف وصناعة المحتوى فهم واقع الحياة المهنية بعيداً عن النظريات. أحوّل هذه الخبرة إلى <strong>موارد عملية ومتاحة</strong> لمساعدة المهنيين على التقدم والشركات على تحسين التوظيف.',
+  'trainings' => 'اكتشف التدريبات ←', 'contact' => 'تواصل معي',
+] : [
+  'about' => 'À propos', 'role' => 'Spécialiste Recrutement &amp; Créatrice de contenu RH',
+  'hello' => 'Bonjour, je suis Yesmine', 'specialty' => 'Spécialiste Recrutement &amp; Personal Branding',
+  'intro1' => 'Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.',
+  'intro2' => 'Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.',
+  'stats' => 'En chiffres', 'achievements' => "Ce que j'ai accompli", 'followers' => 'Abonnés réseaux',
+  'published' => 'Contenus publiés', 'experience' => "d'expérience terrain", 'resources' => 'Ressources créées',
+  'philosophy' => 'Ma philosophie', 'why' => 'Pourquoi « Du terrain, pas des manuels » ?',
+  'philosophy_text' => 'Des années dans le recrutement et la création de contenu m’ont permis de comprendre les réalités du monde professionnel, au-delà de la théorie. Je transforme cette expérience en <strong>ressources concrètes et accessibles</strong> pour aider les professionnels à avancer et les entreprises à mieux recruter.',
+  'trainings' => 'Voir les formations →', 'contact' => 'Me contacter',
+];
+?>
 <div class="page-header" style="background:var(--noir);color:white">
   <div class="page-header-inner">
-    <span class="section-tag" style="color:var(--sauge)">À propos</span>
+  <span class="section-tag" style="color:var(--sauge)"><?= esc($text['about']) ?></span>
     <h1 style="color:white">Yesmine Gharbi</h1>
-    <p style="color:rgba(255,255,255,0.7)">Spécialiste Recrutement &amp; Créatrice de contenu RH</p>
+  <p style="color:rgba(255,255,255,0.7)"><?= $text['role'] ?></p>
   </div>
 </div>
 
@@ -12,10 +36,10 @@
       <img src="<?= base_url('assets/img/yesmine.jpg') ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover">
     </div>
     <div class="apropos-content">
-      <h2>Bonjour, je suis Yesmine</h2>
-      <span class="apropos-title">Spécialiste Recrutement &amp; Personal Branding</span>
-      <p>Après plusieurs années dans le <strong>recrutement et la création de contenu</strong>, je transforme ce que le terrain m’a appris en <strong>connaissances, méthodes et ressources concrètes</strong>.</p>
-      <p>Pour vous aider à <strong>faire évoluer votre carrière, saisir de nouvelles opportunités, développer vos compétences, mieux recruter et attirer les talents</strong> : avec plus de clarté et de meilleures stratégies.</p>
+      <h2><?= esc($text['hello']) ?></h2>
+      <span class="apropos-title"><?= $text['specialty'] ?></span>
+      <p><?= $text['intro1'] ?></p>
+      <p><?= $text['intro2'] ?></p>
       <?php $contactEmail = ($settings['email'] ?? '') ?: 'yesminegharbipro@gmail.com'; ?>
       <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:<?= esc($contactEmail) ?>" style="color:var(--rouge);font-weight:600"><?= esc($contactEmail) ?></a></p>
       <div class="social-links">
@@ -48,16 +72,16 @@
 <!-- Stats -->
 <section class="section-alt">
   <div class="section-header">
-    <span class="section-tag">En chiffres</span>
-    <h2>Ce que j'ai accompli</h2>
+    <span class="section-tag"><?= esc($text['stats']) ?></span>
+    <h2><?= esc($text['achievements']) ?></h2>
   </div>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:900px;margin:0 auto">
     <?php
     $stats = [
-        ['num' => '+187K', 'label' => 'Abonnés réseaux'],
-        ['num' => '+200',  'label' => 'Contenus publiés'],
-        ['num' => '4 ans', 'label' => "d'expérience terrain"],
-        ['num' => '+10',   'label' => 'Ressources créées'],
+        ['num' => '+187K', 'label' => $text['followers']],
+        ['num' => '+200',  'label' => $text['published']],
+        ['num' => '4', 'label' => $isArabic ? 'سنوات من الخبرة الميدانية' : "d'expérience terrain"],
+        ['num' => '+10',   'label' => $text['resources']],
     ];
     foreach ($stats as $s): ?>
     <div style="text-align:center;padding:32px 20px;background:white;border-radius:16px;border:1px solid var(--beige-dark)">
@@ -71,14 +95,14 @@
 <!-- Ma philosophie -->
 <section>
   <div style="max-width:760px;margin:0 auto;text-align:center">
-    <span class="section-tag">Ma philosophie</span>
-    <h2>Pourquoi « Du terrain, pas des manuels » ?</h2>
+    <span class="section-tag"><?= esc($text['philosophy']) ?></span>
+    <h2><?= esc($text['why']) ?></h2>
     <p style="font-size:17px;color:var(--gris);line-height:1.8;margin-bottom:32px">
-      Des années dans le recrutement et la création de contenu m’ont permis de comprendre les réalités du monde professionnel, au-delà de la théorie. Je transforme cette expérience en <strong>ressources concrètes et accessibles</strong> pour aider les professionnels à avancer et les entreprises à mieux recruter.
+      <?= $text['philosophy_text'] ?>
     </p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="<?= site_url('formations') ?>" class="btn-primary">Voir les formations →</a>
-      <a href="<?= site_url('contact') ?>" class="btn-secondary">Me contacter</a>
+      <a href="<?= site_url('formations') ?>" class="btn-primary"><?= esc($text['trainings']) ?></a>
+      <a href="<?= site_url('contact') ?>" class="btn-secondary"><?= esc($text['contact']) ?></a>
     </div>
   </div>
 </section>
