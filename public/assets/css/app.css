@@ -204,6 +204,15 @@ body.nav-drawer-open{overflow:hidden}
 
 html[dir="rtl"] body{direction:rtl}
 html[lang="ar"] body{font-family:'Noto Sans Arabic','DM Sans',sans-serif;line-height:1.85}
+html[lang="ar"] .nav-logo{font-family:'Noto Sans Arabic','DM Sans',sans-serif;font-size:23px;line-height:1.25}
+html[lang="ar"] .nav-logo small{font-family:'Noto Sans Arabic','DM Sans',sans-serif;font-size:9px;letter-spacing:0}
+html[lang="ar"] .nav-links{gap:clamp(16px,1.8vw,28px)}
+html[lang="ar"] .nav-actions{gap:17px}
+html[lang="ar"] .nav-tools-details>summary{gap:9px}
+@media(max-width:1300px){
+  html[lang="ar"] .nav-links{gap:17px}
+  html[lang="ar"] .nav-actions{gap:15px}
+}
 html[dir="rtl"] .nav-tools-menu{left:auto;right:-14px}
 html[dir="rtl"] .nav-account-menu{right:auto;left:0}
 html[dir="rtl"] .nav-mobile-panel{right:auto;left:0;transform:translateX(-102%)}

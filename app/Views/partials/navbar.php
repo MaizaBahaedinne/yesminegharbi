@@ -10,9 +10,11 @@ if ($displayName !== '') {
 }
 $initials = $initials ?: 'U';
 $localeUrl = current_url();
+$isArabic = ($siteLocale ?? 'fr') === 'ar';
+$brandHomeLabel = $isArabic ? 'ياسمين الغربي، الصفحة الرئيسية' : 'Yesmine Gharbi, accueil';
 ?>
 <nav>
-  <a href="<?= site_url('/') ?>" class="nav-logo" aria-label="Yesmine Gharbi, accueil"><span class="nav-brand-name">Yesmine <span>Gharbi</span></span><small><?= esc(lang('Site.tagline')) ?></small></a>
+  <a href="<?= site_url('/') ?>" class="nav-logo" aria-label="<?= esc($brandHomeLabel) ?>"><span class="nav-brand-name"><?= esc($isArabic ? 'ياسمين' : 'Yesmine') ?> <span><?= esc($isArabic ? 'الغربي' : 'Gharbi') ?></span></span><small><?= esc(lang('Site.tagline')) ?></small></a>
 
   <ul class="nav-links">
     <li><a href="<?= site_url('a-propos') ?>" class="<?= $seg === 'a-propos' ? 'active' : '' ?>"><?= esc(lang('Site.nav.about')) ?></a></li>
@@ -73,7 +75,7 @@ $localeUrl = current_url();
   <button type="button" class="nav-mobile-backdrop" data-close-mobile aria-label="Fermer le menu"></button>
   <div class="nav-mobile-panel" role="dialog" aria-modal="true" aria-label="Navigation principale">
     <div class="nav-mobile-head">
-      <a href="<?= site_url('/') ?>" class="nav-logo"><span class="nav-brand-name">Yesmine <span>Gharbi</span></span><small><?= esc(lang('Site.tagline')) ?></small></a>
+      <a href="<?= site_url('/') ?>" class="nav-logo" aria-label="<?= esc($brandHomeLabel) ?>"><span class="nav-brand-name"><?= esc($isArabic ? 'ياسمين' : 'Yesmine') ?> <span><?= esc($isArabic ? 'الغربي' : 'Gharbi') ?></span></span><small><?= esc(lang('Site.tagline')) ?></small></a>
       <button type="button" class="nav-mobile-close" data-close-mobile aria-label="<?= esc(lang('Site.nav.close')) ?>"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
     <span class="nav-mobile-label"><?= esc(lang('Site.nav.explore')) ?></span>
