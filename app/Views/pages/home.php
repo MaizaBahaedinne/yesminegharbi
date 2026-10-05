@@ -65,14 +65,14 @@ $iconeRessource = [
       }
       ?>
       <img src="<?= base_url($heroPhoto) ?>" alt="Yesmine Gharbi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:inherit">
-      <div class="floating-card floating-card-1">
-        <span class="fc-emoji"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
-        <span><?= esc(lang('Site.home.formation_sold')) ?></span>
-      </div>
-      <div class="floating-card floating-card-2">
-        <span class="fc-emoji"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
-        <span><?= esc(lang('Site.home.reviews')) ?></span>
-      </div>
+    </div>
+    <div class="floating-card floating-card-1">
+      <span class="fc-emoji"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
+      <span><?= esc(lang('Site.home.formation_sold')) ?></span>
+    </div>
+    <div class="floating-card floating-card-2">
+      <span class="fc-emoji"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+      <span><?= esc(lang('Site.home.reviews')) ?></span>
     </div>
   </div>
 </section>

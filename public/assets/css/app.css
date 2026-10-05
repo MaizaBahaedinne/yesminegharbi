@@ -242,10 +242,10 @@ html[dir="rtl"] .news-article-content blockquote{border-left:0;border-right:3px 
 .hero::before {
   content: '';
   position: absolute;
-  top: -130px; right: -110px;
-  width: 650px; height: 590px;
+  top: -95px; right: -70px;
+  width: 540px; height: 500px;
   background: var(--beige);
-  border-radius: 44% 56% 63% 37% / 42% 38% 62% 58%;
+  border-radius: 48% 52% 55% 45% / 44% 42% 58% 56%;
   opacity: .5;
   z-index: 0;
   translate: var(--hero-shape-x, 0px) var(--hero-shape-y, 0px);
@@ -343,23 +343,24 @@ h1 em { font-style: italic; color: var(--rouge); }
   transform:translate(-50%,-50%);
 }
 .hero-visual::before {
-  width:108%;aspect-ratio:1;
+  width:min(430px,96%);aspect-ratio:1;
   background:var(--sauge-light);
+  opacity:.82;
   z-index:0;
 }
 .hero-visual::after {
-  width:120%;aspect-ratio:1;
+  width:min(470px,104%);aspect-ratio:1;
   border:1px solid rgba(196,154,60,.48);
   z-index:0;
 }
 .hero-photo-frame {
   background: var(--beige);
-  border-radius: 48% 52% 43% 57% / 40% 40% 60% 60%;
+  border-radius: 28px 28px 88px 28px;
   aspect-ratio: 4/5;
   overflow: hidden;
   position: relative;
   z-index:1;
-  max-width: 430px;
+  max-width: 400px;
   margin: 0 auto;
   display: flex; align-items: center; justify-content: center;
   translate: var(--hero-photo-x, 0px) var(--hero-photo-y, 0px);
