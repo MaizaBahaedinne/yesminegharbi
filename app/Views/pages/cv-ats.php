@@ -1,11 +1,11 @@
 <div class="page-header">
   <div class="page-header-inner">
-    <span class="section-tag">Outil gratuit</span>
-    <h1>Créez un CV lisible par les ATS, <em>puis testez-le</em></h1>
-    <p>Une structure validée par le terrain, pré-remplie étape par étape. Collez ensuite une offre d’emploi : vous obtenez un score de compatibilité et les mots-clés à ajouter.</p>
+    <span class="section-tag"><?= esc(lang('Site.cv_ats.eyebrow')) ?></span>
+    <h1><?= lang('Site.cv_ats.title') ?></h1>
+    <p><?= esc(lang('Site.cv_ats.intro')) ?></p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
       <a href="<?= site_url(!empty($isLoggedIn) ? 'mon-compte/cv' : 'connexion') ?>" class="btn-primary">
-        <?= !empty($isLoggedIn) ? 'Accéder à mes CV →' : 'Créer mon CV gratuitement →' ?>
+        <?= esc(lang(!empty($isLoggedIn) ? 'Site.cv_ats.my_cvs' : 'Site.cv_ats.create_cv')) ?>
       </a>
     </div>
   </div>
@@ -15,10 +15,10 @@
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;max-width:1000px;margin:0 auto">
     <?php
     $steps = [
-        ['icon' => 'fa-pen-to-square', 'titre' => '1. Remplissez la structure ATS', 'desc' => 'Coordonnées, profil, expériences, formation, compétences : un format simple, sans colonnes ni images, que les logiciels de recrutement lisent sans erreur.'],
-        ['icon' => 'fa-bullseye', 'titre' => '2. Collez une offre d’emploi', 'desc' => 'Copiez le texte de l’annonce qui vous intéresse et l’intitulé du poste.'],
-        ['icon' => 'fa-chart-column', 'titre' => '3. Obtenez votre score', 'desc' => 'Score sur 100, mots-clés trouvés et manquants, conseils concrets pour améliorer votre CV.'],
-        ['icon' => 'fa-file-arrow-down', 'titre' => '4. Téléchargez', 'desc' => 'Exportez votre CV en PDF ou en Word, en français, en anglais ou en arabe.'],
+        ['icon' => 'fa-pen-to-square', 'titre' => lang('Site.cv_ats.step_1_title'), 'desc' => lang('Site.cv_ats.step_1_text')],
+        ['icon' => 'fa-bullseye', 'titre' => lang('Site.cv_ats.step_2_title'), 'desc' => lang('Site.cv_ats.step_2_text')],
+        ['icon' => 'fa-chart-column', 'titre' => lang('Site.cv_ats.step_3_title'), 'desc' => lang('Site.cv_ats.step_3_text')],
+        ['icon' => 'fa-file-arrow-down', 'titre' => lang('Site.cv_ats.step_4_title'), 'desc' => lang('Site.cv_ats.step_4_text')],
     ];
     foreach ($steps as $s): ?>
     <div style="background:white;border:1px solid var(--beige-dark);border-radius:16px;padding:28px">
@@ -32,6 +32,6 @@
   </div>
 
   <p style="text-align:center;color:var(--gris);font-size:13px;margin-top:32px">
-    Gratuit : jusqu’à 3 CV et 3 tests ATS par jour. Le score est une estimation : chaque logiciel ATS a ses propres règles.
+    <?= esc(lang('Site.cv_ats.free_limit')) ?>
   </p>
 </section>

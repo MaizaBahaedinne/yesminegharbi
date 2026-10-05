@@ -22,9 +22,20 @@ class Cv extends BaseController
 
     public function landing()
     {
+        $locale = $this->viewData['siteLocale'] ?? 'fr';
+        $titles = [
+            'fr' => 'Créer un CV ATS et tester sa compatibilité — Yesmine Gharbi',
+            'en' => 'Create an ATS-friendly CV and test its compatibility — Yesmine Gharbi',
+            'ar' => 'أنشئ سيرة ذاتية متوافقة مع ATS واختبرها — ياسمين الغربي',
+        ];
+        $descriptions = [
+            'fr' => 'Créez gratuitement un CV structuré pour les ATS et testez-le contre une offre d’emploi.',
+            'en' => 'Create a free ATS-friendly CV and check its compatibility with a job description.',
+            'ar' => 'أنشئ سيرة ذاتية مجانية ومنظمة لأنظمة ATS واختبر توافقها مع إعلان وظيفة.',
+        ];
         return $this->render('pages/cv-ats', [
-            'page_title'       => 'Créer un CV ATS et tester sa compatibilité — Yesmine Gharbi',
-            'page_description' => 'Créez gratuitement un CV structuré pour les ATS et testez-le contre une offre d’emploi.',
+            'page_title'       => $titles[$locale] ?? $titles['fr'],
+            'page_description' => $descriptions[$locale] ?? $descriptions['fr'],
         ]);
     }
 
