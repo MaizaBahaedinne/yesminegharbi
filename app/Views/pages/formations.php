@@ -1,5 +1,6 @@
 <?php
 $isArabic = ($siteLocale ?? 'fr') === 'ar';
+$isEnglish = ($siteLocale ?? 'fr') === 'en';
 $text = $isArabic ? [
   'all_trainings' => 'جميع التدريبات', 'intro' => 'تدريبات فيديو عملية مبنية على خبرة واقعية في مجال التوظيف.',
   'level' => 'المستوى', 'theme' => 'الموضوع', 'all' => 'الكل', 'junior' => 'مبتدئ', 'experienced' => 'ذو خبرة',
@@ -21,7 +22,20 @@ $text = $isArabic ? [
   'notify_text' => 'Les nouvelles formations arrivent bientôt. Laissez votre email pour y accéder en premier.',
   'email' => 'votre@email.com', 'notify_button' => 'Me notifier',
 ];
-$themeLabels = $isArabic ? ['cv' => $text['cv'], 'entretien' => $text['interview'], 'recrutement' => $text['recruitment'], 'branding' => $text['branding']] : [];
+if ($isEnglish) {
+  $text = array_replace($text, [
+    'all_trainings' => 'All training', 'intro' => 'Practical video training built on real-world recruitment experience.',
+    'level' => 'Level', 'theme' => 'Topic', 'all' => 'All', 'junior' => 'Junior', 'experienced' => 'Experienced',
+    'cv' => 'CV', 'interview' => 'Interview', 'recruitment' => 'Recruitment', 'branding' => 'Personal branding',
+    'empty' => 'No training matches your filters.', 'show_all' => 'View all training',
+    'available' => 'Available', 'soon' => 'Coming soon', 'popular' => 'Popular', 'all_levels' => 'All levels',
+    'modules' => 'modules', 'coming' => 'Coming soon', 'notify' => 'Notify me →', 'access' => 'Access →',
+    'notifications' => 'Notifications', 'notify_title' => 'Be notified when we launch',
+    'notify_text' => 'New training is coming soon. Leave your email to get early access.',
+    'email' => 'your@email.com', 'notify_button' => 'Notify me',
+  ]);
+}
+$themeLabels = ($isArabic || $isEnglish) ? ['cv' => $text['cv'], 'entretien' => $text['interview'], 'recrutement' => $text['recruitment'], 'branding' => $text['branding']] : [];
 $iconesFormation = [
     'cv'          => '<i class="fa-solid fa-file-lines" aria-hidden="true"></i>',
     'entretien'   => '<i class="fa-solid fa-microphone" aria-hidden="true"></i>',
@@ -66,7 +80,7 @@ $coverIcons = [
     <div class="filter-row" style="margin-top:10px">
       <span class="filter-label"><?= esc($text['theme']) ?> :</span>
       <a href="?niveau=<?= esc($active_niveau) ?>&theme=tous"          class="filter-btn <?= $active_theme === 'tous' ? 'active' : '' ?>"><?= esc($text['all']) ?></a>
-      <a href="?niveau=<?= esc($active_niveau) ?>&theme=cv"            class="filter-btn <?= $active_theme === 'cv' ? 'active' : '' ?>"><?= esc($isArabic ? $text['cv'] : 'CV') ?></a>
+      <a href="?niveau=<?= esc($active_niveau) ?>&theme=cv"            class="filter-btn <?= $active_theme === 'cv' ? 'active' : '' ?>"><?= esc($text['cv']) ?></a>
       <a href="?niveau=<?= esc($active_niveau) ?>&theme=entretien"     class="filter-btn <?= $active_theme === 'entretien' ? 'active' : '' ?>"><?= esc($text['interview']) ?></a>
       <a href="?niveau=<?= esc($active_niveau) ?>&theme=recrutement"   class="filter-btn <?= $active_theme === 'recrutement' ? 'active' : '' ?>"><?= esc($text['recruitment']) ?></a>
       <a href="?niveau=<?= esc($active_niveau) ?>&theme=branding"      class="filter-btn <?= $active_theme === 'branding' ? 'active' : '' ?>"><?= esc($text['branding']) ?></a>
@@ -108,7 +122,7 @@ $coverIcons = [
       <div class="formation-body">
         <div class="formation-meta">
           <span class="tag"><?= esc($themeLabels[$f['theme']] ?? ($f['theme'] === 'branding' ? $text['branding'] : ucfirst($f['theme']))) ?></span>
-          <span class="tag"><?= esc($f['niveau'] === 'tous' ? $text['all_levels'] : ($isArabic ? ($f['niveau'] === 'junior' ? $text['junior'] : $text['experienced']) : ucfirst($f['niveau']))) ?></span>
+          <span class="tag"><?= esc($f['niveau'] === 'tous' ? $text['all_levels'] : (($isArabic || $isEnglish) ? ($f['niveau'] === 'junior' ? $text['junior'] : $text['experienced']) : ucfirst($f['niveau']))) ?></span>
         </div>
         <h3><?= esc($f['titre']) ?></h3>
         <p><?= esc($f['description_courte']) ?></p>

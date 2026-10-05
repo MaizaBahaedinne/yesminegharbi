@@ -1,5 +1,6 @@
 <?php
 $isArabic = ($siteLocale ?? 'fr') === 'ar';
+$isEnglish = ($siteLocale ?? 'fr') === 'en';
 $text = $isArabic ? [
   'journal' => 'المقالات', 'title' => 'الأخبار والمقالات',
   'intro' => 'أفكار عملية لتطوير مسارك المهني وتحسين التوظيف وجذب المواهب.',
@@ -11,6 +12,14 @@ $text = $isArabic ? [
   'empty_title' => 'Les premiers articles arrivent bientôt', 'empty_text' => 'Retrouvez ici des conseils de terrain, des actualités et des vidéos.',
   'article' => 'Article', 'video' => 'vidéo', 'videos' => 'vidéos', 'read' => 'Lire l’article',
 ];
+if ($isEnglish) {
+  $text = array_replace($text, [
+    'journal' => 'The journal', 'title' => 'News & articles',
+    'intro' => 'Practical ideas to grow your career, improve hiring, and attract talent.',
+    'empty_title' => 'The first articles are coming soon', 'empty_text' => 'Find practical advice, news, and videos here.',
+    'article' => 'Article', 'video' => 'video', 'videos' => 'videos', 'read' => 'Read article',
+  ]);
+}
 ?>
 <section class="page-header" style="background:var(--noir);color:#fff">
   <div class="page-header-inner">

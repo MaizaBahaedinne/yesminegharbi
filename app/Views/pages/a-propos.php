@@ -1,5 +1,6 @@
 <?php
 $isArabic = ($siteLocale ?? 'fr') === 'ar';
+$isEnglish = ($siteLocale ?? 'fr') === 'en';
 $text = $isArabic ? [
   'about' => 'من أنا', 'role' => 'متخصصة في التوظيف وصانعة محتوى في الموارد البشرية',
   'hello' => 'مرحباً، أنا ياسمين', 'specialty' => 'متخصصة في التوظيف وبناء العلامة الشخصية',
@@ -21,6 +22,19 @@ $text = $isArabic ? [
   'philosophy_text' => 'Des années dans le recrutement et la création de contenu m’ont permis de comprendre les réalités du monde professionnel, au-delà de la théorie. Je transforme cette expérience en <strong>ressources concrètes et accessibles</strong> pour aider les professionnels à avancer et les entreprises à mieux recruter.',
   'trainings' => 'Voir les formations →', 'contact' => 'Me contacter',
 ];
+if ($isEnglish) {
+  $text = array_replace($text, [
+    'about' => 'About', 'role' => 'Recruitment Specialist & HR Content Creator',
+    'hello' => 'Hello, I’m Yesmine', 'specialty' => 'Recruitment & Personal Branding Specialist',
+    'intro1' => 'After several years in <strong>recruitment and content creation</strong>, I turn what I have learned in the field into <strong>practical knowledge, methods, and resources</strong>.',
+    'intro2' => 'I help you <strong>grow your career, seize new opportunities, build your skills, improve hiring, and attract talent</strong> with greater clarity and better strategies.',
+    'stats' => 'By the numbers', 'achievements' => 'What I have achieved', 'followers' => 'Social media followers',
+    'published' => 'Published content', 'experience' => 'Years of hands-on experience', 'resources' => 'Resources created',
+    'philosophy' => 'My approach', 'why' => 'Why “Field-tested, not just textbooks”?',
+    'philosophy_text' => 'Years in recruitment and content creation have helped me understand the realities of professional life beyond theory. I turn that experience into <strong>practical, accessible resources</strong> to help professionals move forward and companies hire better.',
+    'trainings' => 'Explore training →', 'contact' => 'Contact me',
+  ]);
+}
 ?>
 <div class="page-header" style="background:var(--noir);color:white">
   <div class="page-header-inner">
@@ -80,7 +94,7 @@ $text = $isArabic ? [
     $stats = [
         ['num' => '+187K', 'label' => $text['followers']],
         ['num' => '+200',  'label' => $text['published']],
-        ['num' => '4', 'label' => $isArabic ? 'سنوات من الخبرة الميدانية' : "d'expérience terrain"],
+        ['num' => '4', 'label' => $isArabic ? 'سنوات من الخبرة الميدانية' : ($isEnglish ? 'years of hands-on experience' : "d'expérience terrain")],
         ['num' => '+10',   'label' => $text['resources']],
     ];
     foreach ($stats as $s): ?>

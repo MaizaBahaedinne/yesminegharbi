@@ -14,20 +14,20 @@ class Pages extends BaseController
 
     public function apropos(): string
     {
-        $isArabic = ($this->viewData['siteLocale'] ?? 'fr') === 'ar';
+        $locale = $this->viewData['siteLocale'] ?? 'fr';
         return $this->render('pages/a-propos', [
-            'page_title'       => $isArabic ? 'من أنا — ياسمين الغربي' : 'À propos — Yesmine Gharbi',
-            'page_description' => $isArabic ? 'تعرفوا على مسيرة ياسمين الغربي وفلسفتها ورسالتها في مجال التوظيف وصناعة المحتوى.' : 'Parcours, philosophie et mission de Yesmine Gharbi, spécialiste recrutement et créatrice de contenu.',
+            'page_title'       => $locale === 'ar' ? 'من أنا — ياسمين الغربي' : ($locale === 'en' ? 'About — Yesmine Gharbi' : 'À propos — Yesmine Gharbi'),
+            'page_description' => $locale === 'ar' ? 'تعرفوا على مسيرة ياسمين الغربي وفلسفتها ورسالتها في مجال التوظيف وصناعة المحتوى.' : ($locale === 'en' ? 'Learn about Yesmine Gharbi’s background, approach, and work in recruitment and content creation.' : 'Parcours, philosophie et mission de Yesmine Gharbi, spécialiste recrutement et créatrice de contenu.'),
             'settings'         => $this->settings(),
         ]);
     }
 
     public function entreprises(): string
     {
-        $isArabic = ($this->viewData['siteLocale'] ?? 'fr') === 'ar';
+        $locale = $this->viewData['siteLocale'] ?? 'fr';
         return $this->render('pages/entreprises', [
-            'page_title'       => $isArabic ? 'للشركات — ياسمين الغربي' : 'Entreprises — Yesmine Gharbi',
-            'page_description' => $isArabic ? 'طوّروا علامتكم كجهة عمل، ودرّبوا فرق الموارد البشرية، وروّجوا لشركتكم لدى جمهور متخصص.' : 'Marque employeur, formations RH sur-mesure et promotion auprès d\'une audience qualifiée.',
+            'page_title'       => $locale === 'ar' ? 'للشركات — ياسمين الغربي' : ($locale === 'en' ? 'For companies — Yesmine Gharbi' : 'Entreprises — Yesmine Gharbi'),
+            'page_description' => $locale === 'ar' ? 'طوّروا علامتكم كجهة عمل، ودرّبوا فرق الموارد البشرية، وروّجوا لشركتكم لدى جمهور متخصص.' : ($locale === 'en' ? 'Employer branding, tailored HR training, and promotion to a qualified audience.' : 'Marque employeur, formations RH sur-mesure et promotion auprès d\'une audience qualifiée.'),
             'settings'         => $this->settings(),
             'partners'         => (new PartnerModel())->activePartners(),
         ]);

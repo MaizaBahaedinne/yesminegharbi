@@ -1,5 +1,6 @@
 <?php
 $isArabic = ($siteLocale ?? 'fr') === 'ar';
+$isEnglish = ($siteLocale ?? 'fr') === 'en';
 $text = $isArabic ? [
   'companies' => 'للشركات', 'hero' => 'العلامة كجهة عمل · تدريبات الموارد البشرية · الترويج لجمهور متخصص',
   'brand' => 'طوّروا علامتكم<br>كجهة عمل', 'promotion' => 'الترويج لشركتكم',
@@ -39,6 +40,28 @@ $text = $isArabic ? [
   'action' => "Passons à l'action", 'ready' => 'Prêt·e à collaborer ?',
   'contact_intro' => 'Une idée, une question ou une collaboration ? Parlons-en.', 'contact' => 'Me contacter →',
 ];
+if ($isEnglish) {
+  $text = array_replace($text, [
+    'companies' => 'For companies', 'hero' => 'Employer branding · HR training · Audience promotion',
+    'brand' => 'Build your<br>employer brand', 'promotion' => 'Promote your company',
+    'promotion_text' => 'Showcase your business, roles, culture, and workplace through content that puts your company in front of talent.',
+    'strategies' => 'Tailored strategies',
+    'strategies_text' => 'Get recommendations and strategies tailored to your employer brand, communication, and attraction goals, ready for your teams to put into action.',
+    'recruit_better' => 'Improve your hiring and practices', 'skills' => 'Build your team’s skills',
+    'skills_text' => 'Give your HR and recruitment teams access to my premium training and resources to strengthen their practices and hire more effectively.',
+    'recruiting' => 'Let me support your recruitment',
+    'recruiting_text' => 'I can support your talent search, from identifying and sourcing candidates to shortlisting and guiding the recruitment process to fit your needs.',
+    'followers' => 'social media followers', 'audience' => 'of the audience works in professional fields', 'experience' => 'years of hands-on recruitment experience',
+    'discuss' => 'Let’s discuss your project →', 'process' => 'How it works', 'process_title' => 'Our collaboration process',
+    'steps' => [['Get in touch', 'Send your request through the contact form.'], ['Discovery call', 'A call to understand your goals.'], ['Proposal', 'I will send a tailored proposal.'], ['Delivery', 'We work together to reach your goals.']],
+    'trusted' => 'Trusted by', 'partners' => 'Our partners', 'logos' => 'Partner logos', 'logo_alt' => 'Logo', 'reel_with' => 'Instagram Reel with',
+    'prev_logos' => 'Previous logos', 'next_logos' => 'Next logos', 'collaboration' => 'In collaboration',
+    'reels' => 'Our Instagram Reels', 'reels_intro' => 'Discover collaborations with our partners.',
+    'prev_reels' => 'Previous Reels', 'next_reels' => 'Next Reels', 'partner_reels' => 'Partner Instagram Reels', 'view_reel' => 'View Reel for',
+    'action' => 'Let’s get started', 'ready' => 'Ready to collaborate?',
+    'contact_intro' => 'Have an idea, a question, or a collaboration in mind? Let’s talk.', 'contact' => 'Contact me →',
+  ]);
+}
 ?>
 <div class="page-header" style="background:var(--noir);color:white">
   <div class="page-header-inner">
@@ -102,7 +125,7 @@ $text = $isArabic ? [
         <span><?= esc($text['audience']) ?></span>
       </div>
       <div class="b2b-stat-card">
-        <span class="big-num">+4 ans</span>
+        <span class="big-num"><?= esc($isArabic ? '+4 سنوات' : ($isEnglish ? '4+ years' : '+4 ans')) ?></span>
         <span><?= esc($text['experience']) ?></span>
       </div>
       <a href="<?= site_url('contact') ?>?sujet=collaboration-entreprise" class="b2b-cta"><?= esc($text['discuss']) ?></a>

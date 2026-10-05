@@ -1,5 +1,6 @@
 <?php
 $isArabic = ($siteLocale ?? 'fr') === 'ar';
+$isEnglish = ($siteLocale ?? 'fr') === 'en';
 $text = $isArabic ? [
   'all_resources' => 'جميع الموارد', 'resources' => 'الموارد', 'intro' => 'جميع الموارد في مكان واحد، مع خيارات للتصفية.',
   'access' => 'الوصول', 'type' => 'النوع', 'topic' => 'الموضوع', 'all' => 'الكل',
@@ -15,6 +16,17 @@ $text = $isArabic ? [
   'download' => 'Télécharger →', 'buy' => 'Acheter →', 'view' => 'Consulter →', 'free_badge' => 'Gratuit',
   'types' => [], 'topics' => [], 'badges' => [],
 ];
+if ($isEnglish) {
+  $text = array_replace($text, [
+    'all_resources' => 'All resources', 'resources' => 'Resources', 'intro' => 'Browse all resources in one place and filter to find what you need.',
+    'access' => 'Access', 'type' => 'Type', 'topic' => 'Topic', 'all' => 'All',
+    'free' => 'Free', 'premium' => 'Premium', 'empty' => 'No resources match your filters.',
+    'download' => 'Download →', 'buy' => 'Buy →', 'view' => 'View →', 'free_badge' => 'Free',
+    'types' => ['atelier' => 'Workshop', 'methode' => 'Method', 'guide' => 'Guide', 'template' => 'Template', 'checklist' => 'Checklist', 'kit' => 'Kit'],
+    'topics' => ['carriere' => 'Career', 'recherche-emploi' => 'Job search', 'cv-candidature' => 'CV & applications', 'linkedin-branding' => 'LinkedIn & personal branding', 'recrutement-rh' => 'Recruitment & HR', 'marque-employeur' => 'Employer brand', 'apprentissage-formation' => 'Learning & training', 'ia-carriere' => 'AI & careers'],
+    'badges' => ['populaire' => 'Popular', 'nouveau' => 'New', 'premium' => 'Premium', 'gratuit' => 'Free'],
+  ]);
+}
 $iconeRessource = [
     'checklist' => '<i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>',
     'template'  => '<i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>',
