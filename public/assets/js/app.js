@@ -32,6 +32,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const hero = document.querySelector('.hero');
+  const heroParallaxEnabled = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 769px)').matches;
+  if (hero && heroParallaxEnabled && !reduceMotion) {
+    hero.addEventListener('pointermove', (event) => {
+      const bounds = hero.getBoundingClientRect();
+      const horizontal = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+      const vertical = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+
+      hero.style.setProperty('--hero-photo-x', (horizontal * 8).toFixed(1) + 'px');
+      hero.style.setProperty('--hero-photo-y', (vertical * 8).toFixed(1) + 'px');
+      hero.style.setProperty('--hero-shape-x', (horizontal * -22).toFixed(1) + 'px');
+      hero.style.setProperty('--hero-shape-y', (vertical * -18).toFixed(1) + 'px');
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      hero.style.setProperty('--hero-photo-x', '0px');
+      hero.style.setProperty('--hero-photo-y', '0px');
+      hero.style.setProperty('--hero-shape-x', '0px');
+      hero.style.setProperty('--hero-shape-y', '0px');
+    });
+  }
+
   document.querySelectorAll('[data-carousel]').forEach((track) => {
     const section = track.closest('.partners-section, .home-partners');
     if (!section) return;

@@ -248,6 +248,8 @@ html[dir="rtl"] .news-article-content blockquote{border-left:0;border-right:3px 
   border-radius: 50%;
   opacity: .5;
   z-index: 0;
+  translate: var(--hero-shape-x, 0px) var(--hero-shape-y, 0px);
+  transition: translate .38s cubic-bezier(.2,.7,.2,1);
 }
 .hero-content { position: relative; z-index: 1; }
 .hero-visual{animation:hero-drift 7s ease-in-out infinite}
@@ -341,6 +343,8 @@ h1 em { font-style: italic; color: var(--rouge); }
   max-width: 360px;
   margin: 0 auto;
   display: flex; align-items: center; justify-content: center;
+  translate: var(--hero-photo-x, 0px) var(--hero-photo-y, 0px);
+  transition: translate .28s cubic-bezier(.2,.7,.2,1);
 }
 .photo-placeholder {
   display: flex; flex-direction: column;
