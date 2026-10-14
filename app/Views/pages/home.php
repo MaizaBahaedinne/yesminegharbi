@@ -294,7 +294,7 @@ $iconeRessource = [
       <button type="button" class="partner-scroll" data-scroll="previous" aria-label="Logos précédents"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
       <button type="button" class="partner-scroll" data-scroll="next" aria-label="Logos suivants"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
     </div>
-    <div class="home-partners-logos" data-carousel="home-partners" tabindex="0" aria-label="Carrousel des logos partenaires">
+    <div class="home-partners-logos partners-autoplay" data-carousel="home-partners" data-autoplay="true" tabindex="0" aria-label="Carrousel des logos partenaires">
       <?php foreach ($partners as $partner): ?>
         <a href="<?= site_url('entreprises#partenaires') ?>" aria-label="Découvrir nos collaborations avec <?= esc($partner['nom']) ?>">
           <img src="<?= base_url(esc($partner['logo'])) ?>" alt="Logo <?= esc($partner['nom']) ?>" loading="lazy">

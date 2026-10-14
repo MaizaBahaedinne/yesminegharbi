@@ -70,6 +70,46 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault();
       track.scrollBy({ left: (event.key === 'ArrowRight' ? 1 : -1) * Math.max(track.clientWidth * 0.8, 220), behavior: 'smooth' });
     });
+
+    if (track.dataset.autoplay !== 'true' || reduceMotion || !('IntersectionObserver' in window)) return;
+    const originalItems = Array.from(track.children);
+    if (originalItems.length < 2 || track.scrollWidth <= track.clientWidth) return;
+
+    originalItems.forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.inert = true;
+      track.appendChild(clone);
+    });
+
+    let paused = false;
+    let isVisible = false;
+    let lastFrame = 0;
+    const speed = 28;
+    const loopPoint = () => track.children[originalItems.length].getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
+
+    track.addEventListener('mouseenter', () => { paused = true; });
+    track.addEventListener('mouseleave', () => { paused = false; });
+    track.addEventListener('focusin', () => { paused = true; });
+    track.addEventListener('focusout', (event) => {
+      if (!track.contains(event.relatedTarget)) paused = false;
+    });
+
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    });
+    visibilityObserver.observe(track);
+
+    const animate = (timestamp) => {
+      if (lastFrame && !paused && isVisible && !document.hidden) {
+        track.scrollLeft += speed * Math.min((timestamp - lastFrame) / 1000, 0.05);
+        const boundary = loopPoint();
+        if (track.scrollLeft >= boundary) track.scrollLeft -= boundary;
+      }
+      lastFrame = timestamp;
+      window.requestAnimationFrame(animate);
+    };
+    window.requestAnimationFrame(animate);
   });
 
   /* ─── Burger menu ──────────────────────────── */

@@ -169,7 +169,7 @@ if ($isEnglish) {
       <button type="button" class="partner-scroll" data-scroll="next" aria-label="<?= esc($text['next_logos']) ?>"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
     </div>
   </div>
-  <div class="partners-carousel" data-carousel="partner-logos" tabindex="0" aria-label="<?= esc($text['logos']) ?>">
+  <div class="partners-carousel partners-autoplay" data-carousel="partner-logos" data-autoplay="true" tabindex="0" aria-label="<?= esc($text['logos']) ?>">
     <?php foreach ($partners as $partner): ?>
       <div class="partner-logo-slide">
         <img src="<?= base_url(esc($partner['logo'])) ?>" alt="<?= esc($text['logo_alt']) ?> <?= esc($partner['nom']) ?>" loading="lazy">

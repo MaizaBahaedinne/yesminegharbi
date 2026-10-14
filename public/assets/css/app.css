@@ -889,6 +889,8 @@ textarea.form-input { resize: vertical; min-height: 140px; line-height: 1.6; }
 .home-partners-heading h2{margin-top:5px;font:700 28px/1.2 'Playfair Display',serif;color:var(--noir)}
 .home-partners-more{display:inline-flex;align-items:center;gap:8px;color:var(--rouge);font-size:13px;font-weight:700;white-space:nowrap}
 .home-partners-logos{max-width:1120px;margin:0 auto;display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:24px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--beige-dark) transparent;padding:2px 2px 12px}
+.partners-autoplay{direction:ltr;scroll-snap-type:none;scroll-behavior:auto!important;scrollbar-width:none}
+.partners-autoplay::-webkit-scrollbar{display:none}
 .home-partners-logos a{box-sizing:border-box;flex:0 0 190px;width:190px;height:112px;display:flex;align-items:center;justify-content:center;padding:16px;background:#fff;border:1px solid var(--beige-dark);border-radius:8px;scroll-snap-align:start}
 .home-partners-logos img,.partner-logo-slide img{display:block;width:150px;height:64px;max-width:100%;max-height:100%;margin:auto;object-fit:contain;object-position:center}
 
