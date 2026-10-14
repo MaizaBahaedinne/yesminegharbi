@@ -73,21 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (track.dataset.autoplay !== 'true' || reduceMotion || !('IntersectionObserver' in window)) return;
     const originalItems = Array.from(track.children);
-    if (originalItems.length < 2 || track.scrollWidth <= track.clientWidth) return;
+    if (originalItems.length < 2) return;
 
-    originalItems.forEach((item) => {
+    const appendLoop = () => originalItems.forEach((item) => {
       const clone = item.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       clone.inert = true;
       track.appendChild(clone);
     });
+    appendLoop();
+    const loopPoint = track.children[originalItems.length].getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
+    while (track.scrollWidth < loopPoint + track.clientWidth) appendLoop();
 
     let paused = false;
     let isVisible = false;
     let lastFrame = 0;
     const speed = 28;
-    const loopPoint = () => track.children[originalItems.length].getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
-
     track.addEventListener('mouseenter', () => { paused = true; });
     track.addEventListener('mouseleave', () => { paused = false; });
     track.addEventListener('focusin', () => { paused = true; });
@@ -103,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const animate = (timestamp) => {
       if (lastFrame && !paused && isVisible && !document.hidden) {
         track.scrollLeft += speed * Math.min((timestamp - lastFrame) / 1000, 0.05);
-        const boundary = loopPoint();
-        if (track.scrollLeft >= boundary) track.scrollLeft -= boundary;
+        while (track.scrollLeft >= loopPoint) track.scrollLeft -= loopPoint;
+        while (track.scrollLeft < 0) track.scrollLeft += loopPoint;
       }
       lastFrame = timestamp;
       window.requestAnimationFrame(animate);
